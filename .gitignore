@@ -1,0 +1,26 @@
+# Data and model weights stay local and are never committed.
+# Each folder keeps a README saying where its files come from.
+data/**
+!data/README.md
+models/**
+!models/README.md
+*.pt
+*.safetensors
+*.parquet
+*.h5
+*.h5mu
+*.npz
+
+# Results and figures are regenerated from runs
+results/
+figures/*.png
+figures/*.pdf
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.ipynb_checkpoints/
+
+# Measurement scratch
+prereg/measurements/_conc_worker.py
