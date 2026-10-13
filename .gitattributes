@@ -1,0 +1,2 @@
+# Vendored frozen code is stored byte-exact so CHECKSUMS.md5 verifies after checkout
+vendor/fusion/** -text

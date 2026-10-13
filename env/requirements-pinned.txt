@@ -1,0 +1,13 @@
+# Python 3.13.12 (Miniconda base) + venv C:\Users\X\.venvs\smalln
+# torch is the CUDA 12.8 build: pip install torch==2.11.0 --index-url https://download.pytorch.org/whl/cu128
+torch==2.11.0+cu128
+tabpfn==9.0.0
+scikit-learn==1.8.0
+imbalanced-learn==0.14.1
+numpy==2.4.3
+pandas==2.3.3
+scipy==1.17.1
+statsmodels==0.14.6
+pyarrow==25.0.1
+cptac==1.5.14
+fair-esm==2.0.0
