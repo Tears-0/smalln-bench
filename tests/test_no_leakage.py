@@ -93,6 +93,8 @@ def _perm_rows():
     return df[df.arm == "perm"]
 
 
+@pytest.mark.xfail(strict=False, reason="registered criterion miscalibrated: 0.91 familywise false-alarm "
+                                        "probability on a clean pipeline (spec §16 A7); kept as a record")
 def test_permuted_null_honest_internal():
     df = _perm_rows()
     bad = []
@@ -109,6 +111,8 @@ def test_permuted_null_honest_internal():
     assert not bad, f"median permuted-label honest-internal AUC outside 0.5 +/- {TOL}: {bad}"
 
 
+@pytest.mark.xfail(strict=False, reason="registered on pooled LOOCV, whose method-dependent bias (A5) "
+                                        "masks the small pathway-filter leak (spec §16 A7); kept as a record")
 def test_positive_control_leaky_fails():
     df = _perm_rows()
     g = df[(df.N == 12)]
@@ -122,3 +126,32 @@ def test_positive_control_leaky_fails():
         assert med > POS_CTRL, f"{cfg.name}: leaky arm median {med:.3f} -- the test cannot detect a known leak"
         checked += 1
     assert checked >= 8
+
+
+# ------------------------------------------------------------------ amended gate (spec §16 A7)
+def test_A7_permuted_null_one_sided_mean():
+    """A7 test 1: leakage only inflates, so the check is one-sided, on the mean of the
+    honest-internal AUC (leave-pair-out at N <= 12, k-fold at N >= 20), threshold
+    0.5 + TOL. Familywise false-alarm probability on a clean pipeline: 0.08."""
+    df = _perm_rows()
+    df = df[~df.config_id.map(lambda c: BY_ID[c].smote == "leaky")].copy()
+    df["honest"] = np.where(df.N <= 12, df.auc_int_lpo, df.auc_int)
+    m = df.dropna(subset=["honest"]).groupby(["config", "N"])["honest"].mean()
+    bad = m[m > 0.5 + TOL]
+    assert bad.empty, f"mean permuted-label honest-internal AUC above {0.5 + TOL}: {bad.round(3).to_dict()}"
+    assert len(m) >= 25
+
+
+def test_A7_positive_control_paired():
+    """A7 test 1b: the leaky arm must be detectably higher than the honest arm on the same
+    draw and estimator -- positive in >= 90% of repeats at N = 20 (k-fold), for every
+    supervised-filter config; the leaky SMOTE arm must exceed 0.9 at N = 12."""
+    df = _perm_rows()
+    d = df.dropna(subset=["auc_int_leaky"]).copy()
+    d["diff"] = d.auc_int_leaky - d.auc_int
+    frac = d[d.N == 20].groupby("config")["diff"].apply(lambda x: (x > 0).mean())
+    assert len(frac) >= 10
+    weak = frac[frac < 0.9]
+    assert weak.empty, f"leak not detected at N = 20: {weak.round(2).to_dict()}"
+    sm = df[(df.N == 12) & df.config_id.map(lambda c: BY_ID[c].smote == "leaky")]
+    assert sm.groupby("config")["auc_int"].median().min() > 0.9
