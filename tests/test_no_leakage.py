@@ -8,8 +8,9 @@
   test 3   S_r and H_r are disjoint at the patient / donor level, for every draw
   test 4   augmentation never runs before the split, except in the labelled leaky arm
 
-Tests 1 and 1b read the permuted-label cells B1 N = 12 and N = 20 produced by
-`python -m bench.leakage` (identical seeds to the main run, so they are reused).
+Tests 1 and 1b read the permuted-label cells B1 N = 12 and N = 20 written by the
+leakage-cell commands in README.md (bench.run / bench.fusion with identical seeds to
+the main run, so the main run reuses them).
 """
 import glob
 
@@ -88,7 +89,7 @@ def _perm_rows():
             files += glob.glob(str(RUNS / "main" / runner / f"B1_N{N}_perm_r*.parquet"))
     files += glob.glob(str(RUNS / "main" / "fus" / "B1_N20_perm_r*.parquet"))
     if not files:
-        pytest.skip("run `python -m bench.leakage` first")
+        pytest.skip("run the leakage cells first (README.md, 'Reproducing')")
     df = pd.concat([pd.read_parquet(f) for f in files], ignore_index=True)
     return df[df.arm == "perm"]
 

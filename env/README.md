@@ -19,7 +19,7 @@ Pinned versions are in `requirements-pinned.txt`. Two cautions:
   provide a module named `esm`. `import esm` currently resolves to fair-esm
   2.0.0. Embedding code must assert this before computing anything.
 - TabPFN 9.0.0: the licence was accepted by the owner and the pinned checkpoint
-  is local (`models/tabpfn/`, specification §16 A1). Always pass
+  is local (`models/tabpfn/`, see `models/README.md`). Always pass
   `model_path=` — without it the package tries to download the default
   checkpoint and prompts for an API key.
 
