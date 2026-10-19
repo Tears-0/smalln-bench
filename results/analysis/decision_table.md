@@ -1,16 +1,15 @@
-| Effect size | N | Decision | Evidence | Evidence type |
-|---|---|---|---|---|
-| Large effect (B1, median \|d\| 4.2) | any N in 6-50 | Model | No basis to choose: every method reaches median external AUC 1.00 from N = 6 | NONE (ceiling) |
-|  |  | Internal estimate | Optimism 0.00 for every method and N; any estimator | DESCRIPTIVE |
-| Small-moderate effect (B2 \|d\| 0.77, B5 \|d\| 0.71) | N = 6 | Model | No basis to choose between CCP, EN, RF, TabPFN, FUS | NONE |
-|  | N = 9-30 | Model: avoid | Fusion arm: outranked by CCP, EN, RF, TabPFN at every N from 12 (TabPFN from 9); median AUC deficit +0.04 to +0.19 | CLAIM-SECONDARY |
-|  | N = 9-30 | Model | No basis to choose between CCP, EN, RF, TabPFN | NONE |
-|  | N = 9,12,20,30 | Features: avoid | Reactome pathway aggregation: outranked by protein features (EN-path at N=30; RF-path at N=9,12,20,30) | CLAIM-SECONDARY |
-|  | N = 6-30 | Pipeline choices | Variance filter, complete-case proteins, in-fold SMOTE: never outrank the reference pipeline in any task | NONE (no benefit shown) |
-|  | N <= 12 | Internal estimate: report | Leave-pair-out, not pooled LOOCV. Median optimism: pooled LOOCV -0.60 to -0.00 (method-dependent; fusion arm +0.09 to +0.29), leave-pair-out -0.08 to +0.06 | DESCRIPTIVE |
-|  | N >= 20 | Internal estimate: report | Repeated k-fold. Median optimism -0.05 to +0.01, but P(optimism > 0.1) = 0.13-0.26: about one study in five overstates held-out AUC by more than 0.1 | DESCRIPTIVE |
-|  | all N | Skip | Feature selection on all samples before CV: median optimism +0.04 to +0.45 (N = 6: +0.37 to +0.45; largest N: +0.04 to +0.30) | DESCRIPTIVE |
-|  | all N | Skip | SMOTE before the split: median optimism +0.22 to +0.45, still +0.22 to +0.36 at the largest N | DESCRIPTIVE |
-|  | N <= 30 | Biomarker list | Do not read the top-50 as a biomarker list: Kuncheva 0.00-0.04 between independent draws; precision@50 0.006-0.076 vs full-data reference | DESCRIPTIVE |
-|  | N <= 30 | Stability as a proxy | Not supported at a fixed N (A8): registered F21 passes only through N; rho at fixed N 0.10-0.41 | NONE |
-|  |  | Usable-N | Registered usable-N is degenerate (one-sided rule accepts pessimistic pooled LOOCV); no usable-N claim | NONE |
+Decision table (paper Table 3). Rows from the weak-signal tasks B2 and B5, except the last (B1).
+
+| N | Question | Recommendation | Evidence |
+|---|---|---|---|
+| <= 12 | Internal estimate | Report leave-pair-out AUC, not pooled LOOCV (errors -0.60 to +0.29 vs. +/-0.08) | descriptive |
+| >= 20 | Internal estimate | Repeated k-fold, AUC per fold; expect >0.1 overstatement in about one study in five (17-23% at N = 20-30) | descriptive |
+| all | Own null | Re-run the whole pipeline on permuted labels with leave-pair-out or per-fold k-fold; a mean well above 0.5 exposes a leak (at 3 vs 3 only 20 labellings exist, so a permutation p cannot fall below 0.05, or 0.1 for label-symmetric pipelines) | descriptive |
+| all | Feature selection | Inside the folds only (outside: +0.04 to +0.45 optimism) | descriptive |
+| all | Augmentation | Never before the split (SMOTE adds 0.07-0.25 from N = 12 on top of other leaks); inside the folds it does not help | descriptive |
+| 9-30 | Model | Avoid the fusion network (TabPFN from N = 9, CCP and RF from 12, EN from 20; by 0.04-0.19 AUC) | secondary claim |
+| 6-30 | Model | No basis to choose among CCP, elastic net, random forest, TabPFN | none |
+| 9-30 | Features | With RF, prefer proteins to Reactome pathway scores (EN: N = 30 only) | secondary claim |
+| <= 30 | Biomarker list | Do not read the top 50 as a biomarker list (Kuncheva 0.00-0.04) | descriptive |
+| <= 30 | Stability | Not a proxy for recovery at a fixed N, and high even with no signal | none |
+| any | Large effect | Any method reaches AUC 1.00 from N = 6 (B1, full-cohort \|d\| ~ 4); no basis to choose | none |

@@ -56,8 +56,8 @@ design or analysis after it was fixed. Comments in the code cite its sections
 ## Reproducing
 
 **Environment.** See `env/README.md` (Python 3.13, PyTorch with CUDA, `tabpfn` 9.0.0,
-`cptac` 1.5.14; R 4.4 with limma for the reference rankings). The runs used Windows 11, a
-16-core CPU and one RTX 5070 Ti (16 GB). Run every command from the repository root with
+`cptac` 1.5.14; R 4.4 with limma for the reference rankings). The runs used Windows 11, 16
+CPU worker processes and one RTX 5070 Ti (16 GB). Run every command from the repository root with
 `PYTHONPATH=.` and `OMP_NUM_THREADS=1`.
 
 **Data** (into `data/raw/`):

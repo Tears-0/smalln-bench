@@ -6,6 +6,7 @@ None of these is registered; all are descriptive. Outputs go to results/analysis
     python -m bench.review smote            # leaky-SMOTE optimism split into filter and SMOTE shares
     python -m bench.review kendall          # Kendall's W over B2 and B5, with and without FUS
     python -m bench.review kfold_tail       # P(optimism > 0.1) under k-fold, per config and pooled
+    python -m bench.review noise_share      # Hanley-McNeil share of the variance of optimism (k-fold)
     python -m bench.review recovery_h       # recovery against a reference computed on H_r only
     python -m bench.review missingness      # per-sample missing fraction as the only score
     python -m bench.review fus_lpo          # leave-pair-out for the fusion arm (bench.fusion_lpo)
@@ -147,6 +148,26 @@ def kfold_tail():
     per.to_csv(OUT / "review_kfold_tail_per_config.csv", index=False)
     pooled.to_csv(OUT / "review_kfold_tail_pooled.csv", index=False)
     return per, pooled
+
+
+# ---------------------------------------------------------------- noise in the held-out AUC
+def noise_share():
+    """Share of the variance of optimism (k-fold, N >= 20, four baselines, B2 and B5) that the
+    sampling noise of the held-out AUC alone would produce: the mean Hanley-McNeil variance of
+    AUC_ext, given its value and the class counts of H_r, over the variance of AUC_int - AUC_ext,
+    per (task, N) pooled over the four baselines and per configuration."""
+    T = load("true")
+    d = T[(T.primary != "loocv") & T.config.isin(BASELINES) & T.task.isin(SECONDARY)].copy()
+    a, n1, n0 = d.auc_ext, d.n_H_pos, d.n_H_neg
+    q1, q2 = a / (2 - a), 2 * a ** 2 / (1 + a)
+    d["var_hm"] = (a * (1 - a) + (n1 - 1) * (q1 - a ** 2) + (n0 - 1) * (q2 - a ** 2)) / (n1 * n0)
+    d["O"] = d.auc_int - d.auc_ext
+    share = lambda g: g.var_hm.mean() / g.O.var(ddof=1)
+    pooled = d.groupby(["task", "N"]).apply(share).rename("noise_share").reset_index().assign(config="pooled")
+    per = d.groupby(["task", "N", "config"]).apply(share).rename("noise_share").reset_index()
+    S = pd.concat([pooled, per], ignore_index=True)
+    S.to_csv(OUT / "review_noise_share.csv", index=False)
+    return S
 
 
 # ---------------------------------------------------------------- recovery vs H_r reference
@@ -306,7 +327,7 @@ if __name__ == "__main__":
     pd.set_option("display.width", 240); pd.set_option("display.max_columns", 30)
     what = sys.argv[1] if len(sys.argv) > 1 else "all"
     jobs = dict(effect_null=effect_null, smote=smote, kendall=kendall, kfold_tail=kfold_tail,
-                recovery_h=recovery_h, missingness=missingness, fus_lpo=fus_lpo,
+                recovery_h=recovery_h, missingness=missingness, fus_lpo=fus_lpo, noise_share=noise_share,
                 gate_bootstrap=gate_bootstrap, provenance=provenance)
     for name, fn in jobs.items():
         if what in (name, "all"):

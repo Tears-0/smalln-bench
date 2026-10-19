@@ -196,83 +196,79 @@ def recovery():
 
 # --------------------------------------------------- 5. decision table (§7)
 def decision():
-    """Built only from the saved analyses. Each entry states its evidence type:
-    CLAIM-SECONDARY (paired rule holds in both B2 and B5, A8), DESCRIPTIVE (measured,
-    consistent in both B2 and B5, no decision rule registered for it), or NONE."""
-    from . import references
-    P = pd.read_csv(OUT / "rank_claims.csv")
-    T = pd.read_csv(OUT / "optimism.csv")
-    R = pd.read_csv(OUT / "recovery.csv")
-    S = pd.read_parquet(RESULTS / "stability.parquet")
-    eff = {t: references.load(t) for t in ("B1", "B2", "B5")}
-    import json as _j
-    effd = {t: _j.loads((RESULTS.parent / "data" / "derived" / f"reference_{t}.json").read_text())["median_abs_d_top100"]
-            for t in ("B1", "B2", "B5")}
-    sec = P[P.secondary_B2_and_B5]
+    """The paper's decision table (Table 3), rebuilt from the saved analyses. Rows come from
+    the two weak-signal tasks (B2, B5) except the last (B1). Evidence: secondary claim =
+    paired rule holds in both B2 and B5 (a post hoc relaxation of the pre-specified rule);
+    descriptive = measured and consistent in both, no pre-specified decision rule; none =
+    no basis to choose. Needs `python -m bench.review all` and `python -m bench.stability`."""
     small = ["B2", "B5"]
-    q = lambda df, col, cfgs, Ns: df[df.task.isin(small) & df.config.isin(cfgs) & df.N.isin(Ns)][col]
-    lo = lambda s: f"{s.min():+.2f} to {s.max():+.2f}"
-    rows = []
+    base = ["CCP", "EN", "RF", "TabPFN"]
+    T = pd.read_csv(OUT / "optimism.csv")
+    T = T[T.task.isin(small)]
+    C = pd.read_csv(OUT / "rank_claims.csv")
+    sec = C[C.secondary_B2_and_B5]
+    F = pd.read_csv(OUT / "review_fus_lpo.csv")
+    K = pd.read_csv(OUT / "review_kfold_tail_pooled.csv")
+    SM = pd.read_csv(OUT / "review_smote_split.csv")
+    E = pd.read_csv(OUT / "review_effect_null.csv")
+    S = pd.read_parquet(RESULTS / "stability.parquet")
+    f2 = lambda x: f"{x:.2f}".replace("-0.00", "0.00")
+    sg = lambda x: f"{x:+.2f}"
 
-    # --- large effect
-    rows.append(("Large effect (B1, median |d| %.1f)" % effd["B1"], "any N in 6-50", "Model",
-                 "No basis to choose: every method reaches median external AUC 1.00 from N = 6", "NONE (ceiling)"))
-    rows.append(("", "", "Internal estimate", "Optimism 0.00 for every method and N; any estimator", "DESCRIPTIVE"))
+    loo = T[T.config.isin(base + ["FUS"]) & (T.N <= 12)].honest_median
+    lpo = pd.concat([T[T.config.isin(base) & (T.N <= 12)].lpo_median,
+                     F[(F.arm == "true") & F.task.isin(small)].O_lpo_median])
+    kp = K[K.N <= 30].p_gt_01
+    lk = T[T.config.isin(base)].leaky_median
+    sm = SM[(SM.arm == "true") & SM.task.isin(small) & (SM.N >= 12)].smote_extra
+    fus = sec[sec.B == "FUS"]
+    first = fus.groupby("A").N.min()
+    by_n = {}
+    for a, n in first.items():
+        by_n.setdefault(n, []).append(a)
+    order = ", ".join(" and ".join(sorted(by_n[n])) + f" from {'N = ' if i == 0 else ''}{n}"
+                      for i, n in enumerate(sorted(by_n)))
+    marg = [v for d in fus.median_d.map(eval) for t, v in d.items() if t in small]
+    pa = sec[sec.B.str.endswith("-path")].groupby("B").N.apply(sorted)
+    st = S[(S.arm == "true") & S.task.isin(small) & (S.N <= 30) & ~S.config.str.contains("-var")
+           & (S.config != "EN-smote-leaky") & (S.config != "RF-smote-leaky")].kuncheva
+    d_b1 = E[(E.task == "B1") & (E.scope == "full") & (E.arm == "true")].median_abs_d.iloc[0]
 
-    # --- small / moderate effect
-    tag = "Small-moderate effect (B2 |d| %.2f, B5 |d| %.2f)" % (effd["B2"], effd["B5"])
-    fus = sec[(sec.B == "FUS")]
-    Ns_fus = sorted(fus.N.unique())
-    rows.append((tag, "N = 6", "Model", "No basis to choose between CCP, EN, RF, TabPFN, FUS", "NONE"))
-    rows.append(("", f"N = {Ns_fus[0]}-{Ns_fus[-1]}", "Model: avoid",
-                 "Fusion arm: outranked by %s at every N from 12 (TabPFN from 9); median AUC deficit %s"
-                 % (", ".join(sorted(fus.A.unique())), lo(pd.Series([float(v) for d in fus.median_d.map(eval) for k, v in d.items() if k in small]))),
-                 "CLAIM-SECONDARY"))
-    rows.append(("", "N = 9-30", "Model", "No basis to choose between CCP, EN, RF, TabPFN", "NONE"))
-    pa = sec[sec.B.str.endswith("-path")]
-    rows.append(("", "N = %s" % ",".join(map(str, sorted(pa.N.unique()))), "Features: avoid",
-                 "Reactome pathway aggregation: outranked by protein features (%s)"
-                 % "; ".join(f"{b} at N={','.join(map(str, sorted(g.N)))}" for b, g in pa.groupby("B")), "CLAIM-SECONDARY"))
-    rows.append(("", "N = 6-30", "Pipeline choices", "Variance filter, complete-case proteins, in-fold SMOTE: never outrank the "
-                 "reference pipeline in any task", "NONE (no benefit shown)"))
-
-    ref_cfg = ["CCP", "EN", "RF", "TabPFN"]
-    rows.append(("", "N <= 12", "Internal estimate: report",
-                 "Leave-pair-out, not pooled LOOCV. Median optimism: pooled LOOCV %s (method-dependent; fusion arm %s), "
-                 "leave-pair-out %s"
-                 % (lo(T[T.task.isin(small) & T.config.isin(ref_cfg) & (T.N <= 12)].honest_median),
-                    lo(T[T.task.isin(small) & (T.config == "FUS") & (T.N <= 12)].honest_median),
-                    lo(T[T.task.isin(small) & T.config.isin(ref_cfg) & (T.N <= 12)].lpo_median)), "DESCRIPTIVE"))
-    k = T[T.task.isin(small) & T.config.isin(ref_cfg) & (T.N >= 20)]
-    rows.append(("", "N >= 20", "Internal estimate: report",
-                 "Repeated k-fold. Median optimism %s, but P(optimism > 0.1) = %.2f-%.2f: about one study in five "
-                 "overstates held-out AUC by more than 0.1" % (lo(k.honest_median), k["honest_p_gt_0.1"].min(),
-                                                               k["honest_p_gt_0.1"].max()), "DESCRIPTIVE"))
-    lk = T[T.task.isin(small) & T.config.isin(ref_cfg)]
-    rows.append(("", "all N", "Skip",
-                 "Feature selection on all samples before CV: median optimism %s (N = 6: %s; largest N: %s)"
-                 % (lo(lk.leaky_median), lo(lk[lk.N == 6].leaky_median),
-                    lo(lk[lk.N == lk.groupby('task').N.transform('max')].leaky_median)), "DESCRIPTIVE"))
-    sm = T[T.task.isin(small) & T.config.str.endswith("smote-leaky")]
-    rows.append(("", "all N", "Skip", "SMOTE before the split: median optimism %s, still %s at the largest N"
-                 % (lo(sm.honest_median), lo(sm[sm.N == sm.groupby('task').N.transform('max')].honest_median)), "DESCRIPTIVE"))
-    st = S[(S.arm == "true") & S.task.isin(small) & (S.N <= 30) & ~S.config.str.endswith("-var") & (S.config != "FUS")]
-    rc = R[(R.arm == "true") & R.task.isin(small) & (R.N <= 30) & R.config.isin(["CCP", "EN", "RF"])]
-    rows.append(("", "N <= 30", "Biomarker list",
-                 "Do not read the top-50 as a biomarker list: Kuncheva %.2f-%.2f between independent draws; "
-                 "precision@50 %.3f-%.3f vs full-data reference" % (st.kuncheva.min(), st.kuncheva.max(),
-                                                                   rc.p50.min(), rc.p50.max()), "DESCRIPTIVE"))
-    rows.append(("", "N <= 30", "Stability as a proxy",
-                 "Not supported at a fixed N (A8): registered F21 passes only through N; rho at fixed N 0.10-0.41", "NONE"))
-    rows.append(("", "", "Usable-N", "Registered usable-N is degenerate (one-sided rule accepts pessimistic pooled LOOCV); "
-                 "no usable-N claim", "NONE"))
-    D = pd.DataFrame(rows, columns=["Effect size", "N", "Decision", "Evidence", "Evidence type"])
+    rows = [
+        ("<= 12", "Internal estimate",
+         f"Report leave-pair-out AUC, not pooled LOOCV (errors {sg(loo.min())} to {sg(loo.max())} "
+         f"vs. +/-{f2(lpo.abs().max())})", "descriptive"),
+        (">= 20", "Internal estimate",
+         f"Repeated k-fold, AUC per fold; expect >0.1 overstatement in about one study in five "
+         f"({100 * kp.min():.0f}-{100 * kp.max():.0f}% at N = 20-30)", "descriptive"),
+        ("all", "Own null",
+         "Re-run the whole pipeline on permuted labels with leave-pair-out or per-fold k-fold; a mean well "
+         "above 0.5 exposes a leak (at 3 vs 3 only 20 labellings exist, so a permutation p cannot fall below "
+         "0.05, or 0.1 for label-symmetric pipelines)", "descriptive"),
+        ("all", "Feature selection",
+         f"Inside the folds only (outside: {sg(lk.min())} to {sg(lk.max())} optimism)", "descriptive"),
+        ("all", "Augmentation",
+         f"Never before the split (SMOTE adds {f2(sm.min())}-{f2(sm.max())} from N = 12 on top of other leaks); "
+         "inside the folds it does not help", "descriptive"),
+        (f"{sorted(fus.N.unique())[0]}-{sorted(fus.N.unique())[-1]}", "Model",
+         f"Avoid the fusion network ({order}; by {f2(min(marg))}-{f2(max(marg))} AUC)", "secondary claim"),
+        ("6-30", "Model", "No basis to choose among CCP, elastic net, random forest, TabPFN", "none"),
+        (f"{pa['RF-path'][0]}-{pa['RF-path'][-1]}", "Features",
+         f"With RF, prefer proteins to Reactome pathway scores (EN: N = {', '.join(map(str, pa['EN-path']))} only)",
+         "secondary claim"),
+        ("<= 30", "Biomarker list",
+         f"Do not read the top 50 as a biomarker list (Kuncheva {f2(st.min())}-{f2(st.max())})", "descriptive"),
+        ("<= 30", "Stability", "Not a proxy for recovery at a fixed N, and high even with no signal", "none"),
+        ("any", "Large effect",
+         f"Any method reaches AUC 1.00 from N = 6 (B1, full-cohort |d| ~ {d_b1:.0f}); no basis to choose", "none"),
+    ]
+    D = pd.DataFrame(rows, columns=["N", "Question", "Recommendation", "Evidence"])
     D.to_csv(OUT / "decision_table.csv", index=False)
-    md = ["| " + " | ".join(D.columns) + " |", "|" + "---|" * len(D.columns)]
-    md += ["| " + " | ".join(str(x).replace("|", "\|") for x in r) + " |" for r in D.itertuples(index=False)]
-    (OUT / "decision_table.md").write_text("\n".join(md), encoding="utf-8")
+    md = ["Decision table (paper Table 3). Rows from the weak-signal tasks B2 and B5, except the last (B1).", "",
+          "| " + " | ".join(D.columns) + " |", "|" + "---|" * len(D.columns)]
+    md += ["| " + " | ".join(str(x).replace("|", "\\|") for x in r) + " |" for r in D.itertuples(index=False)]
+    (OUT / "decision_table.md").write_text("\n".join(md) + "\n", encoding="utf-8")
     return D
-
 
 if __name__ == "__main__":
     pd.set_option("display.width", 230); pd.set_option("display.max_columns", 30); pd.set_option("display.max_rows", 200)
