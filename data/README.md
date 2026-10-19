@@ -2,7 +2,7 @@
 
 Nothing in this folder except this file is committed (see `.gitignore`).
 
-## case_study/ — the N = 9 HaCaT / sumaCTX study (local only)
+## case_study/ — the motivating nine-sample study (local only)
 
 Copied 2026-10-03 from the CSH project. Not public; whether to release it is
 the data owner's decision.

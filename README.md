@@ -100,3 +100,11 @@ python -m bench.case_study      # needs the (non-public) case-study data
 Runners are resumable: each writes one file per block and skips blocks already present.
 GPU runs can be wrapped in `python -m bench.supervise --tries 8 --stall 60 -- <args>`,
 which restarts a crashed or stalled run. CPU arms took about 6 h; the GPU arms about 45 h.
+
+## Licence
+
+The code is released under the MIT License (see [`LICENSE`](LICENSE)). The results in
+`results/` and the figures in `figures/` are released under the
+[Creative Commons Attribution 4.0 International licence (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
+The public cohorts and the TabPFN and ESM-2 weights are not redistributed here and keep
+their own terms; the motivating nine-sample dataset is not public.
