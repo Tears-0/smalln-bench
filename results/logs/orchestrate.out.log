@@ -1,0 +1,6 @@
+[2026-10-13 18:41:07] waiting for 42 leakage-cell files
+[2026-10-13 18:41:07] leakage cells complete; running tests/test_no_leakage.py
+[2026-10-13 18:47:33] leakage suite passed; launching the full run
+[2026-10-13 18:47:33] started main_cpu pid 17744
+[2026-10-13 18:47:33] started main_tabpfn pid 39728
+[2026-10-13 18:47:33] started main_fus pid 33440

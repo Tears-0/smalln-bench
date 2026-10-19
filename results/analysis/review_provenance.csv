@@ -1,0 +1,6 @@
+item,task,value
+"eligible pathway features, N = 12, r = 0, first leave-pair-out training fold",B1,947
+"eligible pathway features, N = 12, r = 0, first leave-pair-out training fold",B2,872
+"eligible pathway features, N = 12, r = 0, first leave-pair-out training fold",B5,567
+protein entries in the three tasks / sequences longer than 4000 residues,all,33817 / 183
+"batched vs single-model trainer, max |logit difference| (4 models, 200 steps, fp32, dropout off; prereg/measurements/RESULTS.md)",-,7.15e-07

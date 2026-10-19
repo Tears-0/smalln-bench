@@ -1,0 +1,19 @@
+GPU cap 4.0 GB
+[16:01:06] cell B1 N=20 perm r0-49: 50 units
+   [16:06:03] B1 N=20 n_train=16 models 1-200/1250 in 282s
+   [16:10:49] B1 N=20 n_train=16 models 201-400/1250 in 286s
+   [16:15:50] B1 N=20 n_train=16 models 401-600/1250 in 301s
+   [16:20:50] B1 N=20 n_train=16 models 601-800/1250 in 300s
+   [16:25:49] B1 N=20 n_train=16 models 801-1000/1250 in 299s
+   [16:30:47] B1 N=20 n_train=16 models 1001-1200/1250 in 298s
+   [16:32:02] B1 N=20 n_train=16 models 1201-1250/1250 in 75s
+   [16:33:36] B1 N=20 n_train=20 models 1-50/50 in 94s
+[16:33:37] cell B1 N=20 perm r50-99: 50 units
+   [16:38:52] B1 N=20 n_train=16 models 1-200/1250 in 298s
+   [16:43:52] B1 N=20 n_train=16 models 201-400/1250 in 300s
+   [16:48:52] B1 N=20 n_train=16 models 401-600/1250 in 300s
+   [16:53:52] B1 N=20 n_train=16 models 601-800/1250 in 300s
+   [16:58:53] B1 N=20 n_train=16 models 801-1000/1250 in 301s
+   [17:03:51] B1 N=20 n_train=16 models 1001-1200/1250 in 298s
+   [17:05:07] B1 N=20 n_train=16 models 1201-1250/1250 in 76s
+   [17:06:41] B1 N=20 n_train=20 models 1-50/50 in 95s

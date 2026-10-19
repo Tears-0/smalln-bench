@@ -1,0 +1,44 @@
+.......FF                                                                [100%]
+================================== FAILURES ===================================
+_____________________ test_permuted_null_honest_internal ______________________
+
+    def test_permuted_null_honest_internal():
+        df = _perm_rows()
+        bad = []
+        for (cid, N), g in df.groupby(["config_id", "N"]):
+            col = "auc_int_lpo" if N <= 12 else "auc_int"
+            v = g[col].dropna()
+            if v.empty:
+                continue
+            if BY_ID[cid].smote == "leaky":
+                continue  # the leaky SMOTE arm is leaky by design (tested in 1b)
+            med = float(v.median())
+            if abs(med - 0.5) > TOL:
+                bad.append((BY_ID[cid].name, N, col, round(med, 3), len(v)))
+>       assert not bad, f"median permuted-label honest-internal AUC outside 0.5 +/- {TOL}: {bad}"
+E       AssertionError: median permuted-label honest-internal AUC outside 0.5 +/- 0.05: [('CCP', np.int64(12), 'auc_int_lpo', 0.444, 100)]
+E       assert not [('CCP', np.int64(12), 'auc_int_lpo', 0.444, 100)]
+
+tests\test_no_leakage.py:109: AssertionError
+______________________ test_positive_control_leaky_fails ______________________
+
+    def test_positive_control_leaky_fails():
+        df = _perm_rows()
+        g = df[(df.N == 12)]
+        checked = 0
+        for cid, gg in g.groupby("config_id"):
+            cfg = BY_ID[cid]
+            col = "auc_int_leaky" if cfg.leaky_filter else ("auc_int" if cfg.smote == "leaky" else None)
+            if col is None or gg[col].dropna().empty:
+                continue
+            med = float(gg[col].median())
+>           assert med > POS_CTRL, f"{cfg.name}: leaky arm median {med:.3f} -- the test cannot detect a known leak"
+E           AssertionError: EN-path: leaky arm median 0.361 -- the test cannot detect a known leak
+E           assert 0.36111111111111105 > 0.6
+
+tests\test_no_leakage.py:122: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_no_leakage.py::test_permuted_null_honest_internal - Asserti...
+FAILED tests/test_no_leakage.py::test_positive_control_leaky_fails - Assertio...
+2 failed, 7 passed in 289.93s (0:04:49)
+

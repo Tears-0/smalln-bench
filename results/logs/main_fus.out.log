@@ -1,0 +1,131 @@
+[supervise 2026-10-13 18:47:33] attempt 1/8: -m bench.fusion --out main --block 50
+GPU cap 4.0 GB
+[18:47:36] cell B1 N=6 true r0-49: 50 units
+   [18:49:16] B1 N=6 n_train=5 models 1-200/300 in 96s
+   [18:50:03] B1 N=6 n_train=5 models 201-300/300 in 47s
+   [18:50:31] B1 N=6 n_train=6 models 1-50/50 in 29s
+[18:50:32] cell B1 N=6 true r50-99: 50 units
+   [18:52:09] B1 N=6 n_train=5 models 1-200/300 in 94s
+   [18:52:56] B1 N=6 n_train=5 models 201-300/300 in 47s
+   [18:53:24] B1 N=6 n_train=6 models 1-50/50 in 29s
+[18:53:25] cell B1 N=6 perm r0-49: 50 units
+   [18:55:02] B1 N=6 n_train=5 models 1-200/300 in 94s
+   [18:55:49] B1 N=6 n_train=5 models 201-300/300 in 46s
+   [18:56:17] B1 N=6 n_train=6 models 1-50/50 in 29s
+[18:56:18] cell B1 N=6 perm r50-99: 50 units
+   [18:57:55] B1 N=6 n_train=5 models 1-200/300 in 94s
+   [18:58:42] B1 N=6 n_train=5 models 201-300/300 in 47s
+   [18:59:10] B1 N=6 n_train=6 models 1-50/50 in 28s
+[18:59:11] cell B1 N=9 true r0-49: 50 units
+   [19:01:47] B1 N=9 n_train=8 models 1-200/450 in 150s
+   [19:04:17] B1 N=9 n_train=8 models 201-400/450 in 150s
+   [19:04:55] B1 N=9 n_train=8 models 401-450/450 in 38s
+   [19:05:38] B1 N=9 n_train=9 models 1-50/50 in 43s
+[19:05:38] cell B1 N=9 true r50-99: 50 units
+   [19:08:13] B1 N=9 n_train=8 models 1-200/450 in 150s
+   [19:10:43] B1 N=9 n_train=8 models 201-400/450 in 150s
+   [19:11:20] B1 N=9 n_train=8 models 401-450/450 in 37s
+   [19:12:03] B1 N=9 n_train=9 models 1-50/50 in 43s
+[19:12:03] cell B1 N=9 perm r0-49: 50 units
+   [19:14:38] B1 N=9 n_train=8 models 1-200/450 in 150s
+   [19:17:08] B1 N=9 n_train=8 models 201-400/450 in 150s
+   [19:17:45] B1 N=9 n_train=8 models 401-450/450 in 37s
+   [19:18:28] B1 N=9 n_train=9 models 1-50/50 in 43s
+[19:18:28] cell B1 N=9 perm r50-99: 50 units
+   [19:21:03] B1 N=9 n_train=8 models 1-200/450 in 150s
+   [19:23:33] B1 N=9 n_train=8 models 201-400/450 in 150s
+   [19:24:11] B1 N=9 n_train=8 models 401-450/450 in 37s
+   [19:24:53] B1 N=9 n_train=9 models 1-50/50 in 43s
+[19:24:53] cell B1 N=12 true r0-49: 50 units
+   [19:28:25] B1 N=12 n_train=11 models 1-200/600 in 206s
+   [19:31:51] B1 N=12 n_train=11 models 201-400/600 in 206s
+   [19:35:18] B1 N=12 n_train=11 models 401-600/600 in 206s
+   [19:36:14] B1 N=12 n_train=12 models 1-50/50 in 57s
+[19:36:14] cell B1 N=12 true r50-99: 50 units
+   [19:39:46] B1 N=12 n_train=11 models 1-200/600 in 206s
+   [19:43:13] B1 N=12 n_train=11 models 201-400/600 in 206s
+   [19:46:39] B1 N=12 n_train=11 models 401-600/600 in 206s
+   [19:47:35] B1 N=12 n_train=12 models 1-50/50 in 57s
+[19:47:35] cell B1 N=12 perm r0-49: 50 units
+   [19:51:12] B1 N=12 n_train=11 models 1-200/600 in 210s
+   [19:54:44] B1 N=12 n_train=11 models 201-400/600 in 212s
+   [19:58:16] B1 N=12 n_train=11 models 401-600/600 in 212s
+   [19:59:15] B1 N=12 n_train=12 models 1-50/50 in 59s
+[19:59:15] cell B1 N=12 perm r50-99: 50 units
+   [20:02:55] B1 N=12 n_train=11 models 1-200/600 in 213s
+   [20:06:28] B1 N=12 n_train=11 models 201-400/600 in 212s
+   [20:10:05] B1 N=12 n_train=11 models 401-600/600 in 218s
+   [20:11:20] B1 N=12 n_train=12 models 1-50/50 in 75s
+[20:11:21] cell B1 N=20 true r0-49: 50 units
+   [20:18:09] B1 N=20 n_train=16 models 1-200/1250 in 390s
+   [20:24:50] B1 N=20 n_train=16 models 201-400/1250 in 401s
+   [20:31:21] B1 N=20 n_train=16 models 401-600/1250 in 392s
+   [20:37:34] B1 N=20 n_train=16 models 601-800/1250 in 372s
+   [20:44:15] B1 N=20 n_train=16 models 801-1000/1250 in 401s
+   [20:50:32] B1 N=20 n_train=16 models 1001-1200/1250 in 377s
+   [20:51:49] B1 N=20 n_train=16 models 1201-1250/1250 in 77s
+   [20:53:26] B1 N=20 n_train=20 models 1-50/50 in 96s
+[20:53:26] cell B1 N=20 true r50-99: 50 units
+   [20:58:48] B1 N=20 n_train=16 models 1-200/1250 in 305s
+   [21:03:59] B1 N=20 n_train=16 models 201-400/1250 in 311s
+   [21:09:34] B1 N=20 n_train=16 models 401-600/1250 in 335s
+   [21:15:12] B1 N=20 n_train=16 models 601-800/1250 in 338s
+   [21:20:50] B1 N=20 n_train=16 models 801-1000/1250 in 338s
+   [21:26:33] B1 N=20 n_train=16 models 1001-1200/1250 in 342s
+   [21:27:59] B1 N=20 n_train=16 models 1201-1250/1250 in 86s
+   [21:29:46] B1 N=20 n_train=20 models 1-50/50 in 107s
+[21:29:47] cell B1 N=30 true r0-49: 50 units
+   [21:38:31] B1 N=30 n_train=24 models 1-200/1250 in 499s
+   [21:46:58] B1 N=30 n_train=24 models 201-400/1250 in 507s
+   [21:55:25] B1 N=30 n_train=24 models 401-600/1250 in 506s
+   [22:03:55] B1 N=30 n_train=24 models 601-800/1250 in 510s
+   [22:12:26] B1 N=30 n_train=24 models 801-1000/1250 in 512s
+   [22:20:57] B1 N=30 n_train=24 models 1001-1200/1250 in 510s
+   [22:23:05] B1 N=30 n_train=24 models 1201-1250/1250 in 128s
+   [22:25:45] B1 N=30 n_train=30 models 1-50/50 in 161s
+[22:25:46] cell B1 N=30 true r50-99: 50 units
+   [22:34:28] B1 N=30 n_train=24 models 1-200/1250 in 497s
+   [22:42:45] B1 N=30 n_train=24 models 201-400/1250 in 497s
+   [22:51:26] B1 N=30 n_train=24 models 401-600/1250 in 520s
+   [22:59:55] B1 N=30 n_train=24 models 601-800/1250 in 509s
+   [23:08:20] B1 N=30 n_train=24 models 801-1000/1250 in 505s
+   [23:16:52] B1 N=30 n_train=24 models 1001-1200/1250 in 512s
+   [23:18:55] B1 N=30 n_train=24 models 1201-1250/1250 in 123s
+   [23:21:37] B1 N=30 n_train=30 models 1-50/50 in 162s
+[23:21:38] cell B1 N=30 perm r0-49: 50 units
+   [23:30:27] B1 N=30 n_train=24 models 1-200/1250 in 503s
+   [23:38:40] B1 N=30 n_train=24 models 201-400/1250 in 493s
+   [23:47:17] B1 N=30 n_train=24 models 401-600/1250 in 517s
+   [23:55:37] B1 N=30 n_train=24 models 601-800/1250 in 500s
+   [00:04:17] B1 N=30 n_train=24 models 801-1000/1250 in 520s
+   [00:12:48] B1 N=30 n_train=24 models 1001-1200/1250 in 512s
+   [00:15:00] B1 N=30 n_train=24 models 1201-1250/1250 in 131s
+   [00:17:39] B1 N=30 n_train=30 models 1-50/50 in 160s
+[00:17:40] cell B1 N=30 perm r50-99: 50 units
+   [00:25:47] B1 N=30 n_train=24 models 1-200/1250 in 462s
+   [00:33:14] B1 N=30 n_train=24 models 201-400/1250 in 446s
+   [00:40:40] B1 N=30 n_train=24 models 401-600/1250 in 446s
+   [00:48:06] B1 N=30 n_train=24 models 601-800/1250 in 446s
+   [00:55:30] B1 N=30 n_train=24 models 801-1000/1250 in 444s
+   [01:02:54] B1 N=30 n_train=24 models 1001-1200/1250 in 444s
+   [01:04:46] B1 N=30 n_train=24 models 1201-1250/1250 in 112s
+   [01:07:07] B1 N=30 n_train=30 models 1-50/50 in 141s
+[01:07:08] cell B1 N=50 true r0-49: 50 units
+   [01:19:57] B1 N=50 n_train=40 models 1-200/1250 in 739s
+   [01:32:17] B1 N=50 n_train=40 models 201-400/1250 in 740s
+   [01:44:37] B1 N=50 n_train=40 models 401-600/1250 in 739s
+   [01:56:56] B1 N=50 n_train=40 models 601-800/1250 in 739s
+   [02:09:15] B1 N=50 n_train=40 models 801-1000/1250 in 740s
+   [02:21:35] B1 N=50 n_train=40 models 1001-1200/1250 in 740s
+   [02:24:42] B1 N=50 n_train=40 models 1201-1250/1250 in 187s
+   [02:28:36] B1 N=50 n_train=50 models 1-50/50 in 234s
+[02:28:37] cell B1 N=50 true r50-99: 50 units
+   [02:41:28] B1 N=50 n_train=40 models 1-200/1250 in 741s
+   [02:53:47] B1 N=50 n_train=40 models 201-400/1250 in 740s
+   [03:06:07] B1 N=50 n_train=40 models 401-600/1250 in 740s
+   [03:18:26] B1 N=50 n_train=40 models 601-800/1250 in 739s
+   [03:30:46] B1 N=50 n_train=40 models 801-1000/1250 in 739s
+   [03:43:06] B1 N=50 n_train=40 models 1001-1200/1250 in 740s
+   [03:46:14] B1 N=50 n_train=40 models 1201-1250/1250 in 188s
+   [03:50:08] B1 N=50 n_train=50 models 1-50/50 in 234s
+[03:50:09] cell B1 N=50 perm r0-49: 50 units

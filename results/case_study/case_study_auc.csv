@@ -1,0 +1,601 @@
+contrast,labelling,overlap,is_true,model,estimator,auc
+24 h vs Control,0,3,True,ccp,loocv,1.0
+24 h vs Control,0,3,True,en,loocv,1.0
+24 h vs Control,0,3,True,rf,loocv,1.0
+24 h vs Control,0,3,True,tabpfn,loocv,1.0
+24 h vs Control,0,3,True,ccp,lpo,1.0
+24 h vs Control,0,3,True,en,lpo,1.0
+24 h vs Control,0,3,True,rf,lpo,1.0
+24 h vs Control,0,3,True,tabpfn,lpo,1.0
+24 h vs Control,1,2,False,ccp,loocv,0.11111111111111112
+24 h vs Control,1,2,False,en,loocv,0.11111111111111112
+24 h vs Control,1,2,False,rf,loocv,0.0
+24 h vs Control,1,2,False,tabpfn,loocv,0.0
+24 h vs Control,1,2,False,ccp,lpo,0.3333333333333333
+24 h vs Control,1,2,False,en,lpo,0.4444444444444444
+24 h vs Control,1,2,False,rf,lpo,0.2777777777777778
+24 h vs Control,1,2,False,tabpfn,lpo,0.3333333333333333
+24 h vs Control,2,2,False,ccp,loocv,0.22222222222222224
+24 h vs Control,2,2,False,en,loocv,0.22222222222222224
+24 h vs Control,2,2,False,rf,loocv,0.0
+24 h vs Control,2,2,False,tabpfn,loocv,0.0
+24 h vs Control,2,2,False,ccp,lpo,0.2222222222222222
+24 h vs Control,2,2,False,en,lpo,0.3333333333333333
+24 h vs Control,2,2,False,rf,lpo,0.1111111111111111
+24 h vs Control,2,2,False,tabpfn,lpo,0.2222222222222222
+24 h vs Control,3,2,False,ccp,loocv,0.6666666666666667
+24 h vs Control,3,2,False,en,loocv,0.6666666666666667
+24 h vs Control,3,2,False,rf,loocv,0.4444444444444445
+24 h vs Control,3,2,False,tabpfn,loocv,0.4444444444444445
+24 h vs Control,3,2,False,ccp,lpo,0.7777777777777778
+24 h vs Control,3,2,False,en,lpo,0.5555555555555556
+24 h vs Control,3,2,False,rf,lpo,0.7777777777777778
+24 h vs Control,3,2,False,tabpfn,lpo,0.8888888888888888
+24 h vs Control,4,2,False,ccp,loocv,0.22222222222222224
+24 h vs Control,4,2,False,en,loocv,0.5555555555555556
+24 h vs Control,4,2,False,rf,loocv,0.0
+24 h vs Control,4,2,False,tabpfn,loocv,0.0
+24 h vs Control,4,2,False,ccp,lpo,0.5555555555555556
+24 h vs Control,4,2,False,en,lpo,0.5555555555555556
+24 h vs Control,4,2,False,rf,lpo,0.3333333333333333
+24 h vs Control,4,2,False,tabpfn,lpo,0.4444444444444444
+24 h vs Control,5,2,False,ccp,loocv,0.22222222222222224
+24 h vs Control,5,2,False,en,loocv,0.22222222222222224
+24 h vs Control,5,2,False,rf,loocv,0.0
+24 h vs Control,5,2,False,tabpfn,loocv,0.0
+24 h vs Control,5,2,False,ccp,lpo,0.3333333333333333
+24 h vs Control,5,2,False,en,lpo,0.3333333333333333
+24 h vs Control,5,2,False,rf,lpo,0.3333333333333333
+24 h vs Control,5,2,False,tabpfn,lpo,0.4444444444444444
+24 h vs Control,6,2,False,ccp,loocv,0.6666666666666667
+24 h vs Control,6,2,False,en,loocv,0.5555555555555556
+24 h vs Control,6,2,False,rf,loocv,0.4444444444444445
+24 h vs Control,6,2,False,tabpfn,loocv,0.4444444444444445
+24 h vs Control,6,2,False,ccp,lpo,0.7777777777777778
+24 h vs Control,6,2,False,en,lpo,0.7777777777777778
+24 h vs Control,6,2,False,rf,lpo,0.7222222222222222
+24 h vs Control,6,2,False,tabpfn,lpo,0.5555555555555556
+24 h vs Control,7,1,False,ccp,loocv,0.6666666666666666
+24 h vs Control,7,1,False,en,loocv,0.3333333333333333
+24 h vs Control,7,1,False,rf,loocv,0.5
+24 h vs Control,7,1,False,tabpfn,loocv,0.4444444444444445
+24 h vs Control,7,1,False,ccp,lpo,0.7777777777777778
+24 h vs Control,7,1,False,en,lpo,0.7777777777777778
+24 h vs Control,7,1,False,rf,lpo,0.8333333333333334
+24 h vs Control,7,1,False,tabpfn,lpo,0.7777777777777778
+24 h vs Control,8,1,False,ccp,loocv,0.33333333333333337
+24 h vs Control,8,1,False,en,loocv,0.0
+24 h vs Control,8,1,False,rf,loocv,0.0
+24 h vs Control,8,1,False,tabpfn,loocv,0.0
+24 h vs Control,8,1,False,ccp,lpo,0.4444444444444444
+24 h vs Control,8,1,False,en,lpo,0.4444444444444444
+24 h vs Control,8,1,False,rf,lpo,0.5555555555555556
+24 h vs Control,8,1,False,tabpfn,lpo,0.3333333333333333
+24 h vs Control,9,1,False,ccp,loocv,0.11111111111111112
+24 h vs Control,9,1,False,en,loocv,0.0
+24 h vs Control,9,1,False,rf,loocv,0.0
+24 h vs Control,9,1,False,tabpfn,loocv,0.0
+24 h vs Control,9,1,False,ccp,lpo,0.0
+24 h vs Control,9,1,False,en,lpo,0.1111111111111111
+24 h vs Control,9,1,False,rf,lpo,0.0
+24 h vs Control,9,1,False,tabpfn,lpo,0.0
+24 h vs Control,10,2,False,ccp,loocv,0.11111111111111112
+24 h vs Control,10,2,False,en,loocv,0.0
+24 h vs Control,10,2,False,rf,loocv,0.0
+24 h vs Control,10,2,False,tabpfn,loocv,0.0
+24 h vs Control,10,2,False,ccp,lpo,0.0
+24 h vs Control,10,2,False,en,lpo,0.2222222222222222
+24 h vs Control,10,2,False,rf,lpo,0.1111111111111111
+24 h vs Control,10,2,False,tabpfn,lpo,0.0
+24 h vs Control,11,2,False,ccp,loocv,0.22222222222222224
+24 h vs Control,11,2,False,en,loocv,0.0
+24 h vs Control,11,2,False,rf,loocv,0.0
+24 h vs Control,11,2,False,tabpfn,loocv,0.0
+24 h vs Control,11,2,False,ccp,lpo,0.4444444444444444
+24 h vs Control,11,2,False,en,lpo,0.2222222222222222
+24 h vs Control,11,2,False,rf,lpo,0.3888888888888889
+24 h vs Control,11,2,False,tabpfn,lpo,0.5555555555555556
+24 h vs Control,12,2,False,ccp,loocv,0.6666666666666667
+24 h vs Control,12,2,False,en,loocv,0.33333333333333337
+24 h vs Control,12,2,False,rf,loocv,0.5555555555555556
+24 h vs Control,12,2,False,tabpfn,loocv,0.4444444444444445
+24 h vs Control,12,2,False,ccp,lpo,0.7777777777777778
+24 h vs Control,12,2,False,en,lpo,0.7777777777777778
+24 h vs Control,12,2,False,rf,lpo,0.8333333333333334
+24 h vs Control,12,2,False,tabpfn,lpo,0.7777777777777778
+24 h vs Control,13,1,False,ccp,loocv,0.6666666666666666
+24 h vs Control,13,1,False,en,loocv,0.6666666666666666
+24 h vs Control,13,1,False,rf,loocv,0.4444444444444445
+24 h vs Control,13,1,False,tabpfn,loocv,0.4444444444444445
+24 h vs Control,13,1,False,ccp,lpo,0.7777777777777778
+24 h vs Control,13,1,False,en,lpo,0.6666666666666666
+24 h vs Control,13,1,False,rf,lpo,0.7777777777777778
+24 h vs Control,13,1,False,tabpfn,lpo,0.7777777777777778
+24 h vs Control,14,1,False,ccp,loocv,0.22222222222222224
+24 h vs Control,14,1,False,en,loocv,0.22222222222222224
+24 h vs Control,14,1,False,rf,loocv,0.0
+24 h vs Control,14,1,False,tabpfn,loocv,0.0
+24 h vs Control,14,1,False,ccp,lpo,0.2222222222222222
+24 h vs Control,14,1,False,en,lpo,0.1111111111111111
+24 h vs Control,14,1,False,rf,lpo,0.2777777777777778
+24 h vs Control,14,1,False,tabpfn,lpo,0.3333333333333333
+24 h vs Control,15,1,False,ccp,loocv,0.22222222222222224
+24 h vs Control,15,1,False,en,loocv,0.5555555555555556
+24 h vs Control,15,1,False,rf,loocv,0.0
+24 h vs Control,15,1,False,tabpfn,loocv,0.0
+24 h vs Control,15,1,False,ccp,lpo,0.5555555555555556
+24 h vs Control,15,1,False,en,lpo,0.5555555555555556
+24 h vs Control,15,1,False,rf,lpo,0.5555555555555556
+24 h vs Control,15,1,False,tabpfn,lpo,0.3333333333333333
+24 h vs Control,16,1,False,ccp,loocv,0.6666666666666666
+24 h vs Control,16,1,False,en,loocv,0.6666666666666666
+24 h vs Control,16,1,False,rf,loocv,0.4444444444444445
+24 h vs Control,16,1,False,tabpfn,loocv,0.4444444444444445
+24 h vs Control,16,1,False,ccp,lpo,0.7777777777777778
+24 h vs Control,16,1,False,en,lpo,0.5555555555555556
+24 h vs Control,16,1,False,rf,lpo,0.7222222222222222
+24 h vs Control,16,1,False,tabpfn,lpo,0.8888888888888888
+24 h vs Control,17,1,False,ccp,loocv,0.22222222222222224
+24 h vs Control,17,1,False,en,loocv,0.22222222222222224
+24 h vs Control,17,1,False,rf,loocv,0.0
+24 h vs Control,17,1,False,tabpfn,loocv,0.0
+24 h vs Control,17,1,False,ccp,lpo,0.3333333333333333
+24 h vs Control,17,1,False,en,lpo,0.2222222222222222
+24 h vs Control,17,1,False,rf,lpo,0.2222222222222222
+24 h vs Control,17,1,False,tabpfn,lpo,0.1111111111111111
+24 h vs Control,18,1,False,ccp,loocv,0.11111111111111112
+24 h vs Control,18,1,False,en,loocv,0.11111111111111112
+24 h vs Control,18,1,False,rf,loocv,0.0
+24 h vs Control,18,1,False,tabpfn,loocv,0.0
+24 h vs Control,18,1,False,ccp,lpo,0.1111111111111111
+24 h vs Control,18,1,False,en,lpo,0.3333333333333333
+24 h vs Control,18,1,False,rf,lpo,0.2777777777777778
+24 h vs Control,18,1,False,tabpfn,lpo,0.3333333333333333
+24 h vs Control,19,0,False,ccp,loocv,1.0
+24 h vs Control,19,0,False,en,loocv,1.0
+24 h vs Control,19,0,False,rf,loocv,1.0
+24 h vs Control,19,0,False,tabpfn,loocv,1.0
+24 h vs Control,19,0,False,ccp,lpo,1.0
+24 h vs Control,19,0,False,en,lpo,1.0
+24 h vs Control,19,0,False,rf,lpo,1.0
+24 h vs Control,19,0,False,tabpfn,lpo,1.0
+24 h vs Control,0,3,True,fus,loocv,1.0
+24 h vs Control,0,3,True,fus,lpo,1.0
+24 h vs Control,1,2,False,fus,loocv,0.0
+24 h vs Control,1,2,False,fus,lpo,0.3333333333333333
+24 h vs Control,2,2,False,fus,loocv,0.0
+24 h vs Control,2,2,False,fus,lpo,0.3333333333333333
+24 h vs Control,3,2,False,fus,loocv,0.7777777777777778
+24 h vs Control,3,2,False,fus,lpo,0.6666666666666666
+24 h vs Control,4,2,False,fus,loocv,0.22222222222222224
+24 h vs Control,4,2,False,fus,lpo,0.5555555555555556
+24 h vs Control,5,2,False,fus,loocv,0.0
+24 h vs Control,5,2,False,fus,lpo,0.3888888888888889
+24 h vs Control,6,2,False,fus,loocv,0.33333333333333337
+24 h vs Control,6,2,False,fus,lpo,0.7777777777777778
+24 h vs Control,7,1,False,fus,loocv,0.6666666666666666
+24 h vs Control,7,1,False,fus,lpo,0.8888888888888888
+24 h vs Control,8,1,False,fus,loocv,0.22222222222222224
+24 h vs Control,8,1,False,fus,lpo,0.05555555555555555
+24 h vs Control,9,1,False,fus,loocv,0.0
+24 h vs Control,9,1,False,fus,lpo,0.3888888888888889
+24 h vs Control,10,2,False,fus,loocv,0.0
+24 h vs Control,10,2,False,fus,lpo,0.5
+24 h vs Control,11,2,False,fus,loocv,0.0
+24 h vs Control,11,2,False,fus,lpo,0.2777777777777778
+24 h vs Control,12,2,False,fus,loocv,0.5555555555555556
+24 h vs Control,12,2,False,fus,lpo,0.8888888888888888
+24 h vs Control,13,1,False,fus,loocv,0.6666666666666666
+24 h vs Control,13,1,False,fus,lpo,0.7777777777777778
+24 h vs Control,14,1,False,fus,loocv,0.0
+24 h vs Control,14,1,False,fus,lpo,0.16666666666666666
+24 h vs Control,15,1,False,fus,loocv,0.4444444444444444
+24 h vs Control,15,1,False,fus,lpo,0.3888888888888889
+24 h vs Control,16,1,False,fus,loocv,0.888888888888889
+24 h vs Control,16,1,False,fus,lpo,0.6666666666666666
+24 h vs Control,17,1,False,fus,loocv,0.2777777777777778
+24 h vs Control,17,1,False,fus,lpo,0.16666666666666666
+24 h vs Control,18,1,False,fus,loocv,0.0
+24 h vs Control,18,1,False,fus,lpo,0.3888888888888889
+24 h vs Control,19,0,False,fus,loocv,1.0
+24 h vs Control,19,0,False,fus,lpo,1.0
+8 h vs Control,0,3,True,ccp,loocv,0.888888888888889
+8 h vs Control,0,3,True,en,loocv,0.888888888888889
+8 h vs Control,0,3,True,rf,loocv,0.7777777777777779
+8 h vs Control,0,3,True,tabpfn,loocv,0.7777777777777779
+8 h vs Control,0,3,True,ccp,lpo,0.7777777777777778
+8 h vs Control,0,3,True,en,lpo,0.7777777777777778
+8 h vs Control,0,3,True,rf,lpo,0.8888888888888888
+8 h vs Control,0,3,True,tabpfn,lpo,0.8888888888888888
+8 h vs Control,1,2,False,ccp,loocv,0.7777777777777779
+8 h vs Control,1,2,False,en,loocv,0.0
+8 h vs Control,1,2,False,rf,loocv,0.33333333333333337
+8 h vs Control,1,2,False,tabpfn,loocv,0.11111111111111112
+8 h vs Control,1,2,False,ccp,lpo,0.8888888888888888
+8 h vs Control,1,2,False,en,lpo,0.4444444444444444
+8 h vs Control,1,2,False,rf,lpo,0.6666666666666666
+8 h vs Control,1,2,False,tabpfn,lpo,0.5555555555555556
+8 h vs Control,2,2,False,ccp,loocv,0.4444444444444445
+8 h vs Control,2,2,False,en,loocv,0.3333333333333333
+8 h vs Control,2,2,False,rf,loocv,0.22222222222222224
+8 h vs Control,2,2,False,tabpfn,loocv,0.11111111111111112
+8 h vs Control,2,2,False,ccp,lpo,0.4444444444444444
+8 h vs Control,2,2,False,en,lpo,0.7777777777777778
+8 h vs Control,2,2,False,rf,lpo,0.5555555555555556
+8 h vs Control,2,2,False,tabpfn,lpo,0.4444444444444444
+8 h vs Control,3,2,False,ccp,loocv,0.5555555555555556
+8 h vs Control,3,2,False,en,loocv,0.4444444444444445
+8 h vs Control,3,2,False,rf,loocv,0.4444444444444445
+8 h vs Control,3,2,False,tabpfn,loocv,0.4444444444444445
+8 h vs Control,3,2,False,ccp,lpo,0.5555555555555556
+8 h vs Control,3,2,False,en,lpo,0.5555555555555556
+8 h vs Control,3,2,False,rf,lpo,0.5555555555555556
+8 h vs Control,3,2,False,tabpfn,lpo,0.5555555555555556
+8 h vs Control,4,2,False,ccp,loocv,0.4444444444444445
+8 h vs Control,4,2,False,en,loocv,0.0
+8 h vs Control,4,2,False,rf,loocv,0.0
+8 h vs Control,4,2,False,tabpfn,loocv,0.0
+8 h vs Control,4,2,False,ccp,lpo,0.2222222222222222
+8 h vs Control,4,2,False,en,lpo,0.2222222222222222
+8 h vs Control,4,2,False,rf,lpo,0.3333333333333333
+8 h vs Control,4,2,False,tabpfn,lpo,0.2222222222222222
+8 h vs Control,5,2,False,ccp,loocv,0.4444444444444445
+8 h vs Control,5,2,False,en,loocv,0.0
+8 h vs Control,5,2,False,rf,loocv,0.0
+8 h vs Control,5,2,False,tabpfn,loocv,0.0
+8 h vs Control,5,2,False,ccp,lpo,0.4444444444444444
+8 h vs Control,5,2,False,en,lpo,0.4444444444444444
+8 h vs Control,5,2,False,rf,lpo,0.2777777777777778
+8 h vs Control,5,2,False,tabpfn,lpo,0.3333333333333333
+8 h vs Control,6,2,False,ccp,loocv,1.0
+8 h vs Control,6,2,False,en,loocv,0.888888888888889
+8 h vs Control,6,2,False,rf,loocv,0.7777777777777779
+8 h vs Control,6,2,False,tabpfn,loocv,1.0
+8 h vs Control,6,2,False,ccp,lpo,1.0
+8 h vs Control,6,2,False,en,lpo,1.0
+8 h vs Control,6,2,False,rf,lpo,1.0
+8 h vs Control,6,2,False,tabpfn,lpo,1.0
+8 h vs Control,7,1,False,ccp,loocv,0.4444444444444445
+8 h vs Control,7,1,False,en,loocv,0.5555555555555556
+8 h vs Control,7,1,False,rf,loocv,0.4444444444444445
+8 h vs Control,7,1,False,tabpfn,loocv,0.4444444444444445
+8 h vs Control,7,1,False,ccp,lpo,0.3333333333333333
+8 h vs Control,7,1,False,en,lpo,0.6666666666666666
+8 h vs Control,7,1,False,rf,lpo,0.7777777777777778
+8 h vs Control,7,1,False,tabpfn,lpo,0.7777777777777778
+8 h vs Control,8,1,False,ccp,loocv,0.11111111111111112
+8 h vs Control,8,1,False,en,loocv,0.11111111111111112
+8 h vs Control,8,1,False,rf,loocv,0.0
+8 h vs Control,8,1,False,tabpfn,loocv,0.0
+8 h vs Control,8,1,False,ccp,lpo,0.3333333333333333
+8 h vs Control,8,1,False,en,lpo,0.2222222222222222
+8 h vs Control,8,1,False,rf,lpo,0.0
+8 h vs Control,8,1,False,tabpfn,lpo,0.1111111111111111
+8 h vs Control,9,1,False,ccp,loocv,0.0
+8 h vs Control,9,1,False,en,loocv,0.0
+8 h vs Control,9,1,False,rf,loocv,0.0
+8 h vs Control,9,1,False,tabpfn,loocv,0.0
+8 h vs Control,9,1,False,ccp,lpo,0.0
+8 h vs Control,9,1,False,en,lpo,0.0
+8 h vs Control,9,1,False,rf,lpo,0.1111111111111111
+8 h vs Control,9,1,False,tabpfn,lpo,0.1111111111111111
+8 h vs Control,10,2,False,ccp,loocv,0.0
+8 h vs Control,10,2,False,en,loocv,0.0
+8 h vs Control,10,2,False,rf,loocv,0.0
+8 h vs Control,10,2,False,tabpfn,loocv,0.0
+8 h vs Control,10,2,False,ccp,lpo,0.0
+8 h vs Control,10,2,False,en,lpo,0.0
+8 h vs Control,10,2,False,rf,lpo,0.0
+8 h vs Control,10,2,False,tabpfn,lpo,0.0
+8 h vs Control,11,2,False,ccp,loocv,0.11111111111111112
+8 h vs Control,11,2,False,en,loocv,0.0
+8 h vs Control,11,2,False,rf,loocv,0.0
+8 h vs Control,11,2,False,tabpfn,loocv,0.0
+8 h vs Control,11,2,False,ccp,lpo,0.2222222222222222
+8 h vs Control,11,2,False,en,lpo,0.2222222222222222
+8 h vs Control,11,2,False,rf,lpo,0.1111111111111111
+8 h vs Control,11,2,False,tabpfn,lpo,0.1111111111111111
+8 h vs Control,12,2,False,ccp,loocv,0.4444444444444445
+8 h vs Control,12,2,False,en,loocv,0.5555555555555556
+8 h vs Control,12,2,False,rf,loocv,0.5555555555555556
+8 h vs Control,12,2,False,tabpfn,loocv,0.4444444444444445
+8 h vs Control,12,2,False,ccp,lpo,0.5555555555555556
+8 h vs Control,12,2,False,en,lpo,0.6666666666666666
+8 h vs Control,12,2,False,rf,lpo,0.7222222222222222
+8 h vs Control,12,2,False,tabpfn,lpo,0.7777777777777778
+8 h vs Control,13,1,False,ccp,loocv,1.0
+8 h vs Control,13,1,False,en,loocv,0.888888888888889
+8 h vs Control,13,1,False,rf,loocv,0.7777777777777778
+8 h vs Control,13,1,False,tabpfn,loocv,1.0
+8 h vs Control,13,1,False,ccp,lpo,1.0
+8 h vs Control,13,1,False,en,lpo,1.0
+8 h vs Control,13,1,False,rf,lpo,1.0
+8 h vs Control,13,1,False,tabpfn,lpo,1.0
+8 h vs Control,14,1,False,ccp,loocv,0.4444444444444445
+8 h vs Control,14,1,False,en,loocv,0.0
+8 h vs Control,14,1,False,rf,loocv,0.0
+8 h vs Control,14,1,False,tabpfn,loocv,0.0
+8 h vs Control,14,1,False,ccp,lpo,0.4444444444444444
+8 h vs Control,14,1,False,en,lpo,0.3333333333333333
+8 h vs Control,14,1,False,rf,lpo,0.2222222222222222
+8 h vs Control,14,1,False,tabpfn,lpo,0.2222222222222222
+8 h vs Control,15,1,False,ccp,loocv,0.4444444444444445
+8 h vs Control,15,1,False,en,loocv,0.0
+8 h vs Control,15,1,False,rf,loocv,0.0
+8 h vs Control,15,1,False,tabpfn,loocv,0.0
+8 h vs Control,15,1,False,ccp,lpo,0.1111111111111111
+8 h vs Control,15,1,False,en,lpo,0.2222222222222222
+8 h vs Control,15,1,False,rf,lpo,0.2777777777777778
+8 h vs Control,15,1,False,tabpfn,lpo,0.3333333333333333
+8 h vs Control,16,1,False,ccp,loocv,0.5555555555555556
+8 h vs Control,16,1,False,en,loocv,0.4444444444444445
+8 h vs Control,16,1,False,rf,loocv,0.4444444444444445
+8 h vs Control,16,1,False,tabpfn,loocv,0.4444444444444445
+8 h vs Control,16,1,False,ccp,lpo,0.6666666666666666
+8 h vs Control,16,1,False,en,lpo,0.6666666666666666
+8 h vs Control,16,1,False,rf,lpo,0.5555555555555556
+8 h vs Control,16,1,False,tabpfn,lpo,0.5555555555555556
+8 h vs Control,17,1,False,ccp,loocv,0.4444444444444444
+8 h vs Control,17,1,False,en,loocv,0.33333333333333337
+8 h vs Control,17,1,False,rf,loocv,0.22222222222222224
+8 h vs Control,17,1,False,tabpfn,loocv,0.11111111111111112
+8 h vs Control,17,1,False,ccp,lpo,0.4444444444444444
+8 h vs Control,17,1,False,en,lpo,0.7777777777777778
+8 h vs Control,17,1,False,rf,lpo,0.5555555555555556
+8 h vs Control,17,1,False,tabpfn,lpo,0.4444444444444444
+8 h vs Control,18,1,False,ccp,loocv,0.7777777777777778
+8 h vs Control,18,1,False,en,loocv,0.33333333333333337
+8 h vs Control,18,1,False,rf,loocv,0.22222222222222224
+8 h vs Control,18,1,False,tabpfn,loocv,0.11111111111111112
+8 h vs Control,18,1,False,ccp,lpo,0.8888888888888888
+8 h vs Control,18,1,False,en,lpo,0.5555555555555556
+8 h vs Control,18,1,False,rf,lpo,0.7777777777777778
+8 h vs Control,18,1,False,tabpfn,lpo,0.6666666666666666
+8 h vs Control,19,0,False,ccp,loocv,1.0
+8 h vs Control,19,0,False,en,loocv,0.7777777777777778
+8 h vs Control,19,0,False,rf,loocv,0.7777777777777778
+8 h vs Control,19,0,False,tabpfn,loocv,0.7777777777777778
+8 h vs Control,19,0,False,ccp,lpo,0.7777777777777778
+8 h vs Control,19,0,False,en,lpo,0.7777777777777778
+8 h vs Control,19,0,False,rf,lpo,0.8888888888888888
+8 h vs Control,19,0,False,tabpfn,lpo,0.8888888888888888
+8 h vs Control,0,3,True,fus,loocv,0.6666666666666667
+8 h vs Control,0,3,True,fus,lpo,0.7222222222222222
+8 h vs Control,1,2,False,fus,loocv,0.6666666666666667
+8 h vs Control,1,2,False,fus,lpo,0.5555555555555556
+8 h vs Control,2,2,False,fus,loocv,0.4444444444444444
+8 h vs Control,2,2,False,fus,lpo,0.4444444444444444
+8 h vs Control,3,2,False,fus,loocv,0.11111111111111112
+8 h vs Control,3,2,False,fus,lpo,0.2222222222222222
+8 h vs Control,4,2,False,fus,loocv,0.33333333333333337
+8 h vs Control,4,2,False,fus,lpo,0.2222222222222222
+8 h vs Control,5,2,False,fus,loocv,0.22222222222222224
+8 h vs Control,5,2,False,fus,lpo,0.2222222222222222
+8 h vs Control,6,2,False,fus,loocv,1.0
+8 h vs Control,6,2,False,fus,lpo,1.0
+8 h vs Control,7,1,False,fus,loocv,0.7777777777777779
+8 h vs Control,7,1,False,fus,lpo,0.3888888888888889
+8 h vs Control,8,1,False,fus,loocv,0.11111111111111112
+8 h vs Control,8,1,False,fus,lpo,0.3333333333333333
+8 h vs Control,9,1,False,fus,loocv,0.2777777777777778
+8 h vs Control,9,1,False,fus,lpo,0.2222222222222222
+8 h vs Control,10,2,False,fus,loocv,0.22222222222222224
+8 h vs Control,10,2,False,fus,lpo,0.2222222222222222
+8 h vs Control,11,2,False,fus,loocv,0.33333333333333337
+8 h vs Control,11,2,False,fus,lpo,0.5555555555555556
+8 h vs Control,12,2,False,fus,loocv,0.5555555555555556
+8 h vs Control,12,2,False,fus,lpo,0.5
+8 h vs Control,13,1,False,fus,loocv,0.7777777777777778
+8 h vs Control,13,1,False,fus,lpo,1.0
+8 h vs Control,14,1,False,fus,loocv,0.22222222222222224
+8 h vs Control,14,1,False,fus,lpo,0.2777777777777778
+8 h vs Control,15,1,False,fus,loocv,0.2777777777777778
+8 h vs Control,15,1,False,fus,lpo,0.2777777777777778
+8 h vs Control,16,1,False,fus,loocv,0.0
+8 h vs Control,16,1,False,fus,lpo,0.3888888888888889
+8 h vs Control,17,1,False,fus,loocv,0.5
+8 h vs Control,17,1,False,fus,lpo,0.6666666666666666
+8 h vs Control,18,1,False,fus,loocv,0.6111111111111112
+8 h vs Control,18,1,False,fus,lpo,0.6111111111111112
+8 h vs Control,19,0,False,fus,loocv,0.7777777777777778
+8 h vs Control,19,0,False,fus,lpo,0.6666666666666666
+24 h vs 8 h,0,3,True,ccp,loocv,1.0
+24 h vs 8 h,0,3,True,en,loocv,0.6666666666666667
+24 h vs 8 h,0,3,True,rf,loocv,0.888888888888889
+24 h vs 8 h,0,3,True,tabpfn,loocv,1.0
+24 h vs 8 h,0,3,True,ccp,lpo,1.0
+24 h vs 8 h,0,3,True,en,lpo,1.0
+24 h vs 8 h,0,3,True,rf,lpo,1.0
+24 h vs 8 h,0,3,True,tabpfn,lpo,1.0
+24 h vs 8 h,1,2,False,ccp,loocv,0.11111111111111112
+24 h vs 8 h,1,2,False,en,loocv,0.33333333333333337
+24 h vs 8 h,1,2,False,rf,loocv,0.0
+24 h vs 8 h,1,2,False,tabpfn,loocv,0.0
+24 h vs 8 h,1,2,False,ccp,lpo,0.3333333333333333
+24 h vs 8 h,1,2,False,en,lpo,0.4444444444444444
+24 h vs 8 h,1,2,False,rf,lpo,0.2222222222222222
+24 h vs 8 h,1,2,False,tabpfn,lpo,0.2222222222222222
+24 h vs 8 h,2,2,False,ccp,loocv,0.22222222222222224
+24 h vs 8 h,2,2,False,en,loocv,0.33333333333333337
+24 h vs 8 h,2,2,False,rf,loocv,0.11111111111111112
+24 h vs 8 h,2,2,False,tabpfn,loocv,0.0
+24 h vs 8 h,2,2,False,ccp,lpo,0.4444444444444444
+24 h vs 8 h,2,2,False,en,lpo,0.7777777777777778
+24 h vs 8 h,2,2,False,rf,lpo,0.6666666666666666
+24 h vs 8 h,2,2,False,tabpfn,lpo,0.6666666666666666
+24 h vs 8 h,3,2,False,ccp,loocv,0.7777777777777779
+24 h vs 8 h,3,2,False,en,loocv,0.0
+24 h vs 8 h,3,2,False,rf,loocv,0.6666666666666667
+24 h vs 8 h,3,2,False,tabpfn,loocv,0.0
+24 h vs 8 h,3,2,False,ccp,lpo,0.8888888888888888
+24 h vs 8 h,3,2,False,en,lpo,0.4444444444444444
+24 h vs 8 h,3,2,False,rf,lpo,0.6666666666666666
+24 h vs 8 h,3,2,False,tabpfn,lpo,0.8888888888888888
+24 h vs 8 h,4,2,False,ccp,loocv,0.0
+24 h vs 8 h,4,2,False,en,loocv,0.0
+24 h vs 8 h,4,2,False,rf,loocv,0.0
+24 h vs 8 h,4,2,False,tabpfn,loocv,0.0
+24 h vs 8 h,4,2,False,ccp,lpo,0.1111111111111111
+24 h vs 8 h,4,2,False,en,lpo,0.1111111111111111
+24 h vs 8 h,4,2,False,rf,lpo,0.1111111111111111
+24 h vs 8 h,4,2,False,tabpfn,lpo,0.2222222222222222
+24 h vs 8 h,5,2,False,ccp,loocv,0.11111111111111112
+24 h vs 8 h,5,2,False,en,loocv,0.5555555555555556
+24 h vs 8 h,5,2,False,rf,loocv,0.0
+24 h vs 8 h,5,2,False,tabpfn,loocv,0.0
+24 h vs 8 h,5,2,False,ccp,lpo,0.3333333333333333
+24 h vs 8 h,5,2,False,en,lpo,0.4444444444444444
+24 h vs 8 h,5,2,False,rf,lpo,0.3333333333333333
+24 h vs 8 h,5,2,False,tabpfn,lpo,0.4444444444444444
+24 h vs 8 h,6,2,False,ccp,loocv,0.5555555555555556
+24 h vs 8 h,6,2,False,en,loocv,0.0
+24 h vs 8 h,6,2,False,rf,loocv,0.11111111111111112
+24 h vs 8 h,6,2,False,tabpfn,loocv,0.0
+24 h vs 8 h,6,2,False,ccp,lpo,0.5555555555555556
+24 h vs 8 h,6,2,False,en,lpo,0.2222222222222222
+24 h vs 8 h,6,2,False,rf,lpo,0.6666666666666666
+24 h vs 8 h,6,2,False,tabpfn,lpo,0.2222222222222222
+24 h vs 8 h,7,1,False,ccp,loocv,1.0
+24 h vs 8 h,7,1,False,en,loocv,0.7777777777777779
+24 h vs 8 h,7,1,False,rf,loocv,0.7777777777777778
+24 h vs 8 h,7,1,False,tabpfn,loocv,0.6666666666666666
+24 h vs 8 h,7,1,False,ccp,lpo,0.7777777777777778
+24 h vs 8 h,7,1,False,en,lpo,0.6666666666666666
+24 h vs 8 h,7,1,False,rf,lpo,0.8888888888888888
+24 h vs 8 h,7,1,False,tabpfn,lpo,0.7777777777777778
+24 h vs 8 h,8,1,False,ccp,loocv,0.22222222222222224
+24 h vs 8 h,8,1,False,en,loocv,0.7777777777777778
+24 h vs 8 h,8,1,False,rf,loocv,0.0
+24 h vs 8 h,8,1,False,tabpfn,loocv,0.0
+24 h vs 8 h,8,1,False,ccp,lpo,0.2222222222222222
+24 h vs 8 h,8,1,False,en,lpo,0.7777777777777778
+24 h vs 8 h,8,1,False,rf,lpo,0.3333333333333333
+24 h vs 8 h,8,1,False,tabpfn,lpo,0.3333333333333333
+24 h vs 8 h,9,1,False,ccp,loocv,0.0
+24 h vs 8 h,9,1,False,en,loocv,0.3333333333333333
+24 h vs 8 h,9,1,False,rf,loocv,0.11111111111111112
+24 h vs 8 h,9,1,False,tabpfn,loocv,0.0
+24 h vs 8 h,9,1,False,ccp,lpo,0.3333333333333333
+24 h vs 8 h,9,1,False,en,lpo,0.4444444444444444
+24 h vs 8 h,9,1,False,rf,lpo,0.5555555555555556
+24 h vs 8 h,9,1,False,tabpfn,lpo,0.1111111111111111
+24 h vs 8 h,10,2,False,ccp,loocv,0.0
+24 h vs 8 h,10,2,False,en,loocv,0.33333333333333337
+24 h vs 8 h,10,2,False,rf,loocv,0.11111111111111112
+24 h vs 8 h,10,2,False,tabpfn,loocv,0.0
+24 h vs 8 h,10,2,False,ccp,lpo,0.3333333333333333
+24 h vs 8 h,10,2,False,en,lpo,0.4444444444444444
+24 h vs 8 h,10,2,False,rf,lpo,0.4444444444444444
+24 h vs 8 h,10,2,False,tabpfn,lpo,0.2222222222222222
+24 h vs 8 h,11,2,False,ccp,loocv,0.22222222222222224
+24 h vs 8 h,11,2,False,en,loocv,0.7777777777777779
+24 h vs 8 h,11,2,False,rf,loocv,0.0
+24 h vs 8 h,11,2,False,tabpfn,loocv,0.0
+24 h vs 8 h,11,2,False,ccp,lpo,0.3333333333333333
+24 h vs 8 h,11,2,False,en,lpo,0.6666666666666666
+24 h vs 8 h,11,2,False,rf,lpo,0.2222222222222222
+24 h vs 8 h,11,2,False,tabpfn,lpo,0.2222222222222222
+24 h vs 8 h,12,2,False,ccp,loocv,1.0
+24 h vs 8 h,12,2,False,en,loocv,0.888888888888889
+24 h vs 8 h,12,2,False,rf,loocv,0.7777777777777779
+24 h vs 8 h,12,2,False,tabpfn,loocv,0.6666666666666667
+24 h vs 8 h,12,2,False,ccp,lpo,0.7777777777777778
+24 h vs 8 h,12,2,False,en,lpo,0.6666666666666666
+24 h vs 8 h,12,2,False,rf,lpo,0.8888888888888888
+24 h vs 8 h,12,2,False,tabpfn,lpo,0.7777777777777778
+24 h vs 8 h,13,1,False,ccp,loocv,0.5555555555555556
+24 h vs 8 h,13,1,False,en,loocv,0.0
+24 h vs 8 h,13,1,False,rf,loocv,0.11111111111111112
+24 h vs 8 h,13,1,False,tabpfn,loocv,0.0
+24 h vs 8 h,13,1,False,ccp,lpo,0.5555555555555556
+24 h vs 8 h,13,1,False,en,lpo,0.3333333333333333
+24 h vs 8 h,13,1,False,rf,lpo,0.5555555555555556
+24 h vs 8 h,13,1,False,tabpfn,lpo,0.3333333333333333
+24 h vs 8 h,14,1,False,ccp,loocv,0.11111111111111112
+24 h vs 8 h,14,1,False,en,loocv,0.5555555555555556
+24 h vs 8 h,14,1,False,rf,loocv,0.0
+24 h vs 8 h,14,1,False,tabpfn,loocv,0.0
+24 h vs 8 h,14,1,False,ccp,lpo,0.3333333333333333
+24 h vs 8 h,14,1,False,en,lpo,0.5555555555555556
+24 h vs 8 h,14,1,False,rf,lpo,0.4444444444444444
+24 h vs 8 h,14,1,False,tabpfn,lpo,0.4444444444444444
+24 h vs 8 h,15,1,False,ccp,loocv,0.0
+24 h vs 8 h,15,1,False,en,loocv,0.0
+24 h vs 8 h,15,1,False,rf,loocv,0.0
+24 h vs 8 h,15,1,False,tabpfn,loocv,0.0
+24 h vs 8 h,15,1,False,ccp,lpo,0.1111111111111111
+24 h vs 8 h,15,1,False,en,lpo,0.0
+24 h vs 8 h,15,1,False,rf,lpo,0.1111111111111111
+24 h vs 8 h,15,1,False,tabpfn,lpo,0.2222222222222222
+24 h vs 8 h,16,1,False,ccp,loocv,0.7777777777777778
+24 h vs 8 h,16,1,False,en,loocv,0.0
+24 h vs 8 h,16,1,False,rf,loocv,0.6666666666666666
+24 h vs 8 h,16,1,False,tabpfn,loocv,0.0
+24 h vs 8 h,16,1,False,ccp,lpo,0.8888888888888888
+24 h vs 8 h,16,1,False,en,lpo,0.4444444444444444
+24 h vs 8 h,16,1,False,rf,lpo,0.6666666666666666
+24 h vs 8 h,16,1,False,tabpfn,lpo,0.8888888888888888
+24 h vs 8 h,17,1,False,ccp,loocv,0.33333333333333337
+24 h vs 8 h,17,1,False,en,loocv,0.3333333333333333
+24 h vs 8 h,17,1,False,rf,loocv,0.0
+24 h vs 8 h,17,1,False,tabpfn,loocv,0.0
+24 h vs 8 h,17,1,False,ccp,lpo,0.5555555555555556
+24 h vs 8 h,17,1,False,en,lpo,0.6666666666666666
+24 h vs 8 h,17,1,False,rf,lpo,0.6666666666666666
+24 h vs 8 h,17,1,False,tabpfn,lpo,0.6666666666666666
+24 h vs 8 h,18,1,False,ccp,loocv,0.22222222222222224
+24 h vs 8 h,18,1,False,en,loocv,0.4444444444444445
+24 h vs 8 h,18,1,False,rf,loocv,0.0
+24 h vs 8 h,18,1,False,tabpfn,loocv,0.0
+24 h vs 8 h,18,1,False,ccp,lpo,0.3333333333333333
+24 h vs 8 h,18,1,False,en,lpo,0.4444444444444444
+24 h vs 8 h,18,1,False,rf,lpo,0.1111111111111111
+24 h vs 8 h,18,1,False,tabpfn,lpo,0.3333333333333333
+24 h vs 8 h,19,0,False,ccp,loocv,1.0
+24 h vs 8 h,19,0,False,en,loocv,0.6666666666666666
+24 h vs 8 h,19,0,False,rf,loocv,0.7777777777777778
+24 h vs 8 h,19,0,False,tabpfn,loocv,1.0
+24 h vs 8 h,19,0,False,ccp,lpo,1.0
+24 h vs 8 h,19,0,False,en,lpo,1.0
+24 h vs 8 h,19,0,False,rf,lpo,1.0
+24 h vs 8 h,19,0,False,tabpfn,lpo,1.0
+24 h vs 8 h,0,3,True,fus,loocv,0.33333333333333337
+24 h vs 8 h,0,3,True,fus,lpo,1.0
+24 h vs 8 h,1,2,False,fus,loocv,0.22222222222222224
+24 h vs 8 h,1,2,False,fus,lpo,0.2777777777777778
+24 h vs 8 h,2,2,False,fus,loocv,0.6666666666666666
+24 h vs 8 h,2,2,False,fus,lpo,0.6666666666666666
+24 h vs 8 h,3,2,False,fus,loocv,0.6666666666666667
+24 h vs 8 h,3,2,False,fus,lpo,0.7777777777777778
+24 h vs 8 h,4,2,False,fus,loocv,0.2777777777777778
+24 h vs 8 h,4,2,False,fus,lpo,0.3888888888888889
+24 h vs 8 h,5,2,False,fus,loocv,0.22222222222222224
+24 h vs 8 h,5,2,False,fus,lpo,0.4444444444444444
+24 h vs 8 h,6,2,False,fus,loocv,0.33333333333333337
+24 h vs 8 h,6,2,False,fus,lpo,0.6111111111111112
+24 h vs 8 h,7,1,False,fus,loocv,0.4444444444444444
+24 h vs 8 h,7,1,False,fus,lpo,0.6666666666666666
+24 h vs 8 h,8,1,False,fus,loocv,0.2777777777777778
+24 h vs 8 h,8,1,False,fus,lpo,0.2222222222222222
+24 h vs 8 h,9,1,False,fus,loocv,0.4444444444444444
+24 h vs 8 h,9,1,False,fus,lpo,0.4444444444444444
+24 h vs 8 h,10,2,False,fus,loocv,0.7777777777777778
+24 h vs 8 h,10,2,False,fus,lpo,0.6111111111111112
+24 h vs 8 h,11,2,False,fus,loocv,0.22222222222222224
+24 h vs 8 h,11,2,False,fus,lpo,0.1111111111111111
+24 h vs 8 h,12,2,False,fus,loocv,0.33333333333333337
+24 h vs 8 h,12,2,False,fus,lpo,0.6666666666666666
+24 h vs 8 h,13,1,False,fus,loocv,0.3333333333333333
+24 h vs 8 h,13,1,False,fus,lpo,0.3333333333333333
+24 h vs 8 h,14,1,False,fus,loocv,0.2222222222222222
+24 h vs 8 h,14,1,False,fus,lpo,0.2777777777777778
+24 h vs 8 h,15,1,False,fus,loocv,0.22222222222222224
+24 h vs 8 h,15,1,False,fus,lpo,0.3333333333333333
+24 h vs 8 h,16,1,False,fus,loocv,0.3333333333333333
+24 h vs 8 h,16,1,False,fus,lpo,0.6666666666666666
+24 h vs 8 h,17,1,False,fus,loocv,0.5555555555555556
+24 h vs 8 h,17,1,False,fus,lpo,0.6111111111111112
+24 h vs 8 h,18,1,False,fus,loocv,0.0
+24 h vs 8 h,18,1,False,fus,lpo,0.3333333333333333
+24 h vs 8 h,19,0,False,fus,loocv,0.3333333333333333
+24 h vs 8 h,19,0,False,fus,lpo,0.8888888888888888

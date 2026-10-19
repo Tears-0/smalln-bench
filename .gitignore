@@ -6,13 +6,11 @@ models/**
 !models/README.md
 *.pt
 *.safetensors
-*.parquet
 *.h5
 *.h5mu
 *.npz
 
 # Results and figures are regenerated from runs
-results/
 figures/*.png
 figures/*.pdf
 
@@ -24,3 +22,6 @@ __pycache__/
 
 # Measurement scratch
 prereg/measurements/_conc_worker.py
+
+# per-block shards, merged into results/main_all_runs.parquet
+results/runs/main/*/

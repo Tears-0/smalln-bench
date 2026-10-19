@@ -1,0 +1,25 @@
+[supervise 2026-10-13 16:08:24] attempt 1/5: -m bench.run --runner tabpfn --out main --tasks B1 --N 12,20 --arms perm
+cells: [('B1', 12), ('B1', 20)]
+20 blocks to run
+GPU cap 4.0 GB
+[16:25:28] 1/20 B1_N12_perm_r000.parquet
+[16:40:56] 2/20 B1_N12_perm_r010.parquet
+[16:57:53] 3/20 B1_N12_perm_r020.parquet
+[17:09:01] 4/20 B1_N12_perm_r030.parquet
+[17:14:02] 5/20 B1_N12_perm_r040.parquet
+[17:19:02] 6/20 B1_N12_perm_r050.parquet
+[17:23:59] 7/20 B1_N12_perm_r060.parquet
+[17:28:55] 8/20 B1_N12_perm_r070.parquet
+[17:33:54] 9/20 B1_N12_perm_r080.parquet
+[17:38:52] 10/20 B1_N12_perm_r090.parquet
+[17:43:05] 11/20 B1_N20_perm_r000.parquet
+[17:47:17] 12/20 B1_N20_perm_r010.parquet
+[17:51:28] 13/20 B1_N20_perm_r020.parquet
+[17:55:40] 14/20 B1_N20_perm_r030.parquet
+[17:59:50] 15/20 B1_N20_perm_r040.parquet
+[18:04:06] 16/20 B1_N20_perm_r050.parquet
+[18:07:49] 17/20 B1_N20_perm_r060.parquet
+[18:11:17] 18/20 B1_N20_perm_r070.parquet
+[18:14:43] 19/20 B1_N20_perm_r080.parquet
+[18:18:09] 20/20 B1_N20_perm_r090.parquet
+[supervise 2026-10-13 18:18:10] exit code 0

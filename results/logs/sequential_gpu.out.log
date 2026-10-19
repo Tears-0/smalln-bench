@@ -1,0 +1,590 @@
+[supervise 2026-10-14 10:04:06] step 1/2
+[supervise 2026-10-14 10:04:06] attempt 1/8: -m bench.run --runner tabpfn --out main
+cells: [('B1', 6), ('B1', 9), ('B1', 12), ('B1', 20), ('B1', 30), ('B1', 50), ('B2', 6), ('B2', 9), ('B2', 12), ('B2', 20), ('B2', 30), ('B5', 6), ('B5', 9), ('B5', 12), ('B5', 20), ('B5', 30), ('B5', 50)]
+269 blocks to run
+GPU cap 4.0 GB
+[10:07:50] 1/269 B1_N20_true_r010.parquet
+[10:11:17] 2/269 B1_N20_true_r020.parquet
+[10:14:44] 3/269 B1_N20_true_r030.parquet
+[10:18:11] 4/269 B1_N20_true_r040.parquet
+[10:21:36] 5/269 B1_N20_true_r050.parquet
+[10:25:02] 6/269 B1_N20_true_r060.parquet
+[10:28:27] 7/269 B1_N20_true_r070.parquet
+[10:31:52] 8/269 B1_N20_true_r080.parquet
+[10:35:18] 9/269 B1_N20_true_r090.parquet
+[10:38:45] 10/269 B1_N30_true_r000.parquet
+[10:42:11] 11/269 B1_N30_true_r010.parquet
+[10:45:38] 12/269 B1_N30_true_r020.parquet
+[10:49:05] 13/269 B1_N30_true_r030.parquet
+[10:52:31] 14/269 B1_N30_true_r040.parquet
+[10:55:59] 15/269 B1_N30_true_r050.parquet
+[10:59:28] 16/269 B1_N30_true_r060.parquet
+[11:02:57] 17/269 B1_N30_true_r070.parquet
+[11:06:30] 18/269 B1_N30_true_r080.parquet
+[11:10:03] 19/269 B1_N30_true_r090.parquet
+[11:13:37] 20/269 B1_N30_perm_r000.parquet
+[11:17:10] 21/269 B1_N30_perm_r010.parquet
+[11:20:43] 22/269 B1_N30_perm_r020.parquet
+[11:24:17] 23/269 B1_N30_perm_r030.parquet
+[11:27:50] 24/269 B1_N30_perm_r040.parquet
+[11:31:23] 25/269 B1_N30_perm_r050.parquet
+[11:34:57] 26/269 B1_N30_perm_r060.parquet
+[11:38:28] 27/269 B1_N30_perm_r070.parquet
+[11:42:01] 28/269 B1_N30_perm_r080.parquet
+[11:45:33] 29/269 B1_N30_perm_r090.parquet
+[11:49:12] 30/269 B1_N50_true_r000.parquet
+[11:52:48] 31/269 B1_N50_true_r010.parquet
+[11:56:26] 32/269 B1_N50_true_r020.parquet
+[12:00:04] 33/269 B1_N50_true_r030.parquet
+[12:03:42] 34/269 B1_N50_true_r040.parquet
+[12:07:22] 35/269 B1_N50_true_r050.parquet
+[12:10:59] 36/269 B1_N50_true_r060.parquet
+[12:14:37] 37/269 B1_N50_true_r070.parquet
+[12:18:15] 38/269 B1_N50_true_r080.parquet
+[12:21:54] 39/269 B1_N50_true_r090.parquet
+[12:25:32] 40/269 B1_N50_perm_r000.parquet
+[12:29:09] 41/269 B1_N50_perm_r010.parquet
+[12:32:46] 42/269 B1_N50_perm_r020.parquet
+[12:36:24] 43/269 B1_N50_perm_r030.parquet
+[12:40:01] 44/269 B1_N50_perm_r040.parquet
+[12:43:39] 45/269 B1_N50_perm_r050.parquet
+[12:47:17] 46/269 B1_N50_perm_r060.parquet
+[12:50:54] 47/269 B1_N50_perm_r070.parquet
+[12:54:32] 48/269 B1_N50_perm_r080.parquet
+[12:58:09] 49/269 B1_N50_perm_r090.parquet
+[12:59:39] 50/269 B2_N6_true_r000.parquet
+[13:01:08] 51/269 B2_N6_true_r010.parquet
+[13:02:38] 52/269 B2_N6_true_r020.parquet
+[13:04:07] 53/269 B2_N6_true_r030.parquet
+[13:05:35] 54/269 B2_N6_true_r040.parquet
+[13:07:05] 55/269 B2_N6_true_r050.parquet
+[13:08:34] 56/269 B2_N6_true_r060.parquet
+[13:10:03] 57/269 B2_N6_true_r070.parquet
+[13:11:32] 58/269 B2_N6_true_r080.parquet
+[13:13:01] 59/269 B2_N6_true_r090.parquet
+[13:14:30] 60/269 B2_N6_perm_r000.parquet
+[13:15:59] 61/269 B2_N6_perm_r010.parquet
+[13:17:28] 62/269 B2_N6_perm_r020.parquet
+[13:18:58] 63/269 B2_N6_perm_r030.parquet
+[13:20:26] 64/269 B2_N6_perm_r040.parquet
+[13:21:56] 65/269 B2_N6_perm_r050.parquet
+[13:23:25] 66/269 B2_N6_perm_r060.parquet
+[13:24:55] 67/269 B2_N6_perm_r070.parquet
+[13:26:24] 68/269 B2_N6_perm_r080.parquet
+[13:27:52] 69/269 B2_N6_perm_r090.parquet
+[13:30:30] 70/269 B2_N9_true_r000.parquet
+[13:33:08] 71/269 B2_N9_true_r010.parquet
+[13:35:46] 72/269 B2_N9_true_r020.parquet
+[13:38:24] 73/269 B2_N9_true_r030.parquet
+[13:41:02] 74/269 B2_N9_true_r040.parquet
+[13:43:39] 75/269 B2_N9_true_r050.parquet
+[13:46:17] 76/269 B2_N9_true_r060.parquet
+[13:48:55] 77/269 B2_N9_true_r070.parquet
+[13:51:33] 78/269 B2_N9_true_r080.parquet
+[13:54:10] 79/269 B2_N9_true_r090.parquet
+[13:56:49] 80/269 B2_N9_perm_r000.parquet
+[13:59:26] 81/269 B2_N9_perm_r010.parquet
+[14:02:03] 82/269 B2_N9_perm_r020.parquet
+[14:04:41] 83/269 B2_N9_perm_r030.parquet
+[14:07:19] 84/269 B2_N9_perm_r040.parquet
+[14:09:56] 85/269 B2_N9_perm_r050.parquet
+[14:12:34] 86/269 B2_N9_perm_r060.parquet
+[14:15:13] 87/269 B2_N9_perm_r070.parquet
+[14:17:50] 88/269 B2_N9_perm_r080.parquet
+[14:20:28] 89/269 B2_N9_perm_r090.parquet
+[14:24:35] 90/269 B2_N12_true_r000.parquet
+[14:28:42] 91/269 B2_N12_true_r010.parquet
+[14:32:48] 92/269 B2_N12_true_r020.parquet
+[14:36:55] 93/269 B2_N12_true_r030.parquet
+[14:41:01] 94/269 B2_N12_true_r040.parquet
+[14:45:08] 95/269 B2_N12_true_r050.parquet
+[14:49:15] 96/269 B2_N12_true_r060.parquet
+[14:53:22] 97/269 B2_N12_true_r070.parquet
+[14:57:28] 98/269 B2_N12_true_r080.parquet
+[15:01:35] 99/269 B2_N12_true_r090.parquet
+[15:05:41] 100/269 B2_N12_perm_r000.parquet
+[15:09:48] 101/269 B2_N12_perm_r010.parquet
+[15:13:59] 102/269 B2_N12_perm_r020.parquet
+[15:18:06] 103/269 B2_N12_perm_r030.parquet
+[15:22:12] 104/269 B2_N12_perm_r040.parquet
+[15:26:20] 105/269 B2_N12_perm_r050.parquet
+[15:30:26] 106/269 B2_N12_perm_r060.parquet
+[15:34:33] 107/269 B2_N12_perm_r070.parquet
+[15:38:39] 108/269 B2_N12_perm_r080.parquet
+[15:42:46] 109/269 B2_N12_perm_r090.parquet
+[15:46:15] 110/269 B2_N20_true_r000.parquet
+[15:49:43] 111/269 B2_N20_true_r010.parquet
+[15:53:12] 112/269 B2_N20_true_r020.parquet
+[15:56:41] 113/269 B2_N20_true_r030.parquet
+[16:00:10] 114/269 B2_N20_true_r040.parquet
+[16:03:39] 115/269 B2_N20_true_r050.parquet
+[16:07:10] 116/269 B2_N20_true_r060.parquet
+[16:10:38] 117/269 B2_N20_true_r070.parquet
+[16:14:08] 118/269 B2_N20_true_r080.parquet
+[16:17:36] 119/269 B2_N20_true_r090.parquet
+[16:21:05] 120/269 B2_N20_perm_r000.parquet
+[16:24:33] 121/269 B2_N20_perm_r010.parquet
+[16:28:02] 122/269 B2_N20_perm_r020.parquet
+[16:31:32] 123/269 B2_N20_perm_r030.parquet
+[16:35:00] 124/269 B2_N20_perm_r040.parquet
+[16:38:30] 125/269 B2_N20_perm_r050.parquet
+[16:42:00] 126/269 B2_N20_perm_r060.parquet
+[16:45:30] 127/269 B2_N20_perm_r070.parquet
+[16:48:58] 128/269 B2_N20_perm_r080.parquet
+[16:52:28] 129/269 B2_N20_perm_r090.parquet
+[16:55:58] 130/269 B2_N30_true_r000.parquet
+[16:59:28] 131/269 B2_N30_true_r010.parquet
+[17:03:00] 132/269 B2_N30_true_r020.parquet
+[17:06:31] 133/269 B2_N30_true_r030.parquet
+[17:10:02] 134/269 B2_N30_true_r040.parquet
+[17:13:32] 135/269 B2_N30_true_r050.parquet
+[17:17:03] 136/269 B2_N30_true_r060.parquet
+[17:20:33] 137/269 B2_N30_true_r070.parquet
+[17:24:04] 138/269 B2_N30_true_r080.parquet
+[17:27:34] 139/269 B2_N30_true_r090.parquet
+[17:31:05] 140/269 B2_N30_perm_r000.parquet
+[17:34:35] 141/269 B2_N30_perm_r010.parquet
+[17:38:05] 142/269 B2_N30_perm_r020.parquet
+[17:41:36] 143/269 B2_N30_perm_r030.parquet
+[17:45:06] 144/269 B2_N30_perm_r040.parquet
+[17:48:36] 145/269 B2_N30_perm_r050.parquet
+[17:52:07] 146/269 B2_N30_perm_r060.parquet
+[17:55:38] 147/269 B2_N30_perm_r070.parquet
+[17:59:09] 148/269 B2_N30_perm_r080.parquet
+[18:02:39] 149/269 B2_N30_perm_r090.parquet
+[18:04:09] 150/269 B5_N6_true_r000.parquet
+[18:05:38] 151/269 B5_N6_true_r010.parquet
+[18:07:07] 152/269 B5_N6_true_r020.parquet
+[18:08:35] 153/269 B5_N6_true_r030.parquet
+[18:10:04] 154/269 B5_N6_true_r040.parquet
+[18:11:33] 155/269 B5_N6_true_r050.parquet
+[18:13:02] 156/269 B5_N6_true_r060.parquet
+[18:14:32] 157/269 B5_N6_true_r070.parquet
+[18:16:00] 158/269 B5_N6_true_r080.parquet
+[18:17:29] 159/269 B5_N6_true_r090.parquet
+[18:18:57] 160/269 B5_N6_perm_r000.parquet
+[18:20:27] 161/269 B5_N6_perm_r010.parquet
+[18:21:56] 162/269 B5_N6_perm_r020.parquet
+[18:23:25] 163/269 B5_N6_perm_r030.parquet
+[18:24:54] 164/269 B5_N6_perm_r040.parquet
+[18:26:23] 165/269 B5_N6_perm_r050.parquet
+[18:27:52] 166/269 B5_N6_perm_r060.parquet
+[18:29:21] 167/269 B5_N6_perm_r070.parquet
+[18:30:51] 168/269 B5_N6_perm_r080.parquet
+[18:32:20] 169/269 B5_N6_perm_r090.parquet
+[18:34:58] 170/269 B5_N9_true_r000.parquet
+[18:37:36] 171/269 B5_N9_true_r010.parquet
+[18:40:14] 172/269 B5_N9_true_r020.parquet
+[18:42:52] 173/269 B5_N9_true_r030.parquet
+[18:45:30] 174/269 B5_N9_true_r040.parquet
+[18:48:08] 175/269 B5_N9_true_r050.parquet
+[18:50:46] 176/269 B5_N9_true_r060.parquet
+[18:53:24] 177/269 B5_N9_true_r070.parquet
+[18:56:01] 178/269 B5_N9_true_r080.parquet
+[18:58:39] 179/269 B5_N9_true_r090.parquet
+[19:01:17] 180/269 B5_N9_perm_r000.parquet
+[19:03:55] 181/269 B5_N9_perm_r010.parquet
+[19:06:34] 182/269 B5_N9_perm_r020.parquet
+[19:09:12] 183/269 B5_N9_perm_r030.parquet
+[19:11:51] 184/269 B5_N9_perm_r040.parquet
+[19:14:30] 185/269 B5_N9_perm_r050.parquet
+[19:17:08] 186/269 B5_N9_perm_r060.parquet
+[19:19:47] 187/269 B5_N9_perm_r070.parquet
+[19:22:31] 188/269 B5_N9_perm_r080.parquet
+[19:25:19] 189/269 B5_N9_perm_r090.parquet
+[19:29:43] 190/269 B5_N12_true_r000.parquet
+[19:35:02] 191/269 B5_N12_true_r010.parquet
+[19:40:17] 192/269 B5_N12_true_r020.parquet
+[19:45:35] 193/269 B5_N12_true_r030.parquet
+[19:50:46] 194/269 B5_N12_true_r040.parquet
+[19:56:06] 195/269 B5_N12_true_r050.parquet
+[20:01:24] 196/269 B5_N12_true_r060.parquet
+[20:06:43] 197/269 B5_N12_true_r070.parquet
+[20:12:01] 198/269 B5_N12_true_r080.parquet
+[20:17:20] 199/269 B5_N12_true_r090.parquet
+[20:22:36] 200/269 B5_N12_perm_r000.parquet
+[20:27:55] 201/269 B5_N12_perm_r010.parquet
+[20:33:11] 202/269 B5_N12_perm_r020.parquet
+[20:38:28] 203/269 B5_N12_perm_r030.parquet
+[20:43:46] 204/269 B5_N12_perm_r040.parquet
+[20:49:07] 205/269 B5_N12_perm_r050.parquet
+[20:54:21] 206/269 B5_N12_perm_r060.parquet
+[20:59:32] 207/269 B5_N12_perm_r070.parquet
+[21:04:48] 208/269 B5_N12_perm_r080.parquet
+[21:10:05] 209/269 B5_N12_perm_r090.parquet
+[21:14:34] 210/269 B5_N20_true_r000.parquet
+[21:19:03] 211/269 B5_N20_true_r010.parquet
+[21:23:26] 212/269 B5_N20_true_r020.parquet
+[21:27:54] 213/269 B5_N20_true_r030.parquet
+[21:32:23] 214/269 B5_N20_true_r040.parquet
+[21:36:51] 215/269 B5_N20_true_r050.parquet
+[21:41:29] 216/269 B5_N20_true_r060.parquet
+[21:46:23] 217/269 B5_N20_true_r070.parquet
+[21:51:23] 218/269 B5_N20_true_r080.parquet
+[21:56:19] 219/269 B5_N20_true_r090.parquet
+[22:01:19] 220/269 B5_N20_perm_r000.parquet
+[22:06:20] 221/269 B5_N20_perm_r010.parquet
+[22:11:22] 222/269 B5_N20_perm_r020.parquet
+[22:16:23] 223/269 B5_N20_perm_r030.parquet
+[22:21:24] 224/269 B5_N20_perm_r040.parquet
+[22:26:05] 225/269 B5_N20_perm_r050.parquet
+[22:30:29] 226/269 B5_N20_perm_r060.parquet
+[22:34:54] 227/269 B5_N20_perm_r070.parquet
+[22:39:22] 228/269 B5_N20_perm_r080.parquet
+[22:43:54] 229/269 B5_N20_perm_r090.parquet
+[22:48:29] 230/269 B5_N30_true_r000.parquet
+[22:53:02] 231/269 B5_N30_true_r010.parquet
+[22:57:34] 232/269 B5_N30_true_r020.parquet
+[23:02:04] 233/269 B5_N30_true_r030.parquet
+[23:06:43] 234/269 B5_N30_true_r040.parquet
+[23:11:23] 235/269 B5_N30_true_r050.parquet
+[23:15:53] 236/269 B5_N30_true_r060.parquet
+[23:20:30] 237/269 B5_N30_true_r070.parquet
+[23:25:06] 238/269 B5_N30_true_r080.parquet
+[23:29:44] 239/269 B5_N30_true_r090.parquet
+[23:34:22] 240/269 B5_N30_perm_r000.parquet
+[23:38:53] 241/269 B5_N30_perm_r010.parquet
+[23:43:29] 242/269 B5_N30_perm_r020.parquet
+[23:48:06] 243/269 B5_N30_perm_r030.parquet
+[23:52:37] 244/269 B5_N30_perm_r040.parquet
+[23:57:13] 245/269 B5_N30_perm_r050.parquet
+[00:01:47] 246/269 B5_N30_perm_r060.parquet
+[00:06:03] 247/269 B5_N30_perm_r070.parquet
+[00:10:42] 248/269 B5_N30_perm_r080.parquet
+[00:15:27] 249/269 B5_N30_perm_r090.parquet
+[00:20:51] 250/269 B5_N50_true_r000.parquet
+[00:26:23] 251/269 B5_N50_true_r010.parquet
+[00:31:46] 252/269 B5_N50_true_r020.parquet
+[00:36:19] 253/269 B5_N50_true_r030.parquet
+[00:40:35] 254/269 B5_N50_true_r040.parquet
+[00:44:55] 255/269 B5_N50_true_r050.parquet
+[00:49:14] 256/269 B5_N50_true_r060.parquet
+[00:53:33] 257/269 B5_N50_true_r070.parquet
+[00:57:52] 258/269 B5_N50_true_r080.parquet
+[01:02:14] 259/269 B5_N50_true_r090.parquet
+[01:06:29] 260/269 B5_N50_perm_r000.parquet
+[01:10:49] 261/269 B5_N50_perm_r010.parquet
+[01:15:06] 262/269 B5_N50_perm_r020.parquet
+[01:19:20] 263/269 B5_N50_perm_r030.parquet
+[01:23:30] 264/269 B5_N50_perm_r040.parquet
+[01:27:41] 265/269 B5_N50_perm_r050.parquet
+[01:31:54] 266/269 B5_N50_perm_r060.parquet
+[01:36:04] 267/269 B5_N50_perm_r070.parquet
+[01:40:15] 268/269 B5_N50_perm_r080.parquet
+[01:44:26] 269/269 B5_N50_perm_r090.parquet
+[supervise 2026-10-15 01:44:37] exit code 0
+[supervise 2026-10-15 01:44:37] step 2/2
+[supervise 2026-10-15 01:44:37] attempt 1/8: -m bench.fusion --out main --block 50
+GPU cap 4.0 GB
+[01:44:48] cell B1 N=50 perm r0-49: 50 units
+   [01:56:27] B1 N=50 n_train=40 models 1-200/1250 in 669s
+   [02:07:33] B1 N=50 n_train=40 models 201-400/1250 in 666s
+   [02:18:39] B1 N=50 n_train=40 models 401-600/1250 in 665s
+   [02:29:45] B1 N=50 n_train=40 models 601-800/1250 in 666s
+   [02:40:51] B1 N=50 n_train=40 models 801-1000/1250 in 666s
+   [02:51:57] B1 N=50 n_train=40 models 1001-1200/1250 in 666s
+   [02:54:43] B1 N=50 n_train=40 models 1201-1250/1250 in 166s
+   [02:58:11] B1 N=50 n_train=50 models 1-50/50 in 208s
+[02:58:12] cell B1 N=50 perm r50-99: 50 units
+   [03:09:48] B1 N=50 n_train=40 models 1-200/1250 in 666s
+   [03:20:54] B1 N=50 n_train=40 models 201-400/1250 in 666s
+   [03:32:00] B1 N=50 n_train=40 models 401-600/1250 in 666s
+   [03:43:06] B1 N=50 n_train=40 models 601-800/1250 in 666s
+   [03:54:12] B1 N=50 n_train=40 models 801-1000/1250 in 666s
+   [04:05:19] B1 N=50 n_train=40 models 1001-1200/1250 in 666s
+   [04:08:05] B1 N=50 n_train=40 models 1201-1250/1250 in 166s
+   [04:11:32] B1 N=50 n_train=50 models 1-50/50 in 208s
+[04:11:33] cell B2 N=6 true r0-49: 50 units
+   [04:13:00] B2 N=6 n_train=5 models 1-200/300 in 84s
+   [04:13:42] B2 N=6 n_train=5 models 201-300/300 in 41s
+   [04:14:07] B2 N=6 n_train=6 models 1-50/50 in 25s
+[04:14:07] cell B2 N=6 true r50-99: 50 units
+   [04:15:34] B2 N=6 n_train=5 models 1-200/300 in 84s
+   [04:16:15] B2 N=6 n_train=5 models 201-300/300 in 41s
+   [04:16:41] B2 N=6 n_train=6 models 1-50/50 in 25s
+[04:16:41] cell B2 N=6 perm r0-49: 50 units
+   [04:18:08] B2 N=6 n_train=5 models 1-200/300 in 84s
+   [04:18:49] B2 N=6 n_train=5 models 201-300/300 in 41s
+   [04:19:14] B2 N=6 n_train=6 models 1-50/50 in 25s
+[04:19:15] cell B2 N=6 perm r50-99: 50 units
+   [04:20:42] B2 N=6 n_train=5 models 1-200/300 in 84s
+   [04:21:23] B2 N=6 n_train=5 models 201-300/300 in 41s
+   [04:21:48] B2 N=6 n_train=6 models 1-50/50 in 25s
+[04:21:48] cell B2 N=9 true r0-49: 50 units
+   [04:24:06] B2 N=9 n_train=8 models 1-200/450 in 134s
+   [04:26:20] B2 N=9 n_train=8 models 201-400/450 in 134s
+   [04:26:53] B2 N=9 n_train=8 models 401-450/450 in 33s
+   [04:27:31] B2 N=9 n_train=9 models 1-50/50 in 38s
+[04:27:31] cell B2 N=9 true r50-99: 50 units
+   [04:29:49] B2 N=9 n_train=8 models 1-200/450 in 134s
+   [04:32:03] B2 N=9 n_train=8 models 201-400/450 in 134s
+   [04:32:36] B2 N=9 n_train=8 models 401-450/450 in 33s
+   [04:33:14] B2 N=9 n_train=9 models 1-50/50 in 38s
+[04:33:14] cell B2 N=9 perm r0-49: 50 units
+   [04:35:32] B2 N=9 n_train=8 models 1-200/450 in 134s
+   [04:37:46] B2 N=9 n_train=8 models 201-400/450 in 134s
+   [04:38:19] B2 N=9 n_train=8 models 401-450/450 in 33s
+   [04:38:57] B2 N=9 n_train=9 models 1-50/50 in 38s
+[04:38:57] cell B2 N=9 perm r50-99: 50 units
+   [04:41:15] B2 N=9 n_train=8 models 1-200/450 in 134s
+   [04:43:29] B2 N=9 n_train=8 models 201-400/450 in 134s
+   [04:44:02] B2 N=9 n_train=8 models 401-450/450 in 33s
+   [04:44:40] B2 N=9 n_train=9 models 1-50/50 in 38s
+[04:44:40] cell B2 N=12 true r0-49: 50 units
+   [04:47:50] B2 N=12 n_train=11 models 1-200/600 in 184s
+   [04:50:53] B2 N=12 n_train=11 models 201-400/600 in 183s
+   [04:53:56] B2 N=12 n_train=11 models 401-600/600 in 183s
+   [04:54:47] B2 N=12 n_train=12 models 1-50/50 in 50s
+[04:54:47] cell B2 N=12 true r50-99: 50 units
+   [04:57:56] B2 N=12 n_train=11 models 1-200/600 in 184s
+   [05:00:59] B2 N=12 n_train=11 models 201-400/600 in 183s
+   [05:04:02] B2 N=12 n_train=11 models 401-600/600 in 183s
+   [05:04:53] B2 N=12 n_train=12 models 1-50/50 in 50s
+[05:04:53] cell B2 N=12 perm r0-49: 50 units
+   [05:08:02] B2 N=12 n_train=11 models 1-200/600 in 184s
+   [05:11:06] B2 N=12 n_train=11 models 201-400/600 in 183s
+   [05:14:09] B2 N=12 n_train=11 models 401-600/600 in 183s
+   [05:14:59] B2 N=12 n_train=12 models 1-50/50 in 50s
+[05:14:59] cell B2 N=12 perm r50-99: 50 units
+   [05:18:09] B2 N=12 n_train=11 models 1-200/600 in 184s
+   [05:21:12] B2 N=12 n_train=11 models 201-400/600 in 183s
+   [05:24:16] B2 N=12 n_train=11 models 401-600/600 in 183s
+   [05:25:06] B2 N=12 n_train=12 models 1-50/50 in 50s
+[05:25:06] cell B2 N=20 true r0-49: 50 units
+   [05:29:47] B2 N=20 n_train=16 models 1-200/1250 in 267s
+   [05:34:14] B2 N=20 n_train=16 models 201-400/1250 in 267s
+   [05:38:40] B2 N=20 n_train=16 models 401-600/1250 in 267s
+   [05:43:07] B2 N=20 n_train=16 models 601-800/1250 in 267s
+   [05:47:33] B2 N=20 n_train=16 models 801-1000/1250 in 267s
+   [05:52:00] B2 N=20 n_train=16 models 1001-1200/1250 in 267s
+   [05:53:06] B2 N=20 n_train=16 models 1201-1250/1250 in 67s
+   [05:54:30] B2 N=20 n_train=20 models 1-50/50 in 83s
+[05:54:30] cell B2 N=20 true r50-99: 50 units
+   [05:59:12] B2 N=20 n_train=16 models 1-200/1250 in 267s
+   [06:03:39] B2 N=20 n_train=16 models 201-400/1250 in 267s
+   [06:08:05] B2 N=20 n_train=16 models 401-600/1250 in 267s
+   [06:12:32] B2 N=20 n_train=16 models 601-800/1250 in 267s
+   [06:16:58] B2 N=20 n_train=16 models 801-1000/1250 in 267s
+   [06:21:25] B2 N=20 n_train=16 models 1001-1200/1250 in 267s
+   [06:22:31] B2 N=20 n_train=16 models 1201-1250/1250 in 67s
+   [06:23:55] B2 N=20 n_train=20 models 1-50/50 in 83s
+[06:23:55] cell B2 N=20 perm r0-49: 50 units
+   [06:28:35] B2 N=20 n_train=16 models 1-200/1250 in 267s
+   [06:33:02] B2 N=20 n_train=16 models 201-400/1250 in 267s
+   [06:37:29] B2 N=20 n_train=16 models 401-600/1250 in 267s
+   [06:41:55] B2 N=20 n_train=16 models 601-800/1250 in 267s
+   [06:46:22] B2 N=20 n_train=16 models 801-1000/1250 in 267s
+   [06:50:48] B2 N=20 n_train=16 models 1001-1200/1250 in 267s
+   [06:51:55] B2 N=20 n_train=16 models 1201-1250/1250 in 67s
+   [06:53:18] B2 N=20 n_train=20 models 1-50/50 in 83s
+[06:53:19] cell B2 N=20 perm r50-99: 50 units
+   [06:58:00] B2 N=20 n_train=16 models 1-200/1250 in 267s
+   [07:02:27] B2 N=20 n_train=16 models 201-400/1250 in 267s
+   [07:06:53] B2 N=20 n_train=16 models 401-600/1250 in 267s
+   [07:11:20] B2 N=20 n_train=16 models 601-800/1250 in 267s
+   [07:15:46] B2 N=20 n_train=16 models 801-1000/1250 in 267s
+   [07:20:13] B2 N=20 n_train=16 models 1001-1200/1250 in 267s
+   [07:21:19] B2 N=20 n_train=16 models 1201-1250/1250 in 67s
+   [07:22:43] B2 N=20 n_train=20 models 1-50/50 in 83s
+[07:22:43] cell B2 N=30 true r0-49: 50 units
+   [07:29:42] B2 N=30 n_train=24 models 1-200/1250 in 400s
+   [07:36:21] B2 N=30 n_train=24 models 201-400/1250 in 400s
+   [07:43:01] B2 N=30 n_train=24 models 401-600/1250 in 400s
+   [07:49:41] B2 N=30 n_train=24 models 601-800/1250 in 400s
+   [07:56:20] B2 N=30 n_train=24 models 801-1000/1250 in 400s
+   [08:03:00] B2 N=30 n_train=24 models 1001-1200/1250 in 400s
+   [08:04:40] B2 N=30 n_train=24 models 1201-1250/1250 in 100s
+   [08:06:45] B2 N=30 n_train=30 models 1-50/50 in 125s
+[08:06:45] cell B2 N=30 true r50-99: 50 units
+   [08:13:44] B2 N=30 n_train=24 models 1-200/1250 in 400s
+   [08:20:23] B2 N=30 n_train=24 models 201-400/1250 in 400s
+   [08:27:03] B2 N=30 n_train=24 models 401-600/1250 in 400s
+   [08:33:43] B2 N=30 n_train=24 models 601-800/1250 in 400s
+   [08:40:23] B2 N=30 n_train=24 models 801-1000/1250 in 400s
+   [08:47:02] B2 N=30 n_train=24 models 1001-1200/1250 in 400s
+   [08:48:42] B2 N=30 n_train=24 models 1201-1250/1250 in 100s
+   [08:50:47] B2 N=30 n_train=30 models 1-50/50 in 125s
+[08:50:48] cell B2 N=30 perm r0-49: 50 units
+   [08:57:45] B2 N=30 n_train=24 models 1-200/1250 in 400s
+   [09:04:25] B2 N=30 n_train=24 models 201-400/1250 in 400s
+   [09:11:05] B2 N=30 n_train=24 models 401-600/1250 in 400s
+   [09:17:45] B2 N=30 n_train=24 models 601-800/1250 in 400s
+   [09:24:25] B2 N=30 n_train=24 models 801-1000/1250 in 400s
+   [09:31:05] B2 N=30 n_train=24 models 1001-1200/1250 in 400s
+   [09:32:45] B2 N=30 n_train=24 models 1201-1250/1250 in 100s
+   [09:34:50] B2 N=30 n_train=30 models 1-50/50 in 125s
+[09:34:51] cell B2 N=30 perm r50-99: 50 units
+   [09:41:50] B2 N=30 n_train=24 models 1-200/1250 in 401s
+   [09:48:30] B2 N=30 n_train=24 models 201-400/1250 in 400s
+   [09:55:11] B2 N=30 n_train=24 models 401-600/1250 in 400s
+   [10:01:51] B2 N=30 n_train=24 models 601-800/1250 in 400s
+   [10:08:31] B2 N=30 n_train=24 models 801-1000/1250 in 400s
+   [10:15:11] B2 N=30 n_train=24 models 1001-1200/1250 in 400s
+   [10:16:51] B2 N=30 n_train=24 models 1201-1250/1250 in 100s
+   [10:18:55] B2 N=30 n_train=30 models 1-50/50 in 125s
+[10:18:56] cell B5 N=6 true r0-49: 50 units
+   [10:20:22] B5 N=6 n_train=5 models 1-200/300 in 84s
+   [10:21:04] B5 N=6 n_train=5 models 201-300/300 in 41s
+   [10:21:29] B5 N=6 n_train=6 models 1-50/50 in 25s
+[10:21:29] cell B5 N=6 true r50-99: 50 units
+   [10:22:55] B5 N=6 n_train=5 models 1-200/300 in 84s
+   [10:23:37] B5 N=6 n_train=5 models 201-300/300 in 41s
+   [10:24:02] B5 N=6 n_train=6 models 1-50/50 in 25s
+[10:24:02] cell B5 N=6 perm r0-49: 50 units
+   [10:25:28] B5 N=6 n_train=5 models 1-200/300 in 84s
+   [10:26:10] B5 N=6 n_train=5 models 201-300/300 in 41s
+   [10:26:35] B5 N=6 n_train=6 models 1-50/50 in 25s
+[10:26:35] cell B5 N=6 perm r50-99: 50 units
+   [10:28:01] B5 N=6 n_train=5 models 1-200/300 in 84s
+   [10:28:42] B5 N=6 n_train=5 models 201-300/300 in 41s
+   [10:29:08] B5 N=6 n_train=6 models 1-50/50 in 25s
+[10:29:08] cell B5 N=9 true r0-49: 50 units
+   [10:31:24] B5 N=9 n_train=8 models 1-200/450 in 134s
+   [10:33:38] B5 N=9 n_train=8 models 201-400/450 in 134s
+   [10:34:11] B5 N=9 n_train=8 models 401-450/450 in 33s
+   [10:34:49] B5 N=9 n_train=9 models 1-50/50 in 38s
+[10:34:49] cell B5 N=9 true r50-99: 50 units
+   [10:37:06] B5 N=9 n_train=8 models 1-200/450 in 134s
+   [10:39:20] B5 N=9 n_train=8 models 201-400/450 in 134s
+   [10:39:53] B5 N=9 n_train=8 models 401-450/450 in 33s
+   [10:40:31] B5 N=9 n_train=9 models 1-50/50 in 38s
+[10:40:31] cell B5 N=9 perm r0-49: 50 units
+   [10:42:48] B5 N=9 n_train=8 models 1-200/450 in 134s
+   [10:45:01] B5 N=9 n_train=8 models 201-400/450 in 134s
+   [10:45:35] B5 N=9 n_train=8 models 401-450/450 in 33s
+   [10:46:13] B5 N=9 n_train=9 models 1-50/50 in 38s
+[10:46:13] cell B5 N=9 perm r50-99: 50 units
+   [10:48:29] B5 N=9 n_train=8 models 1-200/450 in 134s
+   [10:50:43] B5 N=9 n_train=8 models 201-400/450 in 134s
+   [10:51:16] B5 N=9 n_train=8 models 401-450/450 in 33s
+   [10:51:54] B5 N=9 n_train=9 models 1-50/50 in 38s
+[10:51:54] cell B5 N=12 true r0-49: 50 units
+   [10:55:01] B5 N=12 n_train=11 models 1-200/600 in 184s
+   [10:58:05] B5 N=12 n_train=11 models 201-400/600 in 184s
+   [11:01:09] B5 N=12 n_train=11 models 401-600/600 in 184s
+   [11:01:59] B5 N=12 n_train=12 models 1-50/50 in 50s
+[11:01:59] cell B5 N=12 true r50-99: 50 units
+   [11:05:06] B5 N=12 n_train=11 models 1-200/600 in 184s
+   [11:08:10] B5 N=12 n_train=11 models 201-400/600 in 184s
+   [11:11:13] B5 N=12 n_train=11 models 401-600/600 in 184s
+   [11:12:03] B5 N=12 n_train=12 models 1-50/50 in 50s
+[11:12:04] cell B5 N=12 perm r0-49: 50 units
+   [11:15:11] B5 N=12 n_train=11 models 1-200/600 in 184s
+   [11:18:15] B5 N=12 n_train=11 models 201-400/600 in 184s
+   [11:21:18] B5 N=12 n_train=11 models 401-600/600 in 184s
+   [11:22:09] B5 N=12 n_train=12 models 1-50/50 in 50s
+[11:22:09] cell B5 N=12 perm r50-99: 50 units
+   [11:25:16] B5 N=12 n_train=11 models 1-200/600 in 184s
+   [11:28:20] B5 N=12 n_train=11 models 201-400/600 in 184s
+   [11:31:24] B5 N=12 n_train=11 models 401-600/600 in 184s
+   [11:32:14] B5 N=12 n_train=12 models 1-50/50 in 50s
+[11:32:14] cell B5 N=20 true r0-49: 50 units
+   [11:36:49] B5 N=20 n_train=16 models 1-200/1250 in 267s
+   [11:41:16] B5 N=20 n_train=16 models 201-400/1250 in 267s
+   [11:45:42] B5 N=20 n_train=16 models 401-600/1250 in 267s
+   [11:50:09] B5 N=20 n_train=16 models 601-800/1250 in 267s
+   [11:54:36] B5 N=20 n_train=16 models 801-1000/1250 in 267s
+   [11:59:03] B5 N=20 n_train=16 models 1001-1200/1250 in 267s
+   [12:00:09] B5 N=20 n_train=16 models 1201-1250/1250 in 67s
+   [12:01:33] B5 N=20 n_train=20 models 1-50/50 in 83s
+[12:01:33] cell B5 N=20 true r50-99: 50 units
+   [12:06:09] B5 N=20 n_train=16 models 1-200/1250 in 267s
+   [12:10:36] B5 N=20 n_train=16 models 201-400/1250 in 267s
+   [12:15:03] B5 N=20 n_train=16 models 401-600/1250 in 267s
+   [12:19:30] B5 N=20 n_train=16 models 601-800/1250 in 267s
+   [12:23:57] B5 N=20 n_train=16 models 801-1000/1250 in 267s
+   [12:28:24] B5 N=20 n_train=16 models 1001-1200/1250 in 267s
+   [12:29:30] B5 N=20 n_train=16 models 1201-1250/1250 in 67s
+   [12:30:53] B5 N=20 n_train=20 models 1-50/50 in 83s
+[12:30:54] cell B5 N=20 perm r0-49: 50 units
+   [12:35:30] B5 N=20 n_train=16 models 1-200/1250 in 267s
+   [12:39:57] B5 N=20 n_train=16 models 201-400/1250 in 267s
+   [12:44:24] B5 N=20 n_train=16 models 401-600/1250 in 267s
+   [12:48:51] B5 N=20 n_train=16 models 601-800/1250 in 267s
+   [12:53:18] B5 N=20 n_train=16 models 801-1000/1250 in 267s
+   [12:57:44] B5 N=20 n_train=16 models 1001-1200/1250 in 267s
+   [12:58:51] B5 N=20 n_train=16 models 1201-1250/1250 in 67s
+   [13:00:14] B5 N=20 n_train=20 models 1-50/50 in 83s
+[13:00:15] cell B5 N=20 perm r50-99: 50 units
+   [13:04:51] B5 N=20 n_train=16 models 1-200/1250 in 267s
+   [13:09:18] B5 N=20 n_train=16 models 201-400/1250 in 267s
+   [13:13:45] B5 N=20 n_train=16 models 401-600/1250 in 267s
+   [13:18:12] B5 N=20 n_train=16 models 601-800/1250 in 267s
+   [13:22:39] B5 N=20 n_train=16 models 801-1000/1250 in 267s
+   [13:27:06] B5 N=20 n_train=16 models 1001-1200/1250 in 267s
+   [13:28:13] B5 N=20 n_train=16 models 1201-1250/1250 in 67s
+   [13:29:37] B5 N=20 n_train=20 models 1-50/50 in 83s
+[13:29:37] cell B5 N=30 true r0-49: 50 units
+   [13:36:28] B5 N=30 n_train=24 models 1-200/1250 in 401s
+   [13:43:09] B5 N=30 n_train=24 models 201-400/1250 in 401s
+   [13:49:49] B5 N=30 n_train=24 models 401-600/1250 in 401s
+   [13:56:30] B5 N=30 n_train=24 models 601-800/1250 in 401s
+   [14:03:11] B5 N=30 n_train=24 models 801-1000/1250 in 401s
+   [14:09:51] B5 N=30 n_train=24 models 1001-1200/1250 in 401s
+   [14:11:31] B5 N=30 n_train=24 models 1201-1250/1250 in 100s
+   [14:13:36] B5 N=30 n_train=30 models 1-50/50 in 125s
+[14:13:37] cell B5 N=30 true r50-99: 50 units
+   [14:20:28] B5 N=30 n_train=24 models 1-200/1250 in 401s
+   [14:27:09] B5 N=30 n_train=24 models 201-400/1250 in 401s
+   [14:33:50] B5 N=30 n_train=24 models 401-600/1250 in 401s
+   [14:40:30] B5 N=30 n_train=24 models 601-800/1250 in 401s
+   [14:47:11] B5 N=30 n_train=24 models 801-1000/1250 in 401s
+   [14:53:52] B5 N=30 n_train=24 models 1001-1200/1250 in 401s
+   [14:55:32] B5 N=30 n_train=24 models 1201-1250/1250 in 100s
+   [14:57:37] B5 N=30 n_train=30 models 1-50/50 in 125s
+[14:57:38] cell B5 N=30 perm r0-49: 50 units
+   [15:04:28] B5 N=30 n_train=24 models 1-200/1250 in 401s
+   [15:11:09] B5 N=30 n_train=24 models 201-400/1250 in 401s
+   [15:17:49] B5 N=30 n_train=24 models 401-600/1250 in 401s
+   [15:24:30] B5 N=30 n_train=24 models 601-800/1250 in 401s
+   [15:31:11] B5 N=30 n_train=24 models 801-1000/1250 in 401s
+   [15:37:52] B5 N=30 n_train=24 models 1001-1200/1250 in 401s
+   [15:39:32] B5 N=30 n_train=24 models 1201-1250/1250 in 100s
+   [15:41:37] B5 N=30 n_train=30 models 1-50/50 in 125s
+[15:41:37] cell B5 N=30 perm r50-99: 50 units
+   [15:48:28] B5 N=30 n_train=24 models 1-200/1250 in 401s
+   [15:55:09] B5 N=30 n_train=24 models 201-400/1250 in 401s
+   [16:01:50] B5 N=30 n_train=24 models 401-600/1250 in 401s
+   [16:08:30] B5 N=30 n_train=24 models 601-800/1250 in 401s
+   [16:15:11] B5 N=30 n_train=24 models 801-1000/1250 in 401s
+   [16:21:52] B5 N=30 n_train=24 models 1001-1200/1250 in 401s
+   [16:23:32] B5 N=30 n_train=24 models 1201-1250/1250 in 100s
+   [16:25:37] B5 N=30 n_train=30 models 1-50/50 in 125s
+[16:25:38] cell B5 N=50 true r0-49: 50 units
+   [16:37:00] B5 N=50 n_train=40 models 1-200/1250 in 668s
+   [16:48:08] B5 N=50 n_train=40 models 201-400/1250 in 668s
+   [16:59:16] B5 N=50 n_train=40 models 401-600/1250 in 668s
+   [17:10:23] B5 N=50 n_train=40 models 601-800/1250 in 667s
+   [17:21:31] B5 N=50 n_train=40 models 801-1000/1250 in 667s
+   [17:32:38] B5 N=50 n_train=40 models 1001-1200/1250 in 668s
+   [17:35:24] B5 N=50 n_train=40 models 1201-1250/1250 in 166s
+   [17:38:52] B5 N=50 n_train=50 models 1-50/50 in 208s
+[17:38:53] cell B5 N=50 true r50-99: 50 units
+   [17:50:16] B5 N=50 n_train=40 models 1-200/1250 in 668s
+   [18:01:23] B5 N=50 n_train=40 models 201-400/1250 in 668s
+   [18:12:31] B5 N=50 n_train=40 models 401-600/1250 in 668s
+   [18:23:38] B5 N=50 n_train=40 models 601-800/1250 in 668s
+   [18:34:46] B5 N=50 n_train=40 models 801-1000/1250 in 667s
+   [18:45:53] B5 N=50 n_train=40 models 1001-1200/1250 in 667s
+   [18:48:40] B5 N=50 n_train=40 models 1201-1250/1250 in 166s
+   [18:52:08] B5 N=50 n_train=50 models 1-50/50 in 208s
+[18:52:09] cell B5 N=50 perm r0-49: 50 units
+   [19:03:31] B5 N=50 n_train=40 models 1-200/1250 in 668s
+   [19:14:39] B5 N=50 n_train=40 models 201-400/1250 in 668s
+   [19:25:46] B5 N=50 n_train=40 models 401-600/1250 in 667s
+   [19:36:53] B5 N=50 n_train=40 models 601-800/1250 in 667s
+   [19:48:04] B5 N=50 n_train=40 models 801-1000/1250 in 670s
+   [20:00:52] B5 N=50 n_train=40 models 1001-1200/1250 in 768s
+   [20:04:16] B5 N=50 n_train=40 models 1201-1250/1250 in 205s
+   [20:09:11] B5 N=50 n_train=50 models 1-50/50 in 295s
+[20:09:12] cell B5 N=50 perm r50-99: 50 units
+   [20:24:34] B5 N=50 n_train=40 models 1-200/1250 in 905s
+   [20:39:54] B5 N=50 n_train=40 models 201-400/1250 in 920s
+   [20:54:30] B5 N=50 n_train=40 models 401-600/1250 in 875s
+   [21:10:30] B5 N=50 n_train=40 models 601-800/1250 in 961s
+   [21:24:14] B5 N=50 n_train=40 models 801-1000/1250 in 824s
+   [21:37:29] B5 N=50 n_train=40 models 1001-1200/1250 in 794s
+   [21:41:27] B5 N=50 n_train=40 models 1201-1250/1250 in 238s
+   [21:46:16] B5 N=50 n_train=50 models 1-50/50 in 289s
+[supervise 2026-10-15 21:46:38] exit code 0
+[supervise 2026-10-15 21:46:38] all steps finished

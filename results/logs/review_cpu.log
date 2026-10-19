@@ -1,0 +1,626 @@
+effect_null B1 done
+effect_null B2 done
+effect_null B5 done
+
+=== effect_null
+task     scope   N  arm  median_abs_d   q05   q95
+  B1      full 213 true         4.156   NaN   NaN
+  B1      full 213 perm         0.486 0.420 0.695
+  B1 subsample   6 true         7.407 5.325 9.781
+  B1 subsample   6 perm         3.520 2.847 6.673
+  B1 subsample   9 true         6.163 4.540 7.763
+  B1 subsample   9 perm         2.869 2.496 3.611
+  B1 subsample  12 true         5.357 4.266 7.106
+  B1 subsample  12 perm         2.466 2.082 3.087
+  B1 subsample  20 true         4.744 4.007 6.025
+  B1 subsample  20 perm         1.969 1.653 2.435
+  B1 subsample  30 true         4.665 3.949 5.381
+  B1 subsample  30 perm         1.680 1.340 2.074
+  B1 subsample  50 true         4.339 3.845 4.886
+  B1 subsample  50 perm         1.227 0.954 1.564
+  B2      full 140 true         0.768   NaN   NaN
+  B2      full 140 perm         0.692 0.606 0.992
+  B2 subsample   6 true         3.740 3.179 4.888
+  B2 subsample   6 perm         3.726 3.184 4.700
+  B2 subsample   9 true         2.873 2.480 3.592
+  B2 subsample   9 perm         2.845 2.429 3.426
+  B2 subsample  12 true         2.485 2.188 2.816
+  B2 subsample  12 perm         2.424 2.118 2.761
+  B2 subsample  20 true         1.951 1.723 2.319
+  B2 subsample  20 perm         1.938 1.689 2.340
+  B2 subsample  30 true         1.600 1.380 2.068
+  B2 subsample  30 perm         1.587 1.289 1.964
+  B2 subsample  50 true         1.175 1.047 1.439
+  B2 subsample  50 perm         1.197 0.975 1.723
+  B5      full 163 true         0.708   NaN   NaN
+  B5      full 163 perm         0.995 0.751 1.437
+  B5 subsample   6 true         3.452 3.008 4.242
+  B5 subsample   6 perm         3.395 2.896 4.169
+  B5 subsample   9 true         2.878 2.615 3.296
+  B5 subsample   9 perm         2.838 2.550 3.211
+  B5 subsample  12 true         2.579 2.331 2.904
+  B5 subsample  12 perm         2.554 2.298 2.837
+  B5 subsample  20 true         2.070 1.875 2.362
+  B5 subsample  20 perm         2.131 1.907 2.420
+  B5 subsample  30 true         1.706 1.514 2.034
+  B5 subsample  30 perm         1.877 1.560 2.111
+  B5 subsample  50 true         1.227 1.101 1.542
+  B5 subsample  50 perm         1.557 1.204 1.869
+
+=== smote
+task  arm model  N  total_optimism  filter_leak_optimism  smote_extra  smote_extra_q25  smote_extra_q75  p_smote_extra_pos  auc_int_leaky_smote
+  B1 perm    EN  6           0.592                 0.562        0.000            0.000            0.000               0.20                1.000
+  B1 perm    EN  9           0.530                 0.388        0.100            0.050            0.200               0.80                1.000
+  B1 perm    EN 12           0.471                 0.176        0.208            0.167            0.340               0.96                1.000
+  B1 perm    EN 20           0.494                 0.295        0.130            0.080            0.200               1.00                0.980
+  B1 perm    EN 30           0.463                 0.286        0.162            0.116            0.223               1.00                0.978
+  B1 perm    EN 50           0.426                 0.277        0.149            0.117            0.181               1.00                0.973
+  B1 perm    RF  6           0.778                 0.778        0.000            0.000            0.000               0.04                1.000
+  B1 perm    RF  9           0.578                 0.508        0.050            0.000            0.100               0.54                1.000
+  B1 perm    RF 12           0.413                 0.250        0.139            0.069            0.222               0.92                1.000
+  B1 perm    RF 20           0.460                 0.393        0.090            0.060            0.120               0.98                0.990
+  B1 perm    RF 30           0.439                 0.347        0.116            0.088            0.145               1.00                0.978
+  B1 perm    RF 50           0.368                 0.224        0.140            0.114            0.162               1.00                0.974
+  B1 true    EN  6           0.000                 0.000        0.000            0.000            0.000               0.00                1.000
+  B1 true    EN  9           0.000                 0.000        0.000            0.000            0.000               0.00                1.000
+  B1 true    EN 12           0.000                 0.000        0.000            0.000            0.000               0.00                1.000
+  B1 true    EN 20           0.000                 0.000        0.000            0.000            0.000               0.00                1.000
+  B1 true    EN 30           0.000                 0.000        0.000            0.000            0.000               0.00                1.000
+  B1 true    EN 50           0.000                 0.000        0.000            0.000            0.000               0.00                1.000
+  B1 true    RF  6           0.000                 0.000        0.000            0.000            0.000               0.00                1.000
+  B1 true    RF  9           0.000                 0.000        0.000            0.000            0.000               0.00                1.000
+  B1 true    RF 12           0.000                 0.000        0.000            0.000            0.000               0.01                1.000
+  B1 true    RF 20           0.000                 0.000        0.000            0.000            0.000               0.00                1.000
+  B1 true    RF 30           0.000                 0.000        0.000            0.000            0.000               0.00                1.000
+  B1 true    RF 50           0.000                 0.000        0.000            0.000            0.000               0.00                1.000
+  B2 perm    EN  6           0.522                 0.526        0.000            0.000            0.000               0.04                1.000
+  B2 perm    EN  9           0.492                 0.410        0.050            0.000            0.200               0.65                1.000
+  B2 perm    EN 12           0.472                 0.252        0.194            0.111            0.333               0.95                1.000
+  B2 perm    EN 20           0.456                 0.323        0.140            0.088            0.200               0.99                0.980
+  B2 perm    EN 30           0.464                 0.292        0.178            0.138            0.224               1.00                0.960
+  B2 perm    RF  6           0.536                 0.536        0.000            0.000            0.000               0.00                1.000
+  B2 perm    RF  9           0.512                 0.494        0.000            0.000            0.031               0.26                1.000
+  B2 perm    RF 12           0.470                 0.364        0.111            0.038            0.194               0.84                1.000
+  B2 perm    RF 20           0.467                 0.380        0.085            0.060            0.116               1.00                0.990
+  B2 perm    RF 30           0.483                 0.381        0.102            0.073            0.129               1.00                0.984
+  B2 true    EN  6           0.436                 0.439        0.000            0.000            0.000               0.03                1.000
+  B2 true    EN  9           0.419                 0.331        0.075            0.000            0.150               0.66                1.000
+  B2 true    EN 12           0.409                 0.230        0.181            0.083            0.312               0.92                1.000
+  B2 true    EN 20           0.352                 0.243        0.120            0.060            0.180               0.98                0.980
+  B2 true    EN 30           0.352                 0.218        0.127            0.093            0.178               1.00                0.982
+  B2 true    RF  6           0.447                 0.447        0.000            0.000            0.000               0.00                1.000
+  B2 true    RF  9           0.423                 0.416        0.000            0.000            0.000               0.22                1.000
+  B2 true    RF 12           0.407                 0.312        0.083            0.042            0.156               0.85                1.000
+  B2 true    RF 20           0.384                 0.317        0.070            0.040            0.100               0.95                1.000
+  B2 true    RF 30           0.363                 0.278        0.080            0.060            0.111               1.00                0.987
+  B5 perm    EN  6           0.488                 0.496        0.000            0.000            0.000               0.05                1.000
+  B5 perm    EN  9           0.496                 0.273        0.200            0.088            0.400               0.81                1.000
+  B5 perm    EN 12           0.474                 0.134        0.361            0.194            0.507               0.95                1.000
+  B5 perm    EN 20           0.483                 0.233        0.245            0.170            0.302               1.00                0.980
+  B5 perm    EN 30           0.446                 0.196        0.236            0.173            0.283               1.00                0.967
+  B5 perm    EN 50           0.468                 0.222        0.237            0.180            0.298               1.00                0.957
+  B5 perm    RF  6           0.502                 0.502        0.000            0.000            0.000               0.00                1.000
+  B5 perm    RF  9           0.517                 0.471        0.000            0.000            0.050               0.38                1.000
+  B5 perm    RF 12           0.472                 0.301        0.167            0.083            0.278               0.93                1.000
+  B5 perm    RF 20           0.501                 0.418        0.080            0.050            0.115               0.97                0.995
+  B5 perm    RF 30           0.476                 0.384        0.096            0.071            0.122               1.00                0.987
+  B5 perm    RF 50           0.497                 0.369        0.129            0.104            0.151               1.00                0.978
+  B5 true    EN  6           0.398                 0.396        0.000            0.000            0.000               0.07                1.000
+  B5 true    EN  9           0.374                 0.222        0.150            0.037            0.250               0.75                1.000
+  B5 true    EN 12           0.350                 0.105        0.250            0.139            0.389               0.96                1.000
+  B5 true    EN 20           0.287                 0.139        0.155            0.090            0.210               0.97                0.990
+  B5 true    EN 30           0.252                 0.129        0.136            0.093            0.191               1.00                0.987
+  B5 true    EN 50           0.223                 0.116        0.111            0.082            0.140               1.00                0.981
+  B5 true    RF  6           0.368                 0.368        0.000            0.000            0.000               0.00                1.000
+  B5 true    RF  9           0.362                 0.345        0.000            0.000            0.050               0.33                1.000
+  B5 true    RF 12           0.342                 0.254        0.097            0.028            0.167               0.87                1.000
+  B5 true    RF 20           0.297                 0.243        0.067            0.030            0.080               0.97                1.000
+  B5 true    RF 30           0.265                 0.192        0.069            0.044            0.089               0.99                0.993
+  B5 true    RF 50           0.227                 0.144        0.080            0.063            0.098               1.00                0.979
+
+=== kendall
+ N         set     W                     order_B2                     order_B5
+ 6    with FUS 0.550 EN > CCP > TabPFN > RF > FUS TabPFN > RF > CCP > EN > FUS
+ 6 without FUS 0.100       EN > CCP > TabPFN > RF       TabPFN > RF > CCP > EN
+ 9    with FUS 1.000 TabPFN > CCP > RF > EN > FUS TabPFN > CCP > RF > EN > FUS
+ 9 without FUS 0.816       CCP > TabPFN > RF > EN       TabPFN > RF > CCP > EN
+12    with FUS 0.950 TabPFN > CCP > RF > EN > FUS TabPFN > RF > CCP > EN > FUS
+12 without FUS 0.900       TabPFN > CCP > RF > EN       TabPFN > RF > CCP > EN
+20    with FUS 0.950 TabPFN > EN > RF > CCP > FUS TabPFN > RF > EN > CCP > FUS
+20 without FUS 0.900       TabPFN > EN > RF > CCP       TabPFN > RF > EN > CCP
+30    with FUS 1.000 TabPFN > RF > EN > CCP > FUS TabPFN > RF > EN > CCP > FUS
+30 without FUS 1.000       TabPFN > RF > EN > CCP       TabPFN > RF > EN > CCP
+
+=== kfold_tail
+task  N config  p_gt_0.1
+  B2 20    CCP      0.21
+  B2 20     EN      0.23
+  B2 20     RF      0.22
+  B2 20 TabPFN      0.23
+  B2 30    CCP      0.24
+  B2 30     EN      0.22
+  B2 30     RF      0.24
+  B2 30 TabPFN      0.23
+  B5 20    CCP      0.20
+  B5 20     EN      0.21
+  B5 20     RF      0.26
+  B5 20 TabPFN      0.23
+  B5 30    CCP      0.16
+  B5 30     EN      0.21
+  B5 30     RF      0.14
+  B5 30 TabPFN      0.17
+  B5 50    CCP      0.16
+  B5 50     EN      0.15
+  B5 50     RF      0.16
+  B5 50 TabPFN      0.13
+task  N  p_gt_01  median    q25   q75
+  B2 20    0.222  -0.041 -0.153 0.084
+  B2 30    0.232  -0.022 -0.141 0.092
+  B5 20    0.225  -0.016 -0.143 0.087
+  B5 30    0.170  -0.015 -0.100 0.069
+  B5 50    0.150  -0.007 -0.066 0.059
+recovery_h B1 done
+recovery_h B2 done
+recovery_h B5 done
+
+=== recovery_h
+task         config  N  arm  p50_full  p50_H
+  B1            CCP  6 perm     0.017  0.017
+  B1            CCP  6 true     0.190  0.189
+  B1            CCP  9 perm     0.001  0.001
+  B1            CCP  9 true     0.289  0.290
+  B1            CCP 12 perm     0.001  0.001
+  B1            CCP 12 true     0.350  0.351
+  B1            CCP 20 perm     0.000  0.000
+  B1            CCP 20 true     0.483  0.480
+  B1            CCP 30 perm     0.000  0.000
+  B1            CCP 30 true     0.579  0.568
+  B1            CCP 50 perm     0.000  0.000
+  B1            CCP 50 true     0.660  0.636
+  B1             EN  6 perm     0.004  0.004
+  B1             EN  6 true     0.073  0.072
+  B1             EN  9 perm     0.000  0.001
+  B1             EN  9 true     0.114  0.114
+  B1             EN 12 perm     0.000  0.000
+  B1             EN 12 true     0.130  0.128
+  B1             EN 20 perm     0.000  0.000
+  B1             EN 20 true     0.141  0.139
+  B1             EN 30 perm     0.000  0.000
+  B1             EN 30 true     0.160  0.158
+  B1             EN 50 perm     0.000  0.000
+  B1             EN 50 true     0.133  0.129
+  B1        EN-drop  6 perm     0.005  0.005
+  B1        EN-drop  6 true     0.078  0.077
+  B1        EN-drop  9 perm     0.000  0.001
+  B1        EN-drop  9 true     0.117  0.117
+  B1        EN-drop 12 perm     0.000  0.000
+  B1        EN-drop 12 true     0.132  0.130
+  B1        EN-drop 20 perm     0.000  0.000
+  B1        EN-drop 20 true     0.143  0.141
+  B1        EN-drop 30 perm     0.000  0.000
+  B1        EN-drop 30 true     0.163  0.161
+  B1        EN-drop 50 perm     0.000  0.000
+  B1        EN-drop 50 true     0.135  0.131
+  B1       EN-smote  6 perm     0.004  0.004
+  B1       EN-smote  6 true     0.073  0.072
+  B1       EN-smote  9 perm     0.000  0.001
+  B1       EN-smote  9 true     0.104  0.102
+  B1       EN-smote 12 perm     0.000  0.000
+  B1       EN-smote 12 true     0.124  0.121
+  B1       EN-smote 20 perm     0.000  0.000
+  B1       EN-smote 20 true     0.126  0.123
+  B1       EN-smote 30 perm     0.000  0.000
+  B1       EN-smote 30 true     0.157  0.155
+  B1       EN-smote 50 perm     0.000  0.000
+  B1       EN-smote 50 true     0.123  0.122
+  B1 EN-smote-leaky  6 perm     0.004  0.004
+  B1 EN-smote-leaky  6 true     0.073  0.072
+  B1 EN-smote-leaky  9 perm     0.000  0.001
+  B1 EN-smote-leaky  9 true     0.104  0.102
+  B1 EN-smote-leaky 12 perm     0.000  0.000
+  B1 EN-smote-leaky 12 true     0.124  0.121
+  B1 EN-smote-leaky 20 perm     0.000  0.000
+  B1 EN-smote-leaky 20 true     0.126  0.123
+  B1 EN-smote-leaky 30 perm     0.000  0.000
+  B1 EN-smote-leaky 30 true     0.157  0.155
+  B1 EN-smote-leaky 50 perm     0.000  0.000
+  B1 EN-smote-leaky 50 true     0.123  0.122
+  B1         EN-var  6 perm     0.019  0.020
+  B1         EN-var  6 true     0.188  0.190
+  B1         EN-var  9 perm     0.008  0.008
+  B1         EN-var  9 true     0.222  0.226
+  B1         EN-var 12 perm     0.007  0.008
+  B1         EN-var 12 true     0.226  0.230
+  B1         EN-var 20 perm     0.002  0.003
+  B1         EN-var 20 true     0.240  0.250
+  B1         EN-var 30 perm     0.000  0.001
+  B1         EN-var 30 true     0.249  0.264
+  B1         EN-var 50 perm     0.000  0.000
+  B1         EN-var 50 true     0.239  0.251
+  B1            FUS  6 perm     0.013  0.013
+  B1            FUS  6 true     0.098  0.105
+  B1            FUS  9 perm     0.003  0.003
+  B1            FUS  9 true     0.103  0.110
+  B1            FUS 12 perm     0.003  0.004
+  B1            FUS 12 true     0.105  0.108
+  B1            FUS 20 perm     0.002  0.001
+  B1            FUS 20 true     0.092  0.103
+  B1            FUS 30 perm     0.001  0.001
+  B1            FUS 30 true     0.091  0.102
+  B1            FUS 50 perm     0.000  0.000
+  B1            FUS 50 true     0.083  0.097
+  B1             RF  6 perm     0.008  0.008
+  B1             RF  6 true     0.104  0.102
+  B1             RF  9 perm     0.002  0.002
+  B1             RF  9 true     0.139  0.139
+  B1             RF 12 perm     0.000  0.000
+  B1             RF 12 true     0.133  0.134
+  B1             RF 20 perm     0.000  0.000
+  B1             RF 20 true     0.171  0.170
+  B1             RF 30 perm     0.000  0.000
+  B1             RF 30 true     0.188  0.184
+  B1             RF 50 perm     0.000  0.000
+  B1             RF 50 true     0.264  0.257
+  B1        RF-drop  6 perm     0.010  0.010
+  B1        RF-drop  6 true     0.113  0.114
+  B1        RF-drop  9 perm     0.001  0.001
+  B1        RF-drop  9 true     0.127  0.128
+  B1        RF-drop 12 perm     0.001  0.001
+  B1        RF-drop 12 true     0.140  0.140
+  B1        RF-drop 20 perm     0.000  0.000
+  B1        RF-drop 20 true     0.160  0.161
+  B1        RF-drop 30 perm     0.000  0.000
+  B1        RF-drop 30 true     0.181  0.177
+  B1        RF-drop 50 perm     0.000  0.000
+  B1        RF-drop 50 true     0.266  0.258
+  B1       RF-smote  6 perm     0.010  0.010
+  B1       RF-smote  6 true     0.106  0.106
+  B1       RF-smote  9 perm     0.001  0.001
+  B1       RF-smote  9 true     0.125  0.124
+  B1       RF-smote 12 perm     0.000  0.000
+  B1       RF-smote 12 true     0.140  0.139
+  B1       RF-smote 20 perm     0.000  0.000
+  B1       RF-smote 20 true     0.163  0.160
+  B1       RF-smote 30 perm     0.001  0.001
+  B1       RF-smote 30 true     0.185  0.179
+  B1       RF-smote 50 perm     0.000  0.000
+  B1       RF-smote 50 true     0.282  0.273
+  B1 RF-smote-leaky  6 perm     0.010  0.010
+  B1 RF-smote-leaky  6 true     0.106  0.106
+  B1 RF-smote-leaky  9 perm     0.001  0.001
+  B1 RF-smote-leaky  9 true     0.125  0.124
+  B1 RF-smote-leaky 12 perm     0.000  0.000
+  B1 RF-smote-leaky 12 true     0.140  0.139
+  B1 RF-smote-leaky 20 perm     0.000  0.000
+  B1 RF-smote-leaky 20 true     0.163  0.160
+  B1 RF-smote-leaky 30 perm     0.001  0.001
+  B1 RF-smote-leaky 30 true     0.185  0.179
+  B1 RF-smote-leaky 50 perm     0.000  0.000
+  B1 RF-smote-leaky 50 true     0.282  0.273
+  B1         RF-var  6 perm     0.020  0.020
+  B1         RF-var  6 true     0.086  0.087
+  B1         RF-var  9 perm     0.014  0.015
+  B1         RF-var  9 true     0.137  0.141
+  B1         RF-var 12 perm     0.008  0.009
+  B1         RF-var 12 true     0.167  0.170
+  B1         RF-var 20 perm     0.011  0.012
+  B1         RF-var 20 true     0.227  0.238
+  B1         RF-var 30 perm     0.008  0.008
+  B1         RF-var 30 true     0.261  0.277
+  B1         RF-var 50 perm     0.007  0.008
+  B1         RF-var 50 true     0.294  0.316
+  B2            CCP  6 perm     0.005  0.004
+  B2            CCP  6 true     0.013  0.011
+  B2            CCP  9 perm     0.006  0.005
+  B2            CCP  9 true     0.017  0.015
+  B2            CCP 12 perm     0.003  0.003
+  B2            CCP 12 true     0.018  0.014
+  B2            CCP 20 perm     0.002  0.003
+  B2            CCP 20 true     0.032  0.023
+  B2            CCP 30 perm     0.003  0.004
+  B2            CCP 30 true     0.056  0.029
+  B2             EN  6 perm     0.004  0.003
+  B2             EN  6 true     0.010  0.009
+  B2             EN  9 perm     0.003  0.004
+  B2             EN  9 true     0.013  0.012
+  B2             EN 12 perm     0.003  0.003
+  B2             EN 12 true     0.014  0.011
+  B2             EN 20 perm     0.003  0.002
+  B2             EN 20 true     0.022  0.017
+  B2             EN 30 perm     0.003  0.004
+  B2             EN 30 true     0.035  0.020
+  B2        EN-drop  6 perm     0.003  0.003
+  B2        EN-drop  6 true     0.008  0.008
+  B2        EN-drop  9 perm     0.003  0.004
+  B2        EN-drop  9 true     0.014  0.014
+  B2        EN-drop 12 perm     0.003  0.003
+  B2        EN-drop 12 true     0.016  0.013
+  B2        EN-drop 20 perm     0.002  0.002
+  B2        EN-drop 20 true     0.023  0.017
+  B2        EN-drop 30 perm     0.004  0.004
+  B2        EN-drop 30 true     0.035  0.018
+  B2       EN-smote  6 perm     0.004  0.004
+  B2       EN-smote  6 true     0.010  0.009
+  B2       EN-smote  9 perm     0.004  0.004
+  B2       EN-smote  9 true     0.012  0.011
+  B2       EN-smote 12 perm     0.003  0.003
+  B2       EN-smote 12 true     0.014  0.011
+  B2       EN-smote 20 perm     0.002  0.002
+  B2       EN-smote 20 true     0.021  0.016
+  B2       EN-smote 30 perm     0.003  0.004
+  B2       EN-smote 30 true     0.034  0.019
+  B2 EN-smote-leaky  6 perm     0.004  0.004
+  B2 EN-smote-leaky  6 true     0.010  0.009
+  B2 EN-smote-leaky  9 perm     0.004  0.004
+  B2 EN-smote-leaky  9 true     0.012  0.011
+  B2 EN-smote-leaky 12 perm     0.003  0.003
+  B2 EN-smote-leaky 12 true     0.014  0.011
+  B2 EN-smote-leaky 20 perm     0.002  0.002
+  B2 EN-smote-leaky 20 true     0.021  0.016
+  B2 EN-smote-leaky 30 perm     0.003  0.004
+  B2 EN-smote-leaky 30 true     0.034  0.019
+  B2         EN-var  6 perm     0.007  0.006
+  B2         EN-var  6 true     0.014  0.011
+  B2         EN-var  9 perm     0.007  0.005
+  B2         EN-var  9 true     0.017  0.013
+  B2         EN-var 12 perm     0.005  0.005
+  B2         EN-var 12 true     0.019  0.012
+  B2         EN-var 20 perm     0.009  0.006
+  B2         EN-var 20 true     0.025  0.017
+  B2         EN-var 30 perm     0.011  0.008
+  B2         EN-var 30 true     0.028  0.014
+  B2            FUS  6 perm     0.002  0.002
+  B2            FUS  6 true     0.003  0.004
+  B2            FUS  9 perm     0.004  0.003
+  B2            FUS  9 true     0.010  0.011
+  B2            FUS 12 perm     0.003  0.003
+  B2            FUS 12 true     0.010  0.009
+  B2            FUS 20 perm     0.004  0.004
+  B2            FUS 20 true     0.016  0.013
+  B2            FUS 30 perm     0.003  0.002
+  B2            FUS 30 true     0.026  0.013
+  B2             RF  6 perm     0.006  0.004
+  B2             RF  6 true     0.006  0.007
+  B2             RF  9 perm     0.004  0.004
+  B2             RF  9 true     0.011  0.012
+  B2             RF 12 perm     0.003  0.002
+  B2             RF 12 true     0.012  0.011
+  B2             RF 20 perm     0.003  0.002
+  B2             RF 20 true     0.023  0.016
+  B2             RF 30 perm     0.003  0.004
+  B2             RF 30 true     0.041  0.022
+  B2        RF-drop  6 perm     0.004  0.004
+  B2        RF-drop  6 true     0.007  0.007
+  B2        RF-drop  9 perm     0.004  0.003
+  B2        RF-drop  9 true     0.011  0.010
+  B2        RF-drop 12 perm     0.002  0.002
+  B2        RF-drop 12 true     0.017  0.014
+  B2        RF-drop 20 perm     0.003  0.003
+  B2        RF-drop 20 true     0.022  0.014
+  B2        RF-drop 30 perm     0.004  0.003
+  B2        RF-drop 30 true     0.043  0.019
+  B2       RF-smote  6 perm     0.003  0.003
+  B2       RF-smote  6 true     0.009  0.009
+  B2       RF-smote  9 perm     0.004  0.003
+  B2       RF-smote  9 true     0.010  0.010
+  B2       RF-smote 12 perm     0.002  0.002
+  B2       RF-smote 12 true     0.016  0.013
+  B2       RF-smote 20 perm     0.002  0.002
+  B2       RF-smote 20 true     0.023  0.017
+  B2       RF-smote 30 perm     0.004  0.003
+  B2       RF-smote 30 true     0.044  0.023
+  B2 RF-smote-leaky  6 perm     0.003  0.003
+  B2 RF-smote-leaky  6 true     0.009  0.009
+  B2 RF-smote-leaky  9 perm     0.004  0.003
+  B2 RF-smote-leaky  9 true     0.010  0.010
+  B2 RF-smote-leaky 12 perm     0.002  0.002
+  B2 RF-smote-leaky 12 true     0.016  0.013
+  B2 RF-smote-leaky 20 perm     0.002  0.002
+  B2 RF-smote-leaky 20 true     0.023  0.017
+  B2 RF-smote-leaky 30 perm     0.004  0.003
+  B2 RF-smote-leaky 30 true     0.044  0.023
+  B2         RF-var  6 perm     0.006  0.006
+  B2         RF-var  6 true     0.010  0.008
+  B2         RF-var  9 perm     0.008  0.004
+  B2         RF-var  9 true     0.017  0.010
+  B2         RF-var 12 perm     0.007  0.004
+  B2         RF-var 12 true     0.017  0.011
+  B2         RF-var 20 perm     0.008  0.006
+  B2         RF-var 20 true     0.022  0.015
+  B2         RF-var 30 perm     0.011  0.007
+  B2         RF-var 30 true     0.025  0.015
+  B5            CCP  6 perm     0.009  0.008
+  B5            CCP  6 true     0.014  0.016
+  B5            CCP  9 perm     0.006  0.006
+  B5            CCP  9 true     0.023  0.025
+  B5            CCP 12 perm     0.006  0.007
+  B5            CCP 12 true     0.025  0.028
+  B5            CCP 20 perm     0.006  0.006
+  B5            CCP 20 true     0.047  0.049
+  B5            CCP 30 perm     0.006  0.008
+  B5            CCP 30 true     0.076  0.075
+  B5            CCP 50 perm     0.007  0.007
+  B5            CCP 50 true     0.127  0.092
+  B5             EN  6 perm     0.007  0.006
+  B5             EN  6 true     0.011  0.012
+  B5             EN  9 perm     0.005  0.004
+  B5             EN  9 true     0.019  0.019
+  B5             EN 12 perm     0.005  0.006
+  B5             EN 12 true     0.021  0.022
+  B5             EN 20 perm     0.004  0.005
+  B5             EN 20 true     0.034  0.034
+  B5             EN 30 perm     0.005  0.005
+  B5             EN 30 true     0.051  0.050
+  B5             EN 50 perm     0.005  0.005
+  B5             EN 50 true     0.064  0.050
+  B5        EN-drop  6 perm     0.008  0.008
+  B5        EN-drop  6 true     0.015  0.016
+  B5        EN-drop  9 perm     0.006  0.006
+  B5        EN-drop  9 true     0.025  0.026
+  B5        EN-drop 12 perm     0.007  0.008
+  B5        EN-drop 12 true     0.028  0.029
+  B5        EN-drop 20 perm     0.005  0.007
+  B5        EN-drop 20 true     0.038  0.040
+  B5        EN-drop 30 perm     0.005  0.006
+  B5        EN-drop 30 true     0.051  0.048
+  B5        EN-drop 50 perm     0.006  0.006
+  B5        EN-drop 50 true     0.063  0.042
+  B5       EN-smote  6 perm     0.007  0.007
+  B5       EN-smote  6 true     0.011  0.011
+  B5       EN-smote  9 perm     0.005  0.005
+  B5       EN-smote  9 true     0.017  0.018
+  B5       EN-smote 12 perm     0.005  0.005
+  B5       EN-smote 12 true     0.020  0.021
+  B5       EN-smote 20 perm     0.004  0.005
+  B5       EN-smote 20 true     0.035  0.034
+  B5       EN-smote 30 perm     0.004  0.004
+  B5       EN-smote 30 true     0.051  0.052
+  B5       EN-smote 50 perm     0.005  0.005
+  B5       EN-smote 50 true     0.066  0.051
+  B5 EN-smote-leaky  6 perm     0.007  0.007
+  B5 EN-smote-leaky  6 true     0.011  0.011
+  B5 EN-smote-leaky  9 perm     0.005  0.005
+  B5 EN-smote-leaky  9 true     0.017  0.018
+  B5 EN-smote-leaky 12 perm     0.005  0.005
+  B5 EN-smote-leaky 12 true     0.020  0.021
+  B5 EN-smote-leaky 20 perm     0.004  0.005
+  B5 EN-smote-leaky 20 true     0.035  0.034
+  B5 EN-smote-leaky 30 perm     0.004  0.004
+  B5 EN-smote-leaky 30 true     0.051  0.052
+  B5 EN-smote-leaky 50 perm     0.005  0.005
+  B5 EN-smote-leaky 50 true     0.066  0.051
+  B5         EN-var  6 perm     0.011  0.011
+  B5         EN-var  6 true     0.015  0.016
+  B5         EN-var  9 perm     0.010  0.009
+  B5         EN-var  9 true     0.026  0.026
+  B5         EN-var 12 perm     0.012  0.013
+  B5         EN-var 12 true     0.031  0.032
+  B5         EN-var 20 perm     0.010  0.010
+  B5         EN-var 20 true     0.039  0.038
+  B5         EN-var 30 perm     0.009  0.009
+  B5         EN-var 30 true     0.037  0.033
+  B5         EN-var 50 perm     0.009  0.009
+  B5         EN-var 50 true     0.040  0.025
+  B5            FUS  6 perm     0.010  0.011
+  B5            FUS  6 true     0.012  0.013
+  B5            FUS  9 perm     0.006  0.006
+  B5            FUS  9 true     0.013  0.016
+  B5            FUS 12 perm     0.007  0.009
+  B5            FUS 12 true     0.016  0.020
+  B5            FUS 20 perm     0.004  0.006
+  B5            FUS 20 true     0.020  0.022
+  B5            FUS 30 perm     0.003  0.004
+  B5            FUS 30 true     0.023  0.027
+  B5            FUS 50 perm     0.005  0.005
+  B5            FUS 50 true     0.036  0.033
+  B5             RF  6 perm     0.008  0.009
+  B5             RF  6 true     0.010  0.012
+  B5             RF  9 perm     0.005  0.006
+  B5             RF  9 true     0.014  0.016
+  B5             RF 12 perm     0.004  0.005
+  B5             RF 12 true     0.021  0.023
+  B5             RF 20 perm     0.005  0.007
+  B5             RF 20 true     0.036  0.038
+  B5             RF 30 perm     0.006  0.006
+  B5             RF 30 true     0.057  0.056
+  B5             RF 50 perm     0.004  0.004
+  B5             RF 50 true     0.101  0.075
+  B5        RF-drop  6 perm     0.007  0.009
+  B5        RF-drop  6 true     0.017  0.018
+  B5        RF-drop  9 perm     0.006  0.006
+  B5        RF-drop  9 true     0.021  0.024
+  B5        RF-drop 12 perm     0.005  0.007
+  B5        RF-drop 12 true     0.025  0.026
+  B5        RF-drop 20 perm     0.006  0.008
+  B5        RF-drop 20 true     0.037  0.039
+  B5        RF-drop 30 perm     0.005  0.007
+  B5        RF-drop 30 true     0.051  0.046
+  B5        RF-drop 50 perm     0.006  0.008
+  B5        RF-drop 50 true     0.074  0.051
+  B5       RF-smote  6 perm     0.009  0.007
+  B5       RF-smote  6 true     0.012  0.013
+  B5       RF-smote  9 perm     0.006  0.006
+  B5       RF-smote  9 true     0.020  0.021
+  B5       RF-smote 12 perm     0.005  0.005
+  B5       RF-smote 12 true     0.019  0.022
+  B5       RF-smote 20 perm     0.005  0.007
+  B5       RF-smote 20 true     0.037  0.038
+  B5       RF-smote 30 perm     0.004  0.005
+  B5       RF-smote 30 true     0.057  0.056
+  B5       RF-smote 50 perm     0.007  0.006
+  B5       RF-smote 50 true     0.100  0.077
+  B5 RF-smote-leaky  6 perm     0.009  0.007
+  B5 RF-smote-leaky  6 true     0.012  0.013
+  B5 RF-smote-leaky  9 perm     0.006  0.006
+  B5 RF-smote-leaky  9 true     0.020  0.021
+  B5 RF-smote-leaky 12 perm     0.005  0.005
+  B5 RF-smote-leaky 12 true     0.019  0.022
+  B5 RF-smote-leaky 20 perm     0.005  0.007
+  B5 RF-smote-leaky 20 true     0.037  0.038
+  B5 RF-smote-leaky 30 perm     0.004  0.005
+  B5 RF-smote-leaky 30 true     0.057  0.056
+  B5 RF-smote-leaky 50 perm     0.007  0.006
+  B5 RF-smote-leaky 50 true     0.100  0.077
+  B5         RF-var  6 perm     0.009  0.009
+  B5         RF-var  6 true     0.018  0.018
+  B5         RF-var  9 perm     0.012  0.012
+  B5         RF-var  9 true     0.022  0.022
+  B5         RF-var 12 perm     0.012  0.013
+  B5         RF-var 12 true     0.027  0.028
+  B5         RF-var 20 perm     0.013  0.013
+  B5         RF-var 20 true     0.036  0.037
+  B5         RF-var 30 perm     0.014  0.012
+  B5         RF-var 30 true     0.044  0.041
+  B5         RF-var 50 perm     0.015  0.012
+  B5         RF-var 50 true     0.063  0.046
+
+=== missingness
+     scope        contrast  pos_mean  neg_mean   auc                                                   pos_values                                                     neg_values
+ benchmark              B1     0.188     0.190 0.464                                                          NaN                                                            NaN
+ benchmark              B2     0.239     0.222 0.645                                                          NaN                                                            NaN
+ benchmark              B5     0.395     0.397 0.541                                                          NaN                                                            NaN
+case study 24 h vs Control     0.781     0.242 1.000 [0.7778951073565646, 0.8268215417106652, 0.7374164026751144] [0.11545230552622317, 0.19640971488912354, 0.4139387539598733]
+case study  8 h vs Control     0.606     0.242 1.000 [0.5487504399859204, 0.5336149243224216, 0.7363604364660331] [0.11545230552622317, 0.19640971488912354, 0.4139387539598733]
+case study     24 h vs 8 h     0.781     0.606 1.000 [0.7778951073565646, 0.8268215417106652, 0.7374164026751144]   [0.5487504399859204, 0.5336149243224216, 0.7363604364660331]
+
+=== fus_lpo
+task  N  arm   n  lpo_median  lpo_mean  O_lpo_median  O_lpo_q25  O_lpo_q75  loocv_median  O_loocv_median  rerun_median
+  B1 12 perm 100       0.521     0.509        -0.017     -0.203      0.153         0.625           0.075         0.639
+  B2  6 perm 100       0.500     0.507         0.019     -0.114      0.185         0.778           0.284         0.889
+  B2  6 true 100       0.444     0.461        -0.057     -0.201      0.114         0.778           0.256         0.778
+  B2  9 perm 100       0.525     0.501         0.003     -0.114      0.111         0.650           0.145         0.650
+  B2  9 true 100       0.500     0.522        -0.010     -0.100      0.138         0.650           0.162         0.650
+  B2 12 perm 100       0.535     0.525         0.048     -0.054      0.147         0.611           0.121         0.611
+  B2 12 true 100       0.514     0.505         0.003     -0.075      0.079         0.604           0.087         0.583
+  B5  6 perm 100       0.444     0.504        -0.043     -0.160      0.117         0.778           0.308         0.667
+  B5  6 true 100       0.556     0.537         0.015     -0.106      0.145         0.778           0.293         0.778
+  B5  9 perm 100       0.500     0.493        -0.001     -0.089      0.089         0.700           0.210         0.750
+  B5  9 true 100       0.500     0.523        -0.009     -0.103      0.113         0.700           0.200         0.700
+  B5 12 perm 100       0.514     0.509         0.037     -0.105      0.141         0.611           0.122         0.639
+  B5 12 true 100       0.528     0.512        -0.013     -0.119      0.086         0.646           0.116         0.611
+task  N  arm   n  p_minority_mean  frac_assigned_minority  frac_confident  z_heldout  z_train_minority  z_train_majority
+  B1 12 perm 300            0.572                   0.570           0.930      0.852             0.815             0.755
+  B2  6 perm 150            0.743                   0.740           0.893      0.842             0.958             0.676
+  B2  6 true 150            0.667                   0.673           0.833      0.845             0.956             0.677
+  B2  9 perm 100            0.697                   0.690           0.900      0.869             0.934             0.694
+  B2  9 true 100            0.707                   0.710           0.890      0.853             0.937             0.688
+  B2 12 perm 300            0.556                   0.550           0.923      0.830             0.814             0.756
+  B2 12 true 300            0.533                   0.537           0.933      0.823             0.818             0.757
+  B5  6 perm 150            0.616                   0.613           0.920      0.889             0.924             0.690
+  B5  6 true 150            0.619                   0.620           0.900      0.880             0.929             0.688
+  B5  9 perm 100            0.766                   0.760           0.950      0.871             0.907             0.721
+  B5  9 true 100            0.740                   0.730           0.950      0.870             0.912             0.720
+  B5 12 perm 300            0.636                   0.640           0.927      0.866             0.820             0.776
+  B5 12 true 300            0.612                   0.613           0.927      0.859             0.823             0.773
+
+=== gate_bootstrap
+ n_checks  obs_median_min  obs_median_max  obs_mean_min  obs_mean_max     B  false_alarm_registered  false_alarm_amended
+       25           0.444           0.515         0.471         0.502 20000                   0.905                0.074
+
+=== provenance
+                                                                                                                            item task       value
+                                                    eligible pathway features, N = 12, r = 0, first leave-pair-out training fold   B1         947
+                                                    eligible pathway features, N = 12, r = 0, first leave-pair-out training fold   B2         872
+                                                    eligible pathway features, N = 12, r = 0, first leave-pair-out training fold   B5         567
+                                                        protein entries in the three tasks / sequences longer than 4000 residues  all 33817 / 183
+batched vs single-model trainer, max |logit difference| (4 models, 200 steps, fp32, dropout off; prereg/measurements/RESULTS.md)    -    7.15e-07

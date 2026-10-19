@@ -1,0 +1,11 @@
+N,set,W,order_B2,order_B5
+6,with FUS,0.55,EN > CCP > TabPFN > RF > FUS,TabPFN > RF > CCP > EN > FUS
+6,without FUS,0.1,EN > CCP > TabPFN > RF,TabPFN > RF > CCP > EN
+9,with FUS,1.0,TabPFN > CCP > RF > EN > FUS,TabPFN > CCP > RF > EN > FUS
+9,without FUS,0.8157894736842105,CCP > TabPFN > RF > EN,TabPFN > RF > CCP > EN
+12,with FUS,0.95,TabPFN > CCP > RF > EN > FUS,TabPFN > RF > CCP > EN > FUS
+12,without FUS,0.9,TabPFN > CCP > RF > EN,TabPFN > RF > CCP > EN
+20,with FUS,0.95,TabPFN > EN > RF > CCP > FUS,TabPFN > RF > EN > CCP > FUS
+20,without FUS,0.9,TabPFN > EN > RF > CCP,TabPFN > RF > EN > CCP
+30,with FUS,1.0,TabPFN > RF > EN > CCP > FUS,TabPFN > RF > EN > CCP > FUS
+30,without FUS,1.0,TabPFN > RF > EN > CCP,TabPFN > RF > EN > CCP

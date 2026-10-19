@@ -1,0 +1,13 @@
+N,tasks,n_tasks,W
+6,all eligible,3,0.6
+6,B2+B5 (secondary),2,0.55
+9,all eligible,3,0.8222222222222222
+9,B2+B5 (secondary),2,1.0
+12,all eligible,3,0.8222222222222222
+12,B2+B5 (secondary),2,0.95
+20,all eligible,3,0.864406779661017
+20,B2+B5 (secondary),2,0.95
+30,all eligible,3,0.7619047619047619
+30,B2+B5 (secondary),2,1.0
+50,all eligible,2,0.8333333333333334
+50,B2+B5 (secondary),1,

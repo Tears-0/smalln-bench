@@ -1,0 +1,24 @@
+[supervise 2026-10-13 16:08:24] attempt 1/5: -m bench.run --runner cpu --out main --tasks B1 --N 12,20 --arms perm --workers 16
+cells: [('B1', 12), ('B1', 20)]
+20 blocks to run
+[16:26:46] 1/20 B1_N20_perm_r000.parquet
+[16:26:51] 2/20 B1_N20_perm_r050.parquet
+[16:26:52] 3/20 B1_N20_perm_r030.parquet
+[16:26:59] 4/20 B1_N20_perm_r010.parquet
+[16:27:00] 5/20 B1_N20_perm_r020.parquet
+[16:27:01] 6/20 B1_N20_perm_r040.parquet
+[16:30:24] 7/20 B1_N12_perm_r080.parquet
+[16:30:24] 8/20 B1_N12_perm_r040.parquet
+[16:30:31] 9/20 B1_N12_perm_r020.parquet
+[16:30:35] 10/20 B1_N12_perm_r060.parquet
+[16:30:42] 11/20 B1_N12_perm_r010.parquet
+[16:30:45] 12/20 B1_N12_perm_r070.parquet
+[16:30:47] 13/20 B1_N12_perm_r050.parquet
+[16:30:47] 14/20 B1_N12_perm_r000.parquet
+[16:30:49] 15/20 B1_N12_perm_r090.parquet
+[16:30:49] 16/20 B1_N12_perm_r030.parquet
+[16:44:50] 17/20 B1_N20_perm_r070.parquet
+[16:44:52] 18/20 B1_N20_perm_r060.parquet
+[16:44:55] 19/20 B1_N20_perm_r080.parquet
+[16:45:03] 20/20 B1_N20_perm_r090.parquet
+[supervise 2026-10-13 16:45:03] exit code 0
