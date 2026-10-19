@@ -97,7 +97,7 @@ def fig1_ranking():
     for m in MODEL_COLOR:
         axes[2].annotate(MODEL_LABEL[m].split(" (")[0], (len(GRID_N) - 1, g[m]), xytext=(5, 0), textcoords="offset points",
                          va="center", fontsize=6.3, color=INK2, annotation_clip=False)
-    axes[0].text(2.5, 3.55, "the four baselines tie\n(external AUC 1.00)", ha="center", va="center", fontsize=6.2,
+    axes[0].text(2.5, 3.55, "the four baselines tie\n(held-out AUC 1.00)", ha="center", va="center", fontsize=6.2,
                  color=MUTED)
     axes[1].text(5, 3.0, "N = 50\nnot\nestimable", ha="center", va="center", fontsize=5.8, color=MUTED)
     axes[0].text(2.0, 4.18, "fusion loses ties:\nAUC deficit < 0.01", ha="center", va="center", fontsize=6.2, color=MUTED)
@@ -158,7 +158,7 @@ def fig2_optimism():
                Line2D([], [], color=INK2, lw=1.1, ls=(0, (4, 2)), label="filter fitted before CV (leaky)"),
                Patch(color=NULL_FILL, label="permuted labels, primary (IQR)")]
     fig.legend(handles=handles, loc="upper center", ncol=4, bbox_to_anchor=(0.5, 1.035), handlelength=2.2)
-    fig.supylabel("Optimism = internal AUC - external AUC", fontsize=7, color=INK2, x=0.055)
+    fig.supylabel("Optimism = internal AUC - held-out AUC", fontsize=7, color=INK2, x=0.055)
     fig.subplots_adjust(wspace=0.1, hspace=0.18)
     return _save(fig, "fig2_optimism")
 
@@ -176,7 +176,7 @@ def fig3_learning():
         for m in MODEL_COLOR:
             g = d[(d.arm == "true") & (d.config == m)].groupby("N").auc_ext.median()
             _line(ax, g.index, g.values, MODEL_COLOR[m], label=MODEL_LABEL[m])
-        _style(ax, "Median external AUC" if task == "B1" else None)
+        _style(ax, "Median held-out AUC" if task == "B1" else None)
         ax.set_title(TASK_SHORT[task], loc="left")
         ax.set_xlabel("N")
         ax.set_ylim(0.0, 1.03)

@@ -9,6 +9,8 @@ None of these is registered; all are descriptive. Outputs go to results/analysis
     python -m bench.review recovery_h       # recovery against a reference computed on H_r only
     python -m bench.review missingness      # per-sample missing fraction as the only score
     python -m bench.review fus_lpo          # leave-pair-out for the fusion arm (bench.fusion_lpo)
+    python -m bench.review gate_bootstrap   # false-alarm probability of the registered and amended test 1
+    python -m bench.review provenance       # counts quoted in the paper that no other output records
     python -m bench.review all
 """
 from __future__ import annotations
@@ -233,13 +235,81 @@ def fus_lpo():
     return S, D
 
 
+# ---------------------------------------------------------------- leakage-gate bootstrap
+def gate_bootstrap(B=20000):
+    """False-alarm probability of the registered and the amended test 1 (spec A7) for a
+    clean pipeline. Data: the gate's own runs (B1, permuted labels, N = 12 with leave-pair-out
+    and N = 20 with k-fold; every in-fold configuration, so not the leaky SMOTE arms, and not
+    FUS at N = 12, which had no leave-pair-out pass): 25 checks of 100 repeats. Each check is
+    shifted so that its mean is exactly 0.5 (a clean pipeline with the observed spread and
+    discreteness). Each bootstrap replicate resamples whole repeats (draws) with replacement,
+    the same draws for every configuration at a given N, so the correlation between
+    configurations on a shared draw is kept; N = 12 and N = 20 are resampled independently.
+    Registered rule: alarm if any check's median lies outside 0.5 +/- 0.05. Amended rule:
+    alarm if any check's mean exceeds 0.55."""
+    D = load("perm")
+    D = D[(D.task == "B1") & ~D.config.str.endswith("smote-leaky")]
+    mats = []
+    for N, col in ((12, "auc_int_lpo"), (20, "auc_int")):
+        W = D[D.N == N].pivot_table(index="r", columns="config", values=col).dropna(axis=1, how="all")
+        mats.append(W.to_numpy())
+    obs = np.concatenate([np.median(m, 0) for m in mats]), np.concatenate([m.mean(0) for m in mats])
+    rng = np.random.default_rng(seed("gate-bootstrap"))
+    centred = [m - m.mean(0) + 0.5 for m in mats]
+    reg = new = 0
+    for _ in range(B):
+        med, mean = [], []
+        for m in centred:
+            s = m[rng.integers(0, m.shape[0], m.shape[0])]
+            med.append(np.median(s, 0)); mean.append(s.mean(0))
+        med, mean = np.concatenate(med), np.concatenate(mean)
+        reg += bool((np.abs(med - 0.5) > 0.05 + 1e-12).any())
+        new += bool((mean > 0.55 + 1e-12).any())
+    G = pd.DataFrame([dict(n_checks=len(obs[0]), obs_median_min=obs[0].min(), obs_median_max=obs[0].max(),
+                           obs_mean_min=obs[1].min(), obs_mean_max=obs[1].max(), B=B,
+                           false_alarm_registered=reg / B, false_alarm_amended=new / B)])
+    G.to_csv(OUT / "review_gate_bootstrap.csv", index=False)
+    return G
+
+
+# ---------------------------------------------------------------- provenance of quoted counts
+def provenance():
+    """Numbers quoted in the paper that no other output records."""
+    from .preprocess import PATH_MAX, PATH_MIN
+    from .run import context
+    from .cv import lpo_folds
+    rows = []
+    for name in ("B1", "B2", "B5"):
+        t, ctx, _ = context(name)
+        S, _ = draw(t, 12, 0)
+        tr, _ = lpo_folds(t.y[S].astype(int), 12)[0]
+        frac = (~np.isnan(ctx.X[S[tr]])).mean(0)
+        cnt = ctx.M[np.flatnonzero(frac >= 0.5)].sum(0)
+        rows.append(dict(item="eligible pathway features, N = 12, r = 0, first leave-pair-out training fold",
+                         task=name, value=int(((cnt >= PATH_MIN) & (cnt <= PATH_MAX)).sum())))
+    from .embeddings import MAX_LEN
+    n_seq = n_long = 0
+    for name in ("B1", "B2", "B5"):
+        seqs = loaders.load(name, sequences=True).sequence
+        n_seq += len(seqs)
+        n_long += sum(len(s) > MAX_LEN for s in seqs)
+    rows.append(dict(item=f"protein entries in the three tasks / sequences longer than {MAX_LEN} residues",
+                     task="all", value=f"{n_seq} / {n_long}"))
+    rows.append(dict(item="batched vs single-model trainer, max |logit difference| (4 models, 200 steps, fp32, "
+                          "dropout off; prereg/measurements/RESULTS.md)", task="-", value="7.15e-07"))
+    P = pd.DataFrame(rows)
+    P.to_csv(OUT / "review_provenance.csv", index=False)
+    return P
+
+
 if __name__ == "__main__":
     pd.set_option("display.width", 240); pd.set_option("display.max_columns", 30)
     what = sys.argv[1] if len(sys.argv) > 1 else "all"
     jobs = dict(effect_null=effect_null, smote=smote, kendall=kendall, kfold_tail=kfold_tail,
-                recovery_h=recovery_h, missingness=missingness, fus_lpo=fus_lpo)
+                recovery_h=recovery_h, missingness=missingness, fus_lpo=fus_lpo,
+                gate_bootstrap=gate_bootstrap, provenance=provenance)
     for name, fn in jobs.items():
-        if what in (name, "all") and not (what == "all" and name == "fus_lpo"):
+        if what in (name, "all"):
             res = fn()
             print(f"\n=== {name}")
             for r in (res if isinstance(res, tuple) else (res,)):
