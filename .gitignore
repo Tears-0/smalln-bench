@@ -10,10 +10,6 @@ models/**
 *.h5mu
 *.npz
 
-# Results and figures are regenerated from runs
-figures/*.png
-figures/*.pdf
-
 # Python
 __pycache__/
 *.pyc
