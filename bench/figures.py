@@ -113,6 +113,12 @@ def fig1_ranking():
 # ------------------------------------------------------------------ Fig. 2
 def fig2_optimism():
     T = pd.read_csv(A / "optimism.csv")
+    # leave-pair-out for the fusion network, added post hoc (spec A13; bench/fusion_lpo.py)
+    fl = A / "review_fus_lpo.csv"
+    if fl.exists():
+        F = pd.read_csv(fl).query("arm == 'true'")[["task", "N", "O_lpo_median"]].assign(config="FUS")
+        T = T.merge(F, on=["task", "config", "N"], how="left")
+        T["lpo_median"] = T.lpo_median.fillna(T.pop("O_lpo_median"))
     models = list(MODEL_COLOR)
     fig, axes = plt.subplots(2, 5, figsize=(6.6, 3.15), sharex=True, sharey=True)
     for i, task in enumerate(("B2", "B5")):
@@ -124,6 +130,8 @@ def fig2_optimism():
             ax.axhline(0, color=AXIS, lw=0.6, zorder=2)
             ax.axvline(2.5, color=AXIS, lw=0.5, zorder=2)
             c = MODEL_COLOR[m]
+            kf = g[g.N >= 20]   # spread of the k-fold estimate: IQR whiskers
+            ax.vlines(_xpos(kf.N), kf.honest_q25, kf.honest_q75, color=c, lw=0.9, zorder=3)
             _line(ax, g.N, g.honest_median, c)
             lp = g.dropna(subset=["lpo_median"])
             if len(lp):
@@ -145,10 +153,10 @@ def fig2_optimism():
                         fontsize=5.6, color=MUTED)
     axes[0, 0].annotate("k-fold", (2.5, 0.48), xytext=(2, 0), textcoords="offset points", ha="left", va="top",
                         fontsize=5.6, color=MUTED)
-    handles = [Line2D([], [], color=INK2, lw=LW, marker="o", ms=MS, mec="white", label="honest (primary estimator)"),
+    handles = [Line2D([], [], color=INK2, lw=LW, marker="o", ms=MS, mec="white", label="in-fold, primary estimator"),
                Line2D([], [], color=INK2, lw=1.1, ls=(0, (1, 1.6)), marker="o", ms=MS, mfc="white", label="leave-pair-out (N <= 12)"),
                Line2D([], [], color=INK2, lw=1.1, ls=(0, (4, 2)), label="filter fitted before CV (leaky)"),
-               Patch(color=NULL_FILL, label="permuted labels, honest estimator (IQR)")]
+               Patch(color=NULL_FILL, label="permuted labels, primary (IQR)")]
     fig.legend(handles=handles, loc="upper center", ncol=4, bbox_to_anchor=(0.5, 1.035), handlelength=2.2)
     fig.supylabel("Optimism = internal AUC - external AUC", fontsize=7, color=INK2, x=0.055)
     fig.subplots_adjust(wspace=0.1, hspace=0.18)
@@ -235,6 +243,47 @@ def fig5_stability_recovery():
     return _save(fig, "fig5_stability_vs_recovery")
 
 
+# ------------------------------------------------------------------ Fig. 6 (case study)
+def fig6_case_study():
+    """Descriptive illustration on the motivating study (spec §16 A11). Each 3-vs-3 partition
+    once (sample 1 in the positive class): the true partition and 9 rearrangements."""
+    from .case_study import labellings
+    R = pd.read_csv(RESULTS / "case_study" / "case_study_auc.csv")
+    L = list(labellings())
+    R = R[R.labelling.isin([i for i, y in enumerate(L) if y[0] == 1])]
+    models = ["ccp", "en", "rf", "tabpfn", "fus"]
+    names = {"ccp": "CCP", "en": "EN", "rf": "RF", "tabpfn": "TabPFN", "fus": "FUS"}
+    color = {"ccp": "CCP", "en": "EN", "rf": "RF", "tabpfn": "TabPFN", "fus": "FUS"}
+    contrasts = ["24 h vs Control", "8 h vs Control", "24 h vs 8 h"]
+    fig, axes = plt.subplots(1, 3, figsize=(6.6, 2.35), sharey=True)
+    rng = np.random.default_rng(0)
+    for ax, c in zip(axes, contrasts):
+        for i, m in enumerate(models):
+            for k, (est, dx) in enumerate((("loocv", -0.17), ("lpo", 0.17))):
+                g = R[(R.contrast == c) & (R.model == m) & (R.estimator == est)]
+                o = g[~g.is_true].auc.to_numpy()
+                ax.scatter(i + dx + rng.uniform(-0.06, 0.06, len(o)), o, s=9, color=MUTED, alpha=0.55, lw=0, zorder=2)
+                t = float(g[g.is_true].auc.iloc[0])
+                col = MODEL_COLOR[color[m]]
+                ax.scatter([i + dx], [t], s=34, zorder=4, color=col if est == "loocv" else "white",
+                           edgecolor="white" if est == "loocv" else col, linewidth=0.9 if est == "loocv" else 1.3)
+        ax.axhline(0.5, color=AXIS, lw=0.6, zorder=1)
+        ax.set_xticks(range(len(models)))
+        ax.set_xticklabels([names[m] for m in models], fontsize=6.3)
+        ax.set_xlim(-0.6, len(models) - 0.4)
+        ax.set_ylim(-0.05, 1.05)
+        ax.yaxis.grid(True, color=GRID, linewidth=0.5); ax.set_axisbelow(True)
+        ax.set_title(c.replace("Control", "control"), loc="left")
+        if c == contrasts[0]:
+            ax.set_ylabel("Internal AUC (N = 6)")
+    handles = [Line2D([], [], ls="none", marker="o", ms=5.5, color=INK2, mec="white", label="true partition, pooled LOOCV"),
+               Line2D([], [], ls="none", marker="o", ms=5.5, mfc="white", mec=INK2, mew=1.2, label="true partition, leave-pair-out"),
+               Line2D([], [], ls="none", marker="o", ms=4, color=MUTED, alpha=0.6, label="9 rearranged partitions (left: LOOCV, right: LPO)")]
+    fig.legend(handles=handles, loc="upper center", ncol=3, bbox_to_anchor=(0.5, 1.08), handletextpad=0.3, columnspacing=1.4)
+    fig.subplots_adjust(wspace=0.08)
+    return _save(fig, "fig6_case_study")
+
+
 if __name__ == "__main__":
-    for f in (fig1_ranking, fig2_optimism, fig3_learning, fig4_recovery, fig5_stability_recovery):
+    for f in (fig1_ranking, fig2_optimism, fig3_learning, fig4_recovery, fig5_stability_recovery, fig6_case_study):
         print("wrote", f())
