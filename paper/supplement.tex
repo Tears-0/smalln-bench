@@ -1,0 +1,154 @@
+\documentclass[10pt,letterpaper]{article}
+% Supplementary material (RECOMB 2027: appendix submitted as a single separate PDF).
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{mathptmx}
+\usepackage{graphicx,booktabs,amsmath,amssymb,tabularx,xcolor,microtype,float}
+\usepackage[font=normalsize,labelfont=bf,skip=4pt]{caption}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[hidelinks]{hyperref}
+\usepackage{authblk}
+\renewcommand\Authfont{\normalsize}
+\renewcommand\Affilfont{\normalsize}
+\graphicspath{{../figures/}}
+\setlength{\emergencystretch}{2em}   % long \texttt paths
+\renewcommand{\thesection}{S\arabic{section}}
+\renewcommand{\thefigure}{S\arabic{figure}}
+\renewcommand{\thetable}{S\arabic{table}}
+
+\title{Supplementary material for\\
+``When can a small proteomics study trust its cross-validated AUC?\\
+A null-calibration condition and a pre-specified benchmark''}
+\author[1]{Chong Chi Yang}
+\author[1]{Ong Huey Fang}
+\author[2]{Michelle Yap Khai Khun}
+\affil[1]{School of Information Technology, Monash University Malaysia, Bandar Sunway, Malaysia}
+\affil[2]{School of Science, Monash University Malaysia, Bandar Sunway, Malaysia}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{The fusion network}\label{sup:fus}
+FUS is the model of the earlier analysis, re-implemented from its code with the changes below (\texttt{vendor/fusion}
+in the repository). Each input protein $j$ carries a fixed embedding $e_j \in \mathbb{R}^{480}$: the
+beginning-of-sequence representation in the final (12th) layer of ESM-2 \texttt{esm2\_t12\_35M\_UR50D}
+\citep{lin2023esm2}, computed once from the protein's UniProtKB/Swiss-Prot sequence (or its Ensembl peptide
+where no reviewed entry maps) and never trained; sequences longer than 4,000 residues were truncated (183 of
+33,817 protein entries). The abundance $z_{ij}$ of protein $j$ in sample $i$ passes through an encoder
+$g$ = Linear(1, 128)--ReLU--Linear(128, 480), and the two are combined additively,
+$f_{ij} = e_j + \sigma(g(z_{ij}))$, with the logistic function $\sigma$ squashing the abundance encoding (the
+original code calls it a gate, but it is added, not multiplied). An attention scorer
+Linear(480, 128)--tanh--Linear(128, 1), softmax-normalised over the proteins of the sample, gives weights
+$a_{ij}$ and the sample vector $v_i = \sum_j a_{ij} f_{ij}$, and a classifier
+Linear(480, 256)--ReLU--Dropout(0.5)--Linear(256, 2) gives the logits: 247,523 trainable parameters. Training
+follows the earlier analysis: unweighted cross-entropy, RMSprop (learning rate $10^{-4}$, weight decay
+$10^{-4}$), 1,000 epochs, batch size 1 with the order reshuffled every epoch, prediction from the final epoch.
+The earlier analysis used three classes, all 2,841 proteins and mixed precision; here the head is binary, the
+input is the reference pipeline's 500 in-fold proteins (restricted to proteins with a sequence), and training
+is in fp32. Fits with the same training size are stacked into one batched model in which every fit sees its
+own sample at each step and receives its own loss term; since RMSprop acts elementwise, each fit gets the
+update it would get alone. Against independently trained single models (four models, 200 steps, fp32, dropout
+off, same initialisation and sample order) the batched logits agreed to $7.2 \times 10^{-7}$
+(\texttt{prereg/measurements/RESULTS.md}). The original mixed-precision three-class trainer is not
+numerically comparable. The protein ranking is the attention weight averaged over the training samples.
+
+\section{Additional figures}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{fig3_learning_curves.pdf}
+\caption{Median held-out AUC by $N$, true labels; grey: interquartile range under permuted labels (B1's null
+is bimodal because the cohort separates perfectly).}
+\label{fig:learning}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{fig5_stability_vs_recovery.pdf}
+\caption{Selection stability against recovery for every (configuration, $N$) cell with $N \le 30$, coloured
+by $N$. The pre-specified correlation pools over $N$; within a fixed $N$ it is weak.}
+\label{fig:stab}
+\end{figure}
+
+\section{Reproducibility}\label{sup:repro}
+\paragraph{Runs and code versions.} Every run is one row with its seeds and a hash of the benchmark code
+(\texttt{bench/*.py}). Two hashes occur. \texttt{c8068f7} produced every CPU row, 710 TabPFN rows and 1,100
+fusion-network rows; \texttt{748dcfe} produced the other 2,690 TabPFN and 2,300 fusion-network rows. The two GPU
+arms ran concurrently from 18:47 on 13 October 2026 until a graphics-driver reset at about 03:50 on 14 October
+left both processes hung; they were resumed at 10:04, one after the other, and finished at 21:47 on
+15 October (about 9\,h before and 36\,h after the interruption, 45\,h in all). The only benchmark file changed
+in between was the run supervisor, \texttt{bench/supervise.py}, which gained a stall watchdog and a
+keep-awake request; the runners, models and preprocessing were unchanged. Runs resume block by block, and an
+unfinished block is recomputed from the start, so no run is stored twice. The hash is an MD5 over the files'
+bytes as stored on the machine that ran them, where four of the 18 (\texttt{embeddings.py}, \texttt{fusion.py},
+\texttt{loaders.py}, \texttt{run.py}) had Windows line endings; with those, the \texttt{bench/*.py} of commit
+\texttt{8e50bbe} hashes to \texttt{c8068f7}, and the same files with \texttt{bench/supervise.py} from commit
+\texttt{17be563} to \texttt{748dcfe}. The CPU arms took about 6\,h on 16 workers.
+
+\paragraph{Re-runs.} \texttt{bench/reproduce.py} re-runs from scratch one block of every runner under each
+code version, with the same units per block as the original run: two CPU blocks (B2, $N = 12$; B5, $N = 30$),
+two TabPFN blocks (B1, $N = 12$, under \texttt{c8068f7}; B2, $N = 6$, under \texttt{748dcfe}) and two
+fusion-network blocks of 50 repeats (B1 and B2, $N = 6$, one under each hash), 380 runs in all. Every stored
+value and every protein ranking was reproduced exactly (\texttt{results/logs/reproduce.log}). The fusion network's batched trainer draws its shuffles per batch, so
+a fit's result depends on which other fits share its batch. The post hoc re-runs of its pooled-LOOCV folds
+(\texttt{bench/fusion\_lpo.py}; first 25 repeats of each of 13 cells) were batched differently: they matched
+the stored internal AUC exactly in 87\% of 325 draws (all at $N = 6$, 94\% at $N = 9$, 72\% at $N = 12$),
+differed by up to 0.05 at $N = 9$ and 0.11 at $N = 12$, and the mean absolute difference per cell was at most
+0.015 (signed mean at most 0.011).
+
+\paragraph{Leakage-test bootstrap.} The false-alarm probabilities of \S2.2 use the gate's own runs: B1,
+permuted labels, 100 repeats; at $N = 12$ the leave-pair-out AUC of the 12 in-fold configurations that had a
+leave-pair-out pass, at $N = 20$ the $k$-fold AUC of the 13 in-fold configurations (25 checks). Each check was
+shifted so that its mean is exactly 0.5. A bootstrap replicate resamples whole repeats with replacement, the
+same repeats for every configuration at a given $N$, so the correlation between configurations evaluated on
+the same draw is kept; the two $N$ are resampled independently. Over 20,000 replicates the pre-specified rule
+(any check's median outside $0.5 \pm 0.05$) raised an alarm in 90.5\% and the amended rule (any check's mean
+above 0.55) in 7.4\% (\texttt{results/analysis/review\_gate\_bootstrap.csv}).
+
+\paragraph{Data and resources.} CPTAC data were obtained with \texttt{cptac} 1.5.14; ProCan-DepMapSanger and
+Cell Model Passports files are versioned by their release dates. Reference resources were UniProtKB/Swiss-Prot
+human, Ensembl 116 and Reactome 97. Counts quoted in the paper that no other output records (eligible pathway
+features, truncated sequences, the batched-trainer agreement) are recomputed by \texttt{bench/review.py
+provenance} into \texttt{results/analysis/review\_provenance.csv}. All post hoc analyses are in
+\texttt{bench/fusion\_lpo.py} (leave-pair-out for the fusion network) and \texttt{bench/review.py} (all others).
+
+\section{Task selection}\label{sup:selection}
+Table~\ref{tab:selection} recomputes the pre-specified selection (main text \S3.2) with the effect statistic
+of Table~1. The script is \texttt{bench/selection.py}, and every candidate, eligible or not, is listed in
+\texttt{results/analysis/task\_selection.csv}. A B2 or B5 candidate is eligible if each class has at least 35
+units, so that $N = 30$ leaves 20 per class in $H_r$; among eligible candidates the smallest effect is chosen.
+No other CPTAC contrast and no other ProCan-DepMapSanger tissue reaches 35 units per class. The selection itself
+was made once, before any model was fitted, with an earlier implementation of the statistic, which gave 0.698,
+0.831, 0.855 and 1.330 for the four B2 candidates and 0.658 and 0.735 for the two B5 candidates, in the same
+order.
+
+\begin{table}[H]
+\centering
+\caption{Task selection. B1: largest min(\#tumour, \#NAT), ties to more samples. B2, B5: smallest effect among
+eligible candidates. Units: patients (CPTAC) or donors (ProCan-DepMapSanger). Median $|d|$: over the top 100
+proteins by R limma $|t|$ on the full contrast. Bold: chosen.}
+\label{tab:selection}
+\begin{tabular}{@{}l l l r r r@{}}
+\toprule
+Task & Cohort & Contrast (positive / negative) & Units & Samples & Median $|d|$ \\
+\midrule
+B1 & \textbf{LUAD} & \textbf{tumour / NAT} & \textbf{111 / 102} & \textbf{213} & --- \\
+ & LSCC & tumour / NAT & 110 / 102 & 212 & --- \\
+ & COAD & tumour / NAT & 97 / 100 & 197 & --- \\
+ & PDAC & tumour / NAT & 145 / 93 & 238 & --- \\
+\midrule
+B2 & \textbf{PDAC} & \textbf{TP53 mutant / wild-type} & \textbf{105 / 35} & \textbf{140} & \textbf{0.77} \\
+ & CCRCC & stage I / III--IV & 52 / 45 & 97 & 0.83 \\
+ & LUAD & TP53 mutant / wild-type & 67 / 41 & 108 & 0.88 \\
+ & BRCA & TP53 mutant / wild-type & 54 / 66 & 120 & 1.33 \\
+\midrule
+B5 & \textbf{Haem.\ and lymphoid} & \textbf{TP53 driver mutant / wild-type} & \textbf{99 / 64} & \textbf{163} & \textbf{0.71} \\
+ & Lung & TP53 driver mutant / wild-type & 142 / 42 & 184 & 0.74 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\bibliographystyle{unsrtnat}
+\bibliography{refs}
+
+\end{document}
