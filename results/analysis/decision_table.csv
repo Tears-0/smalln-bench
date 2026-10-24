@@ -3,10 +3,11 @@ N,Question,Recommendation,Evidence
 >= 20,Internal estimate,"Repeated k-fold, AUC per fold; expect >0.1 overstatement in about one study in five (17-23% at N = 20-30)",descriptive
 all,Own null,"Re-run the whole pipeline on permuted labels with leave-pair-out or per-fold k-fold; a mean well above 0.5 exposes a leak (at 3 vs 3 only 20 labellings exist, so a permutation p cannot fall below 0.05, or 0.1 for label-symmetric pipelines)",descriptive
 all,Feature selection,Inside the folds only (outside: +0.04 to +0.45 optimism),descriptive
-all,Augmentation,Never before the split (SMOTE adds 0.07-0.25 from N = 12 on top of other leaks); inside the folds it does not help,descriptive
+all,Augmentation,Never before the split (SMOTE adds 0.07-0.16 from N = 20 on top of other leaks); inside the folds it does not help,descriptive
 9-30,Model,"Avoid the fusion network (TabPFN from N = 9, CCP and RF from 12, EN from 20; by 0.04-0.19 AUC)",secondary claim
 6-30,Model,"No basis to choose among CCP, elastic net, random forest, TabPFN",none
-9-30,Features,"With RF, prefer proteins to Reactome pathway scores (EN: N = 30 only)",secondary claim
+<= 30,Outside information,"If a labelled cohort exists for the same contrast, score with its signature: it beat all four standard models at N = 12 and 30; protein embeddings added nothing",follow-up test
+9-30,Features,"With RF, use proteins, not pathway scores (EN: N = 30 only)",secondary claim
 <= 30,Biomarker list,Do not read the top 50 as a biomarker list (Kuncheva 0.00-0.04),descriptive
 <= 30,Stability,"Not a proxy for recovery at a fixed N, and high even with no signal",none
-any,Large effect,"Any method reaches AUC 1.00 from N = 6 (B1, full-cohort |d| ~ 4); no basis to choose",none
+any,Large effect,"Every method reaches a median AUC of 0.99-1.00 from N = 6 (B1, full-cohort |d| ~ 4); no basis to choose",none

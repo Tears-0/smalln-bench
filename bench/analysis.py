@@ -1,14 +1,14 @@
-"""Registered analyses (spec §6, §16 A8). Outputs go to results/analysis/.
+"""Pre-specified analyses and the secondary analysis over B2 and B5 (paper §3.6, §4). Outputs go to results/analysis/.
 
     python -m bench.analysis rankings | optimism | usable_n | recovery | decision
 
 All analyses use the true-label arm unless stated. No p-value is computed
-across repeats (§6.0, F17): repeats are summarised descriptively.
+across repeats (overlapping draws from one cohort): repeats are summarised descriptively.
 
-Paired decision rule (§6.0): A outranks B at (task, N) iff the paired difference
+Paired decision rule (paper §3.6): A outranks B at (task, N) iff the paired difference
 d = AUC_ext(A) - AUC_ext(B) on the same draws has median > 0.02 and P(d > 0) >= 0.75.
-A claim generalises only if it holds in every task eligible at that N; under A8
-no ranking claim can generalise across all three tasks while B1 is at ceiling,
+A claim generalises only if it holds in every task eligible at that N. No
+ranking claim can generalise across all three tasks while B1 is at ceiling,
 so a secondary analysis over B2 and B5 is reported and labelled as such.
 """
 from __future__ import annotations
@@ -16,6 +16,7 @@ from __future__ import annotations
 import itertools
 import json
 import sys
+from decimal import ROUND_HALF_UP, Decimal
 
 import numpy as np
 import pandas as pd
@@ -93,8 +94,8 @@ def rankings():
             kw.append(dict(N=N, tasks=label, n_tasks=len(tasks), W=kendall_w(M.rank(axis=1).to_numpy())))
     KW = pd.DataFrame(kw)
 
-    # claims: "A outranks B" must hold in every eligible task (registered) or in BOTH
-    # B2 and B5 (secondary, A8). A single eligible task (B5 alone at N = 50) is not a claim.
+    # claims: "A outranks B" must hold in every eligible task (pre-specified) or in BOTH
+    # B2 and B5 (secondary analysis). A single eligible task (B5 alone at N = 50) is not a claim.
     # Set (ii) is tested in both directions (variant over reference, reference over variant).
     rev = P[P.set == "ii"].rename(columns={"A": "B", "B": "A"}).assign(
         median_d=lambda d: -d.median_d, outranks=lambda d: d.outranked)
@@ -116,7 +117,7 @@ def rankings():
     return P, mr, iqr, KW, C
 
 
-# ------------------------------------------------------- 2. usable-N (F22)
+# ------------------------------------------------------- 2. usable-N
 USABLE = 0.05
 
 
@@ -144,7 +145,7 @@ def usable_n():
     for (task, cfg), s in med.groupby(level=["task", "config"]):
         meds = {N: v for (_, _, N), v in s.items()}
         top = max(meds)
-        reg = _first_stable(meds, lambda m: m < USABLE)                 # registered (one-sided)
+        reg = _first_stable(meds, lambda m: m < USABLE)                 # pre-specified (one-sided)
         diag = _first_stable(meds, lambda m: abs(m) < USABLE)           # diagnostic (two-sided)
         rows.append(dict(task=task, config=cfg, registered_usable_N=reg if reg else f"> {top}",
                          diagnostic_two_sided=diag if diag else f"> {top}",
@@ -154,12 +155,12 @@ def usable_n():
     return U
 
 
-# ----------------------------------------------------- 3. optimism (§6.1)
+# ----------------------------------------------------- 3. optimism (paper §3.5)
 def optimism():
     """Median, IQR and P(O > 0.1) per (task, config, N) for four variants:
     honest (primary estimator), leaky (filter on all of S_r), LPO (N <= 12), and the
-    permuted-label null of the honest estimator. Reported per task = effect-size
-    stratum (F16); task effect sizes from bench.references."""
+    permuted-label null of the honest estimator. Reported per task; task effect
+    sizes from bench.references."""
     d = optimism_frame(load(None))
     rows = []
     for (task, cfg, N), g in d.groupby(["task", "config", "N"]):
@@ -177,12 +178,12 @@ def optimism():
     return T
 
 
-# ----------------------------------------------------- 4. recovery (§6.2)
+# ----------------------------------------------------- 4. recovery (paper §3.6)
 REC = ["p10", "p20", "p50", "p100", "p50_wil", "rbo", "rbo_wil", "dir50"]
 
 
 def recovery():
-    """Descriptive only (A8): B2's reference has no FDR-significant protein and B1 is a
+    """Descriptive only: B2's reference has no FDR-significant protein and B1 is a
     single task, so no recovery claim is made. Permuted-label recovery is the empirical
     null; the analytic chance level of precision@k is k / n_proteins."""
     from . import loaders
@@ -194,13 +195,14 @@ def recovery():
     return g
 
 
-# --------------------------------------------------- 5. decision table (§7)
+# --------------------------------------------------- 5. decision table (paper Table 3)
 def decision():
     """The paper's decision table (Table 3), rebuilt from the saved analyses. Rows come from
     the two weak-signal tasks (B2, B5) except the last (B1). Evidence: secondary claim =
     paired rule holds in both B2 and B5 (a post hoc relaxation of the pre-specified rule);
-    descriptive = measured and consistent in both, no pre-specified decision rule; none =
-    no basis to choose. Needs `python -m bench.review all` and `python -m bench.stability`."""
+    descriptive = measured and consistent in both, no pre-specified decision rule; follow-up
+    test = hypothesis fixed before fresh draws after the benchmark (posthoc/confirm, run 5);
+    none = no basis to choose. Needs `python -m bench.review all` and `python -m bench.stability`."""
     small = ["B2", "B5"]
     base = ["CCP", "EN", "RF", "TabPFN"]
     T = pd.read_csv(OUT / "optimism.csv")
@@ -212,15 +214,18 @@ def decision():
     SM = pd.read_csv(OUT / "review_smote_split.csv")
     E = pd.read_csv(OUT / "review_effect_null.csv")
     S = pd.read_parquet(RESULTS / "stability.parquet")
-    f2 = lambda x: f"{x:.2f}".replace("-0.00", "0.00")
-    sg = lambda x: f"{x:+.2f}"
+    # round half away from zero after clearing float noise (0.1549999... is 0.155 -> 0.16)
+    r2 = lambda x: float(Decimal(repr(round(float(x), 10))).quantize(Decimal("0.01"), ROUND_HALF_UP))
+    f2 = lambda x: f"{r2(x):.2f}".replace("-0.00", "0.00")
+    sg = lambda x: f"{r2(x):+.2f}"
 
     loo = T[T.config.isin(base + ["FUS"]) & (T.N <= 12)].honest_median
     lpo = pd.concat([T[T.config.isin(base) & (T.N <= 12)].lpo_median,
                      F[(F.arm == "true") & F.task.isin(small)].O_lpo_median])
     kp = K[K.N <= 30].p_gt_01
     lk = T[T.config.isin(base)].leaky_median
-    sm = SM[(SM.arm == "true") & SM.task.isin(small) & (SM.N >= 12)].smote_extra
+    # from N = 20 only: at N <= 12 both arms are scored by pooled LOOCV, whose bias differs between them
+    sm = SM[(SM.arm == "true") & SM.task.isin(small) & (SM.N >= 20)].smote_extra
     fus = sec[sec.B == "FUS"]
     first = fus.groupby("A").N.min()
     by_n = {}
@@ -233,6 +238,10 @@ def decision():
     st = S[(S.arm == "true") & S.task.isin(small) & (S.N <= 30) & ~S.config.str.contains("-var")
            & (S.config != "EN-smote-leaky") & (S.config != "RF-smote-leaky")].kuncheva
     d_b1 = E[(E.task == "B1") & (E.scope == "full") & (E.arm == "true")].median_abs_d.iloc[0]
+    b1 = load("true")
+    b1 = b1[b1.task == "B1"].groupby(["config", "N"]).auc_ext.median()
+    Z = pd.read_csv(RESULTS.parent / "posthoc" / "confirm" / "confirm5_paired.csv")
+    zs = sorted(n for n in (12, 30) if (Z[Z.N == n].flag == "beats").all() and Z[Z.N == n].task.nunique() == 2)
 
     rows = [
         ("<= 12", "Internal estimate",
@@ -248,19 +257,23 @@ def decision():
         ("all", "Feature selection",
          f"Inside the folds only (outside: {sg(lk.min())} to {sg(lk.max())} optimism)", "descriptive"),
         ("all", "Augmentation",
-         f"Never before the split (SMOTE adds {f2(sm.min())}-{f2(sm.max())} from N = 12 on top of other leaks); "
+         f"Never before the split (SMOTE adds {f2(sm.min())}-{f2(sm.max())} from N = 20 on top of other leaks); "
          "inside the folds it does not help", "descriptive"),
         (f"{sorted(fus.N.unique())[0]}-{sorted(fus.N.unique())[-1]}", "Model",
          f"Avoid the fusion network ({order}; by {f2(min(marg))}-{f2(max(marg))} AUC)", "secondary claim"),
         ("6-30", "Model", "No basis to choose among CCP, elastic net, random forest, TabPFN", "none"),
+        ("<= 30", "Outside information",
+         "If a labelled cohort exists for the same contrast, score with its signature: it beat all four standard "
+         f"models at N = {' and '.join(map(str, zs))}; protein embeddings added nothing", "follow-up test"),
         (f"{pa['RF-path'][0]}-{pa['RF-path'][-1]}", "Features",
-         f"With RF, prefer proteins to Reactome pathway scores (EN: N = {', '.join(map(str, pa['EN-path']))} only)",
+         f"With RF, use proteins, not pathway scores (EN: N = {', '.join(map(str, pa['EN-path']))} only)",
          "secondary claim"),
         ("<= 30", "Biomarker list",
          f"Do not read the top 50 as a biomarker list (Kuncheva {f2(st.min())}-{f2(st.max())})", "descriptive"),
         ("<= 30", "Stability", "Not a proxy for recovery at a fixed N, and high even with no signal", "none"),
         ("any", "Large effect",
-         f"Any method reaches AUC 1.00 from N = 6 (B1, full-cohort |d| ~ {d_b1:.0f}); no basis to choose", "none"),
+         f"Every method reaches a median AUC of {b1.min():.2f}-{b1.max():.2f} from N = 6 (B1, full-cohort "
+         f"|d| ~ {d_b1:.0f}); no basis to choose", "none"),
     ]
     D = pd.DataFrame(rows, columns=["N", "Question", "Recommendation", "Evidence"])
     D.to_csv(OUT / "decision_table.csv", index=False)
@@ -305,7 +318,7 @@ if __name__ == "__main__":
     if what == "usable_n":
         U = usable_n()
         print("Usable-N: smallest N at which median optimism < 0.05 and stays so at every larger N (true labels,")
-        print("primary internal estimator). 'registered' = one-sided as pre-registered (F22); 'diagnostic' = |median| < 0.05.")
+        print("primary internal estimator). 'registered' = one-sided, as pre-specified; 'diagnostic' = |median| < 0.05.")
         print(U.pivot_table(index="config", columns="task", values="registered_usable_N", aggfunc="first").to_string())
         print("\ndiagnostic (two-sided):")
         print(U.pivot_table(index="config", columns="task", values="diagnostic_two_sided", aggfunc="first").to_string())
@@ -325,9 +338,9 @@ if __name__ == "__main__":
         print("\nSet (ii): variant vs its reference -- outranks (+) / outranked (-) per task and N")
         q = P[P.set == "ii"].assign(v=lambda d: np.where(d.outranks, "+", np.where(d.outranked, "-", ".")))
         print(q.pivot_table(index=["A", "B"], columns=["task", "N"], values="v", aggfunc="first").to_string())
-        print("\nRegistered claims (hold in every eligible task):", int(C.registered_generalises.sum()))
+        print("\nPre-specified claims (hold in every eligible task):", int(C.registered_generalises.sum()))
         sec = C[C.secondary_B2_and_B5]
-        print("Secondary claims (hold in BOTH B2 and B5; A8):")
+        print("Secondary claims (hold in BOTH B2 and B5):")
         print(sec[["set", "N", "A", "B", "median_d"]].to_string(index=False) if len(sec) else "  none")
         one = C[~C.secondary_B2_and_B5 & ~C.registered_generalises]
         print(f"\nSingle-task results (NOT claims): {len(one)} rows")
