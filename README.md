@@ -25,6 +25,7 @@ design or analysis after it was fixed. Comments in the code cite its sections
 | `results/` | Complete results (below) |
 | `figures/` | The paper's figures, produced by `python -m bench.figures` |
 | `vendor/fusion/` | The case-study fusion network and trainer, frozen, with MD5 checksums |
+| `posthoc/` | Follow-up runs after the benchmark, each with its plan, code, logs and results (paper §5.1, Supplementary Section S5; see `posthoc/README.md`) |
 | `prereg/measurements/` | Timing measurements and the batched-trainer equivalence check made before the runs |
 | `env/` | Python and R environments, pinned versions |
 | `data/`, `models/` | Local only, not committed (see *Reproducing*) |

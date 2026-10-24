@@ -1,0 +1,53 @@
+2026-10-24 10:51:30 B2 external Brca: 120 tumours (54 mutant / 66 wild-type), 10568 task proteins matched
+2026-10-24 10:51:30 B2 external Ccrcc: 110 tumours (7 mutant / 103 wild-type), 10202 task proteins matched
+2026-10-24 10:51:30 B2 external Coad: 0 task proteins matched by Ensembl protein ID -> excluded
+2026-10-24 10:51:30 B2 external Gbm: 99 tumours (32 mutant / 67 wild-type), 10077 task proteins matched
+2026-10-24 10:51:30 B2 external Hnscc: 109 tumours (96 mutant / 13 wild-type), 10413 task proteins matched
+2026-10-24 10:51:30 B2 external Lscc: 108 tumours (103 mutant / 5 wild-type), 10790 task proteins matched
+2026-10-24 10:51:30 B2 external Luad: 108 tumours (67 mutant / 41 wild-type), 10767 task proteins matched
+2026-10-24 10:51:30 B2 external Ov: 82 tumours (77 mutant / 5 wild-type), 9576 task proteins matched
+2026-10-24 10:51:30 B2 external Ucec: 95 tumours (22 mutant / 73 wild-type), 10516 task proteins matched
+2026-10-24 10:51:31 B2: signature from 831 external samples (458 mutant), 8 groups
+2026-10-24 10:51:31 B2 leave-one-group-out: Brca AUC 0.789 (n = 120)
+2026-10-24 10:51:32 B2 leave-one-group-out: Gbm AUC 0.674 (n = 99)
+2026-10-24 10:51:32 B2 leave-one-group-out: Hnscc AUC 0.677 (n = 109)
+2026-10-24 10:51:33 B2 leave-one-group-out: Luad AUC 0.770 (n = 108)
+2026-10-24 10:51:33 B2 leave-one-group-out: Ucec AUC 0.815 (n = 95)
+2026-10-24 10:51:34 B5 external Adrenal Gland: 1 lines -> too few to standardise, excluded
+2026-10-24 10:51:34 B5 external Biliary Tract: 4 lines (4 mutant / 0 wild-type)
+2026-10-24 10:51:34 B5 external Bladder: 18 lines (14 mutant / 4 wild-type)
+2026-10-24 10:51:34 B5 external Bone: 41 lines (23 mutant / 18 wild-type)
+2026-10-24 10:51:34 B5 external Breast: 50 lines (36 mutant / 14 wild-type)
+2026-10-24 10:51:34 B5 external Central Nervous System: 54 lines (39 mutant / 15 wild-type)
+2026-10-24 10:51:34 B5 external Cervix: 13 lines (3 mutant / 10 wild-type)
+2026-10-24 10:51:34 B5 external Endometrium: 11 lines (9 mutant / 2 wild-type)
+2026-10-24 10:51:34 B5 external Esophagus: 35 lines (35 mutant / 0 wild-type)
+2026-10-24 10:51:34 B5 external Head and Neck: 39 lines (38 mutant / 1 wild-type)
+2026-10-24 10:51:34 B5 external Kidney: 33 lines (12 mutant / 21 wild-type)
+2026-10-24 10:51:34 B5 external Large Intestine: 47 lines (33 mutant / 14 wild-type)
+2026-10-24 10:51:34 B5 external Liver: 16 lines (11 mutant / 5 wild-type)
+2026-10-24 10:51:34 B5 external Lung: 184 lines (142 mutant / 42 wild-type)
+2026-10-24 10:51:34 B5 external Ovary: 41 lines (28 mutant / 13 wild-type)
+2026-10-24 10:51:34 B5 external Pancreas: 30 lines (26 mutant / 4 wild-type)
+2026-10-24 10:51:34 B5 external Peripheral Nervous System: 30 lines (13 mutant / 17 wild-type)
+2026-10-24 10:51:34 B5 external Placenta: 2 lines -> too few to standardise, excluded
+2026-10-24 10:51:34 B5 external Prostate: 8 lines (4 mutant / 4 wild-type)
+2026-10-24 10:51:34 B5 external Skin: 54 lines (20 mutant / 34 wild-type)
+2026-10-24 10:51:34 B5 external Small Intestine: 1 lines -> too few to standardise, excluded
+2026-10-24 10:51:34 B5 external Soft Tissue: 18 lines (9 mutant / 9 wild-type)
+2026-10-24 10:51:34 B5 external Stomach: 27 lines (19 mutant / 8 wild-type)
+2026-10-24 10:51:34 B5 external Testis: 2 lines -> too few to standardise, excluded
+2026-10-24 10:51:34 B5 external Thyroid: 16 lines (12 mutant / 4 wild-type)
+2026-10-24 10:51:34 B5 external Uterus: 3 lines (2 mutant / 1 wild-type)
+2026-10-24 10:51:34 B5 external Vulva: 3 lines (3 mutant / 0 wild-type)
+2026-10-24 10:51:34 B5: signature from 775 external samples (535 mutant), 23 groups
+2026-10-24 10:51:35 B5 leave-one-group-out: Bone AUC 0.681 (n = 41)
+2026-10-24 10:51:35 B5 leave-one-group-out: Breast AUC 0.750 (n = 50)
+2026-10-24 10:51:35 B5 leave-one-group-out: Central Nervous System AUC 0.909 (n = 54)
+2026-10-24 10:51:35 B5 leave-one-group-out: Kidney AUC 0.865 (n = 33)
+2026-10-24 10:51:35 B5 leave-one-group-out: Large Intestine AUC 0.874 (n = 47)
+2026-10-24 10:51:35 B5 leave-one-group-out: Lung AUC 0.779 (n = 184)
+2026-10-24 10:51:36 B5 leave-one-group-out: Ovary AUC 0.945 (n = 41)
+2026-10-24 10:51:36 B5 leave-one-group-out: Peripheral Nervous System AUC 0.760 (n = 30)
+2026-10-24 10:51:36 B5 leave-one-group-out: Skin AUC 0.849 (n = 54)
+2026-10-24 10:51:36 all stages done

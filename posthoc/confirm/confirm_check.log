@@ -1,0 +1,13 @@
+2026-10-24 14:01:12 stages ['check']
+2026-10-24 14:01:26 check baseline CCP B2 N=12 r0-9: max |diff| 0
+2026-10-24 14:01:26 check baseline EN B2 N=12 r0-9: max |diff| 0
+2026-10-24 14:01:26 check baseline RF B2 N=12 r0-9: max |diff| 0
+2026-10-24 14:01:26 check baseline TabPFN B2 N=12 r0-9: max |diff| 0
+2026-10-24 14:01:27 check V2 B2 N=12 r0-9: max |diff| 0
+2026-10-24 14:01:37 check baseline CCP B5 N=30 r0-9: max |diff| 0
+2026-10-24 14:01:37 check baseline EN B5 N=30 r0-9: max |diff| 0
+2026-10-24 14:01:37 check baseline RF B5 N=30 r0-9: max |diff| 0
+2026-10-24 14:01:37 check baseline TabPFN B5 N=30 r0-9: max |diff| 0
+2026-10-24 14:01:38 check V2 B5 N=30 r0-9: max |diff| 0
+2026-10-24 14:01:38 checks passed
+2026-10-24 14:01:38 all stages done

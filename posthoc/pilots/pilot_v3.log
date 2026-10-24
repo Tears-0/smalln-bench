@@ -1,0 +1,20 @@
+GPU cap 4.0 GB
+15:55:44 add B2 N=6 true: 205s, peak GPU 2.28 GB
+16:02:27 add B2 N=12 true: 404s, peak GPU 2.28 GB
+16:18:49 add B2 N=30 true: 981s, peak GPU 2.28 GB
+16:22:08 add B5 N=6 true: 199s, peak GPU 2.28 GB
+16:28:43 add B5 N=12 true: 395s, peak GPU 2.28 GB
+16:44:55 add B5 N=30 true: 971s, peak GPU 2.28 GB
+17:11:52 add B5 N=50 true: 1618s, peak GPU 2.28 GB
+17:18:23 add B2 N=12 perm: 391s, peak GPU 2.28 GB
+17:24:54 add B5 N=12 perm: 390s, peak GPU 2.28 GB
+17:28:13 multiply B2 N=6 true: 200s, peak GPU 2.28 GB
+17:34:49 multiply B2 N=12 true: 395s, peak GPU 2.28 GB
+17:51:12 multiply B2 N=30 true: 983s, peak GPU 2.28 GB
+17:54:31 multiply B5 N=6 true: 199s, peak GPU 2.28 GB
+18:01:06 multiply B5 N=12 true: 395s, peak GPU 2.28 GB
+18:17:29 multiply B5 N=30 true: 982s, peak GPU 2.28 GB
+18:44:45 multiply B5 N=50 true: 1636s, peak GPU 2.28 GB
+18:51:20 multiply B2 N=12 perm: 395s, peak GPU 2.28 GB
+18:57:55 multiply B5 N=12 perm: 395s, peak GPU 2.28 GB
+done

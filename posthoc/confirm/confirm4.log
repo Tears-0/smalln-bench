@@ -1,0 +1,15 @@
+2026-10-24 10:55:08 baselines B2 N=6 done
+2026-10-24 10:57:03 baselines B2 N=12 done
+2026-10-24 10:59:05 baselines B2 N=30 done
+2026-10-24 11:00:55 baselines B5 N=6 done
+2026-10-24 11:02:47 baselines B5 N=12 done
+2026-10-24 11:04:50 baselines B5 N=30 done
+2026-10-24 11:06:55 baselines B5 N=50 done
+2026-10-24 11:06:59 transfer B2 N=6: 4s
+2026-10-24 11:07:04 transfer B2 N=12: 6s
+2026-10-24 11:07:12 transfer B2 N=30: 8s
+2026-10-24 11:07:13 transfer B5 N=6: 1s
+2026-10-24 11:07:18 transfer B5 N=12: 4s
+2026-10-24 11:07:24 transfer B5 N=30: 6s
+2026-10-24 11:07:31 transfer B5 N=50: 7s
+2026-10-24 11:07:31 all stages done

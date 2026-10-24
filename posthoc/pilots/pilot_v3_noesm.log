@@ -1,0 +1,11 @@
+GPU cap 4.0 GB
+19:38:23 noesm B2 N=6 true: 308s, peak GPU 2.28 GB
+19:48:45 noesm B2 N=12 true: 622s, peak GPU 2.28 GB
+20:11:31 noesm B2 N=30 true: 1366s, peak GPU 2.28 GB
+20:15:51 noesm B5 N=6 true: 260s, peak GPU 2.28 GB
+20:24:01 noesm B5 N=12 true: 490s, peak GPU 2.28 GB
+20:45:46 noesm B5 N=30 true: 1305s, peak GPU 2.28 GB
+21:15:19 noesm B5 N=50 true: 1773s, peak GPU 2.28 GB
+21:21:52 noesm B2 N=12 perm: 392s, peak GPU 2.28 GB
+21:28:45 noesm B5 N=12 perm: 414s, peak GPU 2.28 GB
+done
