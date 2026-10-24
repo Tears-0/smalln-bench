@@ -52,16 +52,17 @@ three public mass-spectrometry cohorts (CPTAC lung tumour versus normal tissue; 
 pancreatic tumours and in ProCan-DepMapSanger haematopoietic cell lines) to $N = 6$--$50$, 100 times each,
 with patient-disjoint held-out sets, and ran 15 configurations (compound covariate predictor, elastic net,
 random forest, TabPFN, a protein-language-model fusion network, and pipeline variants) under true and
-permuted labels: 51,000 runs. The design was fixed in a written specification before the first run, and
-every later change is reported. As the
+permuted labels: 51,000 runs. The design was fixed before the first run, and every later change is reported. As the
 condition predicts, pooled LOOCV erred by $-0.60$ to $+0.29$ depending on the learner, with errors of the
 same sign and similar size under permuted labels; the positive extreme came from the fusion network, which
 assigns held-out samples to the training minority class. Leave-pair-out stayed within $\pm 0.08$ for all
 five models. From $N = 20$, $k$-fold was right on average but overstated held-out AUC by more than 0.1 in
 17--23\% of studies at $N = 20$--$30$. Selecting features before cross-validation inflated the estimate by
-up to 0.45, and SMOTE before the split added 0.07--0.25 more. In the two weak-signal tasks, top-50 protein
+up to 0.45, and from $N = 20$ SMOTE before the split added 0.07--0.16 more. In the two weak-signal tasks, top-50 protein
 lists from different subsamples overlapped little more than chance, no model was reliably best, and no
-pipeline variant helped.
+pipeline variant helped. In follow-up runs, each fixed in a written plan before fresh draws, protein-language-model
+and co-expression embeddings added nothing, whereas a TP53 signature fitted to other cohorts and applied
+without the study's labels beat all four standard models trained on the study's own samples at $N = 12$ and 30.
 \end{abstract}
 
 \noindent\textbf{Code and data:} \coderepo{} (all benchmark datasets are public; supplementary material in a
@@ -201,20 +202,20 @@ can run the same test on its own pipeline, within the limits of its own labellin
 
 \subsection{Pre-specified design}
 Following the logic of pre-registration \citep{nosek2018prereg}, the research question, tasks,
-configurations, metrics, leakage tests and decision rules were fixed in a written specification before the
-first benchmark run, and later changes were appended to it as dated amendments. The specification is
-internal and was not lodged with a public registry, so its timing rests on our own record; the code, leakage
-tests and complete results are public. Every later change to the design or analysis is reported here. Before
+configurations, metrics, leakage tests and decision rules were fixed before the first benchmark run. The
+design was not lodged with a public registry, so its timing rests on our own record; the code, leakage tests
+and complete results are public. Every later change to the design or analysis is reported here. Before
 any run, one task was
 dropped because it could not meet the pre-specified rules (\S\ref{sec:tasks}); a perturbation task and a
 protein-interaction smoothing arm were dropped under the pre-specified deadline rule; an external replication
-track and a TabPFN pathway arm were cut for time; and the TabPFN checkpoint, left open at the freeze, was
+track and a TabPFN pathway arm were cut for time; and the TabPFN checkpoint, which the design had left open, was
 fixed. After the leakage tests but before any true-label benchmark result (a two-draw smoke test of the fusion
 runner aside), the two mis-calibrated leakage tests (1 and 1b) were replaced (\S\ref{sec:gate}). After the results were known, we added the secondary analysis over B2
 and B5, because the pre-specified rule could yield no claim while B1 sat at ceiling (\S\ref{sec:results});
 Proposition~\ref{prop:null}; leave-pair-out for the fusion network, which the pre-specified design omitted for
-cost; the other analyses marked \emph{post hoc}; and the illustration on the motivating study
-(\S\ref{sec:case}).
+cost; the other analyses marked \emph{post hoc}; the illustration on the motivating study
+(\S\ref{sec:case}); and five follow-up runs, each fixed in a written plan before fresh draws, which we decided to report only after
+the last (\S\ref{sec:posthoc}).
 
 \subsection{Tasks}\label{sec:tasks}
 A task is one cohort, one binary contrast and one draw unit (Table~\ref{tab:tasks}). Tasks were chosen by
@@ -275,8 +276,8 @@ training samples, imputes the remainder by a protein-wise left-censored draw
 $\mathcal{N}(\mu - 1.5\sigma, (0.3\sigma)^2)$ \citep{lazar2016missing}---the down-shifted normal of Perseus
 \citep{tyanova2016perseus}, whose default shift is $1.8\sigma$; we kept the earlier analysis's
 $1.5\sigma$---then $z$-scores with training statistics and keeps the 500 proteins with the largest moderated
-$t$ \citep{smyth2004limma}. Five models follow it, none with tuned hyperparameters: a compound covariate
-predictor (CCP) on the top 50 proteins \citep{radmacher2002ccp}; logistic elastic net (EN, $\ell_1$ ratio 0.5,
+$t$ \citep{smyth2004limma}. Five models follow it, none with tuned hyperparameters: a sign-weighted compound
+covariate predictor (CCP) on the top 50 proteins \citep{radmacher2002ccp}; logistic elastic net (EN, $\ell_1$ ratio 0.5,
 $C = 1$) \citep{zou2005elasticnet}; random forest (RF, 500 trees) \citep{breiman2001rf}; TabPFN-3.5
 (\texttt{tabpfn} 9.0.0) \citep{hollmann2025tabpfn,tabpfn2026v35} with its Fast checkpoint, which trades some
 accuracy for speed and so may slightly handicap TabPFN; and the case-study fusion network (FUS), frozen at
@@ -285,7 +286,8 @@ with a sigmoid-squashed abundance encoding, attentive pooling, 1,000 epochs, bat
 Section S1) with a binary head. FUS received the reference pipeline's 500-protein input, with the filter
 restricted to proteins that have a sequence (all but 12, 5 and 40 proteins in B1, B2 and B5), and was trained in fp32 by a batched trainer whose logits agree with
 independently trained single models to $7 \times 10^{-7}$ (200 steps, dropout off). EN and RF also carry four
-variants each: a variance filter instead of moderated $t$; complete-case proteins without imputation; Reactome
+variants each: a variance filter instead of moderated $t$; complete-case proteins (held-out gaps set to the
+training mean); Reactome
 pathway aggregation \citep{milacic2024reactome}; and SMOTE \citep{chawla2002smote} inside the training fold
 (both classes doubled, $k = \min(5, n_{\min} - 1)$ neighbours, so $k = 1$ in the smallest folds). Two further
 arms apply SMOTE to all of $S_r$ before the internal split---the leaky practice whose cost we set out to
@@ -304,7 +306,7 @@ Configuration & Differs from the reference pipeline by & LPO & Leaky pass \\
 CCP, EN, RF, TabPFN & --- (reference pipeline; model only) & yes & yes \\
 FUS & case-study fusion network on the reference pipeline's input & post hoc & no \\
 EN-var, RF-var & top 500 proteins by training variance (unsupervised) & yes & --- \\
-EN-drop, RF-drop & complete-case proteins, no imputation & yes & yes \\
+EN-drop, RF-drop & complete-case proteins; held-out gaps set to the training mean & yes & yes \\
 EN-path, RF-path & Reactome pathway scores (mean $z$ of 10--200 present members) replace proteins & yes & yes \\
 EN-smote, RF-smote & SMOTE inside the training fold (both classes oversampled $2\times$) & yes & yes \\
 EN-smote-leaky, RF-smote-leaky & preprocessing and SMOTE fitted on all of $S_r$ before the internal split & yes & --- \\
@@ -408,7 +410,10 @@ $+0.01$. But the spread is wide (Figure~\ref{fig:optimism}, bars): internal AUC 
 than 0.1 in 13--26\% of repeats for single configurations, and in 17--23\% of all baseline repeats at
 $N = 20$--$30$ (15\% at $N = 50$, B5). Little of that spread is noise in the held-out AUC itself: its
 Hanley--McNeil variance \citep{hanley1982auc} accounts for only 7--21\% of the variance of optimism, so most of
-it is error in the internal estimate.
+it is error in the internal estimate. The pre-specified usable-$N$, the smallest $N$ from which median optimism
+stays below 0.05, is not identifiable: it is $N = 6$ for 12 of 15 configurations in B2 and B5 only because
+pooled LOOCV is pessimistic there, and a two-sided version lands mostly where the estimator switches ($N = 20$;
+30 for four configurations in B2, earlier for CCP).
 
 \subsection{Leaky pipelines inflate the estimate, and keep doing so}
 Fitting the supervised filter on all of $S_r$ before CV raised the internal AUC of the four baselines well
@@ -418,8 +423,9 @@ and SMOTE on all of $S_r$, so they carry both leaks: median optimism $+0.37$ to 
 to $+0.36$ at the largest $N$, with internal AUCs of 0.96--1.00 even under permuted labels. Comparing them on
 the same draws with the leaky pass of the in-fold SMOTE arms, which refits only the filter, separates the two
 (\emph{post hoc}). At $N = 6$ the filter leak alone puts the internal AUC at its ceiling, and SMOTE adds
-nothing; from $N = 12$ SMOTE adds a further $0.07$--$0.25$ (medians, positive in 85--100\% of draws), and
-$0.08$--$0.13$ at the largest $N$. Each synthetic point interpolates between two real samples of one class, so
+nothing; from $N = 20$, where the estimator is calibrated, SMOTE (with imputation and scaling also fitted on
+all of $S_r$) adds a further $0.07$--$0.16$ (medians, positive in 95--100\% of draws), and $0.08$--$0.13$ at
+the largest $N$. Each synthetic point interpolates between two real samples of one class, so
 when SMOTE runs before the split, near-copies of every test sample, carrying its label, sit in its training
 fold. SMOTE inside the training fold changed nothing: it never outranked its reference in any task.
 
@@ -428,10 +434,9 @@ Figure~\ref{fig:ranking} shows mean ranks by held-out AUC. In both B2 and B5, th
 TabPFN from $N = 9$, by CCP and RF from $N = 12$, and by EN from $N = 20$, by a median of 0.04 to 0.19 AUC---secondary
 claims. At $N = 6$ no pair meets the rule in both tasks (in B5 alone all four baselines outrank the fusion
 network). Among CCP, EN, RF and TabPFN no pair meets the rule in both tasks; TabPFN outranks EN at every $N$ in
-B5 but not in B2, a single-task result. The mean-rank orderings of B2 and B5 agree (Kendall's $W$ 0.95--1.00
-for $N = 9$--30, 0.55 at $N = 6$); without the fusion network they still agree from $N = 9$ ($W$ 0.82--1.00,
-TabPFN first in both from $N = 12$) but not at $N = 6$ ($W = 0.10$), and the margins among the four are too
-small for the decision rule. Reactome pathway aggregation was outranked by protein features for RF at
+B5 but not in B2, a single-task result. The mean-rank orderings of B2 and B5 agree from $N = 9$, with or without
+the fusion network (Kendall's $W$ 0.82--1.00), but the margins among the four baselines are too small for the
+decision rule. Reactome pathway aggregation was outranked by protein features for RF at
 $N = 9$, 12, 20 and 30 and for EN only at $N = 30$ (secondary claims); the variance filter, complete-case
 proteins and in-fold SMOTE never outranked the reference pipeline in any task. Median held-out AUC rose from
 0.55--0.56 at $N = 6$ to 0.63--0.65 at $N = 30$ in B2, and from 0.59--0.63 to 0.72--0.78 at $N = 50$ in B5, for
@@ -451,11 +456,9 @@ In B2 and B5, recovery of the full-cohort top 50 was small (Figure~\ref{fig:reco
 0.003--0.076 up to $N = 30$, against 0.002--0.014 under permuted labels. CCP reached 0.13 in B5 at $N = 50$; in
 B1 it reached 0.19 at $N = 6$ and 0.66 at $N = 50$ (0.14 to 0.51 against the Wilcoxon reference), while EN, RF
 and the fusion network stayed at 0.07--0.26. Recovered proteins almost always changed in the full-cohort
-direction (0.90--1.00). $S_r$ makes up as much as 21\% (B2, $N = 30$) and 31\% (B5, $N = 50$) of the reference
-data. Against a reference computed on $H_r$ alone (\emph{post hoc}), which shares no sample with $S_r$ but is
-smaller, precision@50 was similar up to $N = 12$ and lower at the largest $N$ (CCP: 0.029 instead of 0.056 in
-B2 at $N = 30$, 0.092 instead of 0.127 in B5 at $N = 50$), so part of the large-$N$ recovery reflects the
-overlap. With that, and no FDR-significant protein in B2's reference, recovery is descriptive only.
+direction (0.90--1.00). $S_r$ makes up as much as 31\% of the reference data; against a reference computed on
+$H_r$ alone (\emph{post hoc}), precision@50 at the largest $N$ fell (CCP: 0.056 to 0.029 in B2, 0.127 to 0.092
+in B5). With that, and no FDR-significant protein in B2's reference, recovery is descriptive only.
 
 Selection was close to irreproducible. For the supervised configurations in B2 and B5 up to $N = 30$, the
 Kuncheva index of the top 50 between different subsamples was 0.00--0.04 (0 = chance overlap), likely an overestimate. In B1 it was 0.02--0.18 for EN and RF, despite perfect classification, while CCP rose
@@ -477,12 +480,18 @@ protein ranking.}
 \label{fig:recovery}
 \end{figure}
 
-\subsection{Usable-$N$ is not identifiable}
-The pre-specified usable-$N$---the smallest $N$ from which median optimism stays below 0.05---is $N = 6$ for 12 of
-15 configurations in B2 and in B5 (all 15 in B1, at ceiling). That is not because the estimates are accurate:
-the rule is one-sided, and pooled LOOCV is strongly pessimistic at $N = 6$. A two-sided version gives $N = 20$
-for 8 of 15 configurations in B2 and 12 of 15 in B5, exactly where the estimator switches. Neither supports a
-claim.
+\subsection{Follow-up runs: embeddings add nothing, outside labels help}\label{sec:posthoc}
+After the benchmark, five follow-up runs, each fixed in a written plan before fresh draws (repeats 100--599;
+Supplementary Table~S2), asked what raises held-out AUC at $N = 12$ and 30. A denoising variant of the fusion network with
+multiplicative fusion did no better with ESM-2 embeddings, their 32- or 64-dimensional
+principal components, or co-expression components from 786--859 independent samples than with the same
+embeddings shuffled across proteins (median differences $-0.021$ to $+0.009$); letting inner CV set an
+embedding's weight in a ridge model changed held-out AUC by a median of 0.000. Outside label information did
+help. A TP53 signature fitted to other CPTAC cohorts (B2) or other ProCan tissues (B5), applied without the
+study's labels, reached a median held-out AUC of 0.70 (B2) and 0.77 (B5) at $N = 12$ and beat all four
+baselines at $N = 12$ and 30 in both tasks (by 0.04--0.11 over TabPFN); TabPFN caught up only at $N = 50$ in
+B5. Used as a prior for ridge on the 500 proteins the study's filter kept, it beat plain ridge only in B5 at
+$N \ge 30$.
 
 % =====================================================================================
 \section{Discussion}\label{sec:discussion}
@@ -492,7 +501,8 @@ claim.
 \caption{Decision table for small proteomic studies, from the two weak-signal tasks (B2, B5) except the last
 row (B1). Evidence: \emph{secondary claim} = paired decision rule holds in both B2 and B5, a post hoc
 relaxation of the pre-specified rule (\S\ref{sec:results}); \emph{descriptive} = measured and consistent in
-both, with no pre-specified decision rule; \emph{none} = no basis to choose. A small study cannot tell a weak
+both, with no pre-specified decision rule; \emph{follow-up test} = hypothesis fixed before fresh draws after the
+benchmark (\S\ref{sec:posthoc}); \emph{none} = no basis to choose. A small study cannot tell a weak
 effect from none with its own data (\S\ref{sec:tasks}); unless its effect is known to be large, it should
 follow the rows as they stand.}
 \label{tab:decision}
@@ -504,52 +514,46 @@ $\le 12$ & Internal estimate & Report leave-pair-out AUC, not pooled LOOCV (erro
 $\ge 20$ & Internal estimate & Repeated $k$-fold, AUC per fold; expect $>0.1$ overstatement in about one study in five (17--23\% at $N = 20$--30) & descriptive \\
 all & Own null & Re-run the whole pipeline on permuted labels with leave-pair-out or per-fold $k$-fold; a mean well above 0.5 exposes a leak (at 3 vs 3 only 20 labellings exist, so a permutation $p$ cannot fall below 0.05, or 0.1 for label-symmetric pipelines) & descriptive \\
 all & Feature selection & Inside the folds only (outside: $+0.04$ to $+0.45$ optimism) & descriptive \\
-all & Augmentation & Never before the split (SMOTE adds $0.07$--$0.25$ from $N = 12$ on top of other leaks); inside the folds it does not help & descriptive \\
+all & Augmentation & Never before the split (SMOTE adds $0.07$--$0.16$ from $N = 20$ on top of other leaks); inside the folds it does not help & descriptive \\
 9--30 & Model & Avoid the fusion network (TabPFN better from $N = 9$, CCP and RF from 12, EN from 20; by 0.04--0.19 AUC) & secondary claim \\
 6--30 & Model & No basis to choose among CCP, elastic net, random forest, TabPFN & none \\
-9--30 & Features & With RF, prefer proteins to Reactome pathway scores (EN: $N = 30$ only) & secondary claim \\
+$\le 30$ & Outside information & If a labelled cohort exists for the same contrast, score with its signature: it beat all four standard models at $N = 12$ and 30; protein embeddings added nothing & follow-up test \\
+9--30 & Features & With RF, use proteins, not pathway scores (EN: $N = 30$ only) & secondary claim \\
 $\le 30$ & Biomarker list & Do not read the top 50 as a biomarker list (Kuncheva 0.00--0.04) & descriptive \\
 $\le 30$ & Stability & Not a proxy for recovery at a fixed $N$, and high even with no signal & none \\
-any & Large effect & Any method reaches AUC 1.00 from $N = 6$ (B1, full-cohort $|d| \approx 4$); no basis to choose & none \\
+any & Large effect & Every method reaches a median AUC of 0.99--1.00 from $N = 6$ (B1, full-cohort $|d| \approx 4$); no basis to choose & none \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
 Table~\ref{tab:decision} turns the results into recommendations. The most robust finding concerns the
-estimator, and Proposition~\ref{prop:null} says why: an
-estimator that only compares held-out samples scored by one model trained without either is calibrated under
-the null for any learner, and
-pooled LOOCV is not. A laboratory reporting pooled leave-one-out AUC at $N \le 12$ reports a number whose
+estimator, as Proposition~\ref{prop:null} predicts. A laboratory reporting pooled leave-one-out AUC at $N \le 12$ reports a number whose
 error depends on the classifier more than on the data, and whose sign it cannot know without a permuted-label
 run. Leave-pair-out costs more fits but removes almost all of the error. From $N = 20$, $k$-fold is centred
-correctly, but a single study still has roughly a one-in-five chance of overstating its held-out AUC by more
-than 0.1. The two leaky practices we measured are not small-$N$ curiosities: both still inflate the estimate
+correctly, but about one study in five still overstates its held-out AUC by more than 0.1. The two leaky practices we measured are not small-$N$ curiosities: both still inflate the estimate
 at $N = 30$--50. No model was reliably best among the four baselines, no pipeline variant helped, and the
-case-study fusion network was the weakest model wherever methods could be separated. At $N \le 30$, different
-subsamples selected nearly disjoint protein lists, so a small study should present its top-ranked proteins as
-hypotheses ranked by one draw, not as a panel.
+case-study fusion network was the weakest model wherever methods could be separated. A small study whose contrast has been measured in a labelled public cohort should first score its samples with that cohort's signature (\S\ref{sec:posthoc}): its labels play no part in that fit, so the AUC is a genuine held-out estimate. At $N \le 30$, different
+subsamples selected nearly disjoint protein lists, so a small study's top-ranked proteins are hypotheses from
+one draw, not a panel.
 
 \subsection{An illustration on the motivating study}\label{sec:case}
-The nine-sample study cannot measure optimism, but it can show how the two internal estimators behave on real
-data at the bottom of the range. Each binary contrast it allows---24 hours versus control, 8 hours versus
-control, 24 hours versus 8 hours---has three samples per class, so $N = 6$. For each,
-we analysed all ten distinct 3/3 partitions of the six samples, the true one and nine rearrangements, with the
-benchmark's reference pipeline and five models (Figure~\ref{fig:case}). This analysis was added after the
-benchmark results were known; it is descriptive, and no claim rests on it.
+The nine-sample study cannot measure optimism, but it shows how the two internal estimators behave at the
+bottom of the range. Each of its three binary contrasts has three samples per class ($N = 6$).
+For each, we analysed all ten distinct 3/3 partitions of the six samples, the true one and nine rearrangements, with the
+benchmark's reference pipeline and five models (Figure~\ref{fig:case}); no claim rests on it.
 
 Three things stand out. First, the true 24-hour versus control partition reaches an internal AUC of 1.00 for
-every model under both estimators. Missingness rises with exposure (24.2\% of values in the controls, 60.6\%
-at 8 hours, 78.1\% at 24 hours), and the fraction of missing values per sample, with no model at all, ranks
-every sample of the longer exposure above every sample of the shorter one in all three contrasts (AUC 1.00
-each; \emph{post hoc}), although 24 versus 8 hours only by 0.1 percentage point; a perfect internal score here
-need not reflect protein-level signal. Second, on the same data and model the two estimators can disagree
+every model under both estimators. Missingness rises with exposure (24.2\%, 60.6\% and 78.1\% of values), and
+the per-sample missing fraction alone, with no model, separates all three contrasts perfectly (\emph{post hoc};
+24 versus 8 hours by only 0.1 percentage point), so a perfect internal score need not reflect protein-level
+signal. Second, on the same data and model the two estimators can disagree
 sharply: for 24 hours versus 8 hours, leave-pair-out gives 1.00 for every model, while pooled LOOCV gives 0.33
 to 1.00, the fusion network's own value being 0.33. Third, across the 27 rearranged partitions, pooled LOOCV
 values pile up near zero (median 0.22 over 135 values, 46\% at or below 0.2), while leave-pair-out stays nearer
 the middle (median 0.44, 12\%), as the benchmark measured. One six-sample dataset need not reproduce each
-method's benchmark direction---the fusion network's rearranged values sit low here, whereas its benchmark bias
-was upward---so we read the figure only as showing that the choice of estimator alone can move a small
-study's headline number by more than half the AUC scale.
+method's benchmark direction, so we read the figure only as showing that the choice of estimator alone can
+move a small study's headline number by more than half the AUC scale. For that study, internal estimates alone cannot
+establish generalisation, and its top-ranked proteins are hypotheses from one draw.
 
 \begin{figure}[t]
 \centering
@@ -561,40 +565,35 @@ known.}
 \label{fig:case}
 \end{figure}
 
-For that study, the benchmark implies the following. Its internal estimates come from the regime in which the
-estimator and the pipeline, rather than the model, dominate the reported number, and they cannot by
-themselves establish generalisation. In both weak-signal tasks its fusion architecture was outranked on
-held-out samples by TabPFN from $N = 9$ and by every baseline from $N = 20$, consistent with the earlier
-analysis, in which classical baselines also scored higher on the nine samples; at $N = 6$, the size of each of
-its contrasts, no pair of models met the rule in both tasks. And at $N \le 30$ the top-50 lists of different
-draws barely overlapped, so the proteins that study ranked highest are best read as hypotheses from one draw.
-
 \subsection{Limitations}
-The conclusions transport only as far as the tasks. Only B2 and B5 discriminate between methods; both are TP53
-contrasts in cancer material and both carry weak signal, and their task-selection statistic did not stand out
-from its permuted-label values even in the full cohort, so the rule that picked them (smallest effect) chose
-among contrasts it could not order. None is plasma, the most common small-$N$ setting (the cohorts we checked
-were access-controlled), or label-free DDA, the motivating study's platform (B1 and B2 are TMT, B5 is DIA). Missingness in the benchmark barely depends on the label (the per-sample
-missing fraction separates the classes with AUC 0.46--0.65), whereas in the motivating study it rises from 24\%
-to 78\% with exposure, so pipelines under strongly label-dependent missingness are untested. $H_r$ comes from
+The conclusions transport only as far as the tasks. Only B2 and B5 discriminate between methods; both are weak
+TP53 contrasts in cancer material, chosen by a rule (smallest effect) whose statistic could not order them
+(\S\ref{sec:tasks}). None is plasma, the most common small-$N$ setting, or label-free DDA, the motivating study's platform (B1 and B2 are TMT, B5 is DIA). Missingness in the benchmark barely depends on the label (the per-sample
+missing fraction separates the classes with AUC 0.46--0.65), unlike in the motivating study, so pipelines under strongly label-dependent missingness are untested. $H_r$ comes from
 the same cohort as $S_r$; optimism against a truly independent cohort, with other sites and batches, is likely
 larger. All draws were balanced and all models ran at default settings, so class imbalance and nested tuning
 were not studied, nor were bootstrap estimators such as .632+ \citep{efron1997improvements} or Harrell's
-optimism correction \citep{harrell1996multivariable}. The fusion network ran on the reference pipeline's 500-protein input with an fp32 batched trainer, not the
-original study's full protein set, so its result applies to that configuration. The motivating study was
-three-class; every benchmark task is binary. Finally, two pre-specified tests were replaced after they failed, on
-evidence from permuted labels only (\S\ref{sec:gate}).
+optimism correction \citep{harrell1996multivariable}. The fusion network ran on the reference pipeline's
+500-protein input, not the original study's full protein set, and the motivating study was three-class
+whereas every task is binary. The transferred signature needs labelled data for the same contrast, which TP53
+has and the motivating study's exposure does not, and in both tasks the outside cohorts shared the task's
+platform and processing, so transfer across platforms is untested.
 
 \FloatBarrier
 \section{Conclusion}
-A simple symmetry condition guarantees that an internal AUC estimator is calibrated under uninformative labels, and explains why pooled leave-one-out AUC errs in a direction set by the learner. At
+A symmetry condition guarantees calibrated internal AUC under uninformative labels and explains why pooled
+leave-one-out AUC errs in a direction set by the learner. At
 wet-lab sample sizes, the estimator and the pipeline move the reported AUC far more than the choice among
-standard models. We recommend leave-pair-out AUC at $N \le 12$, a permuted-label run of the full pipeline,
-strictly in-fold selection and augmentation, and caution in reading short protein lists as biomarker panels.
+standard models, and at $N = 12$ and 30 a signature from outside labelled data scored higher than the four
+standard models trained on the study. We recommend leave-pair-out
+AUC at $N \le 12$, a permuted-label run of the full pipeline, strictly in-fold selection and augmentation, a
+signature from a labelled external cohort where one exists, and caution in reading short protein lists as
+biomarker panels.
 
 \paragraph{Data and code availability.} All three cohorts are public (CPTAC via the \texttt{cptac} package
 \citep{lindgren2021cptac}; ProCan-DepMapSanger via figshare \citep{goncalves2022procan}). The code,
-leakage tests, analysis scripts and complete results (every run, analysis table and log) are at \coderepo.
+leakage tests, analysis scripts, complete results and the follow-up runs with their plans (\texttt{posthoc/})
+are at \coderepo.
 The motivating nine-sample dataset (\S\ref{sec:case}),
 generated by the collaborating laboratory, is available from the authors on reasonable request.
 
