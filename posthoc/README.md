@@ -1,7 +1,7 @@
 # Follow-up runs
 
 Post hoc with respect to the benchmark: everything here was done after the benchmark's runs
-and analysis were complete. Paper: Section 5.1; Supplementary Section S5.
+and analysis were complete. Paper: Section 4.6; Supplementary Section S5.
 
 ## Pilots (`pilots/`): exploratory, not evidence
 
@@ -59,6 +59,17 @@ and 5, a figure. Run 5's figure (`confirm5.pdf`, Supplementary Figure S3) is dra
 - **Run 4, COAD.** The plan lists COAD among the B2 signature's cohorts, but its proteomics
   (`bcm`) are indexed by Ensembl gene IDs, so no protein matched under the plan's rule
   (Ensembl protein ID). COAD contributed nothing (`confirm4_sig.log`).
+
+### Post hoc records (added 2026-10-24, after all five runs)
+
+- `coverage2.py` → `confirm2_coverage.csv`: co-expression embedding coverage among V3's input
+  proteins on every run-2 draw (mean 96.6% in B2, 85.5% in B5), computed from the embedding
+  files runs 2 and 3 used. Run it on a rebuilt `emb2/`.
+- `restricted4.py` → `confirm4_restricted.csv`: as the plan specified, run 4's transfer-τ model
+  used the signature only on the 500 proteins the in-fold filter kept. Used alone in that form,
+  the signature's median held-out AUC at N = 12 is 0.57 (B2) and 0.71 (B5), against 0.70 and
+  0.77 for the zero-shot score on all proteins. Run 4 therefore does not show that combining the
+  signature with a study's labels cannot help.
 
 ## Reproducing
 
