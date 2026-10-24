@@ -1,0 +1,7 @@
+runner,task,N,arm,repeats,rows,stored_code,max_abs_diff,top100_identical,seconds
+cpu,B2,12,true,0-9,130,c8068f7aa7ec,0.0,True,0
+cpu,B5,30,perm,50-59,130,c8068f7aa7ec,0.0,True,0
+tabpfn,B1,12,perm,0-9,10,c8068f7aa7ec,0.0,True,0
+tabpfn,B2,6,perm,0-9,10,748dcfefc79e,0.0,True,109
+fus,B1,6,perm,0-49,50,c8068f7aa7ec,0.0,True,563
+fus,B2,6,perm,0-49,50,748dcfefc79e,0.0,True,729

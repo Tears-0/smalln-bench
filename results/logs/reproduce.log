@@ -1,0 +1,6 @@
+2026-10-20 20:27:46 cpu B2 N=12 true r0-9: 130 rows, stored code c8068f7aa7ec, max |diff| 0, top100 identical True
+2026-10-20 20:27:46 cpu B5 N=30 perm r50-59: 130 rows, stored code c8068f7aa7ec, max |diff| 0, top100 identical True
+2026-10-20 20:27:46 tabpfn B1 N=12 perm r0-9: 10 rows, stored code c8068f7aa7ec, max |diff| 0, top100 identical True
+2026-10-20 20:29:35 tabpfn B2 N=6 perm r0-9: 10 rows, stored code 748dcfefc79e, max |diff| 0, top100 identical True
+2026-10-20 20:38:58 fus B1 N=6 perm r0-49: 50 rows, stored code c8068f7aa7ec, max |diff| 0, top100 identical True
+2026-10-20 20:51:07 fus B2 N=6 perm r0-49: 50 rows, stored code 748dcfefc79e, max |diff| 0, top100 identical True

@@ -133,7 +133,8 @@ def test_positive_control_leaky_fails():
 def test_A7_permuted_null_one_sided_mean():
     """A7 test 1: leakage only inflates, so the check is one-sided, on the mean of the
     honest-internal AUC (leave-pair-out at N <= 12, k-fold at N >= 20), threshold
-    0.5 + TOL. Familywise false-alarm probability on a clean pipeline: 0.08."""
+    0.5 + TOL. Familywise false-alarm probability on a clean pipeline: 0.07
+    (`python -m bench.review gate_bootstrap`)."""
     df = _perm_rows()
     df = df[~df.config_id.map(lambda c: BY_ID[c].smote == "leaky")].copy()
     df["honest"] = np.where(df.N <= 12, df.auc_int_lpo, df.auc_int)

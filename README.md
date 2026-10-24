@@ -45,6 +45,11 @@ design or analysis after it was fixed. Comments in the code cite its sections
   from them.
 - `results/runs/fus_lpo/` — post hoc leave-pair-out for the fusion network.
 - `results/runs/smoke/` — the two-draw smoke test of the fusion runner (13 October 2026).
+- `results/runs/repro/` — one block of every runner under each code version, re-run from
+  scratch by `bench.reproduce`; `results/logs/reproduce.log` records that all 380 runs match
+  the stored values exactly.
+- `results/analysis/task_selection.csv` — the pre-specified task selection, recomputed with
+  the effect statistic of Table 1 (`bench.selection`; Supplementary Table S1).
 - `results/analysis/` — ranking, optimism, usable-N, recovery and decision tables
   (`bench.analysis`), and the post hoc analyses (`review_*`, `bench.review`).
 - `results/stability.parquet`, `results/stability_f21.json` — selection stability.
@@ -75,6 +80,7 @@ CPU worker processes and one RTX 5070 Ti (16 GB). Run every command from the rep
 
 ```
 python -m bench.derive          # B5 mutation tables -> data/derived/
+python -m bench.selection       # task selection under the pre-specified rules (needs R)
 python -m bench.references      # full-cohort R limma references (task tables are built on first load)
 python -c "from bench import embeddings; print(embeddings.build_all())"   # ESM-2 embeddings
 #   (python -m bench.embeddings also checks against the case-study embeddings, which are not public)
@@ -86,6 +92,7 @@ python -m bench.fusion --out main --tasks B1 --N 20 --arms perm --block 50
 python -m bench.orchestrate     # runs tests/, launches the full run only if they pass
 
 python -m bench.merge --out main                 # -> results/main_all_runs.parquet
+python -m bench.reproduce                        # re-run one block per runner and code version, compare
 python -m bench.stability
 python -m bench.analysis rankings                # also: optimism, usable_n, recovery, decision
 
