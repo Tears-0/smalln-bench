@@ -1,8 +1,8 @@
-"""Model arms (spec §5.1). No hyperparameter is tuned (F6).
+"""Model arms (paper §3.4). No hyperparameter is tuned.
 
 fit_predict returns (scores for the test rows, importance over the selected
-features). Importance drives the protein ranking used for recovery (§6.2);
-TabPFN returns None (excluded from recovery, F8).
+features). Importance drives the protein ranking used for recovery (paper §3.6);
+TabPFN returns None (excluded from recovery).
 """
 from __future__ import annotations
 
@@ -15,7 +15,7 @@ _TABPFN = {}
 
 
 def smote(Z, y, sd):
-    """Oversample both classes to 2x (F12); k = min(5, n_min - 1)."""
+    """Oversample both classes to 2x; k = min(5, n_min - 1)."""
     from imblearn.over_sampling import SMOTE
     n1, n0 = int((y == 1).sum()), int((y == 0).sum())
     k = min(5, min(n1, n0) - 1)

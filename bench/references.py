@@ -1,4 +1,4 @@
-"""Full-data reference rankings per task (spec §6.2, F19) and effect-size summary (§4).
+"""Full-data reference rankings per task (paper §3.6) and effect-size summary (Table 1).
 
   limma     R limma 3.62.2 lmFit + eBayes (default settings), unpaired, on the full
             task with missing values; ranked by |t|. BH-adjusted p kept so the

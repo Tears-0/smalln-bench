@@ -1,6 +1,6 @@
-"""Leave-pair-out for the fusion arm (spec §16 A13; post hoc, prompted by review).
+"""Leave-pair-out for the fusion arm (post hoc, prompted by review).
 
-The main run gave FUS no leave-pair-out pass (F29), so its positive pooled-LOOCV bias at
+The main run gave FUS no leave-pair-out pass, for cost, so its positive pooled-LOOCV bias at
 N <= 12 was never checked by the honest estimator. This runner adds, for the same draws,
 labels and in-fold pipeline as config 5:
 

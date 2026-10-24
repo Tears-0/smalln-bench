@@ -1,4 +1,4 @@
-"""Task loaders (spec §5.0, §8 loader contract; tasks fixed in §16 A3).
+"""Task loaders for B1, B2 and B5 (paper §3.2, Table 1).
 
 Every loader returns a Task: X (samples x proteins, log2, NaN for missing), y
 (binary), unit (the draw unit: patient or donor), protein identifiers, and a

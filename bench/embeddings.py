@@ -1,9 +1,9 @@
-"""ESM-2 CLS embeddings per task for the fusion arm (spec §5.1 FUS, F9).
+"""ESM-2 CLS embeddings per task for the fusion arm (supplement S1).
 
 Model esm2_t12_35M_UR50D (fair-esm 2.0.0), readout representations[12][:, 0, :]
 -- the CLS/BOS token, as the case study's embeddings were produced. Sequences
 longer than MAX_LEN residues are truncated to their first MAX_LEN (counts logged).
-Embeddings are cached once per unique sequence (spec §5.3).
+Embeddings are cached once per unique sequence.
 
 Memory: self-attention holds a [batch, 20 heads, L, L] tensor per layer, so the
 batch is bounded by batch * L^2 (ATTN_BUDGET), not by token count. With the

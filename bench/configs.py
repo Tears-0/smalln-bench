@@ -1,8 +1,8 @@
-"""The 15 configurations after amendments A3-A4 (spec §5.1, §16).
+"""The 15 configurations (paper §3.4, Table 2).
 
 smote: None | 'infold' | 'leaky' (SMOTE on all of S_r before the internal split)
 leaky_filter: whether the leaky-internal variant (filter fitted on all of S_r)
-              is computed for this config (supervised filter present; not FUS, F29)
+              is computed for this config (supervised filter present; not FUS, for cost)
 """
 from dataclasses import dataclass
 

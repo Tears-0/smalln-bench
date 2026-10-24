@@ -1,4 +1,4 @@
-"""Leakage test suite (spec §8, amended F24). MUST PASS before the full run.
+"""Leakage test suite (paper §3.7; tests 1 and 1b amended, §2.2). MUST PASS before the full run.
 
   test 1   permuted labels: median honest-internal AUC within 0.5 +/- 0.05 for every
            config (leave-pair-out at N <= 12, k-fold at N >= 20; pooled LOOCV is
@@ -94,8 +94,8 @@ def _perm_rows():
     return df[df.arm == "perm"]
 
 
-@pytest.mark.xfail(strict=False, reason="registered criterion miscalibrated: 0.91 familywise false-alarm "
-                                        "probability on a clean pipeline (spec §16 A7); kept as a record")
+@pytest.mark.xfail(strict=False, reason="pre-specified criterion miscalibrated: 0.91 familywise false-alarm "
+                                        "probability on a clean pipeline (paper §2.2); kept as a record")
 def test_permuted_null_honest_internal():
     df = _perm_rows()
     bad = []
@@ -112,8 +112,8 @@ def test_permuted_null_honest_internal():
     assert not bad, f"median permuted-label honest-internal AUC outside 0.5 +/- {TOL}: {bad}"
 
 
-@pytest.mark.xfail(strict=False, reason="registered on pooled LOOCV, whose method-dependent bias (A5) "
-                                        "masks the small pathway-filter leak (spec §16 A7); kept as a record")
+@pytest.mark.xfail(strict=False, reason="pre-specified on pooled LOOCV, whose method-dependent bias "
+                                        "masks the small pathway-filter leak (paper §3.7); kept as a record")
 def test_positive_control_leaky_fails():
     df = _perm_rows()
     g = df[(df.N == 12)]
@@ -129,9 +129,9 @@ def test_positive_control_leaky_fails():
     assert checked >= 8
 
 
-# ------------------------------------------------------------------ amended gate (spec §16 A7)
-def test_A7_permuted_null_one_sided_mean():
-    """A7 test 1: leakage only inflates, so the check is one-sided, on the mean of the
+# ------------------------------------------------------------------ amended gate (paper §2.2, §3.7)
+def test_amended_permuted_null_one_sided_mean():
+    """Amended test 1: leakage only inflates, so the check is one-sided, on the mean of the
     honest-internal AUC (leave-pair-out at N <= 12, k-fold at N >= 20), threshold
     0.5 + TOL. Familywise false-alarm probability on a clean pipeline: 0.07
     (`python -m bench.review gate_bootstrap`)."""
@@ -144,8 +144,8 @@ def test_A7_permuted_null_one_sided_mean():
     assert len(m) >= 25
 
 
-def test_A7_positive_control_paired():
-    """A7 test 1b: the leaky arm must be detectably higher than the honest arm on the same
+def test_amended_positive_control_paired():
+    """Amended test 1b: the leaky arm must be detectably higher than the honest arm on the same
     draw and estimator -- positive in >= 90% of repeats at N = 20 (k-fold), for every
     supervised-filter config; the leaky SMOTE arm must exceed 0.9 at N = 12."""
     df = _perm_rows()

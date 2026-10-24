@@ -1,4 +1,4 @@
-"""Descriptive illustration on the motivating nine-sample study (spec §16 A11).
+"""Descriptive illustration on the motivating nine-sample study (paper §5.1).
 
 Added after the benchmark results were known; descriptive only, no claim rests on it.
 The study has no held-out samples, so optimism cannot be measured. What can be shown

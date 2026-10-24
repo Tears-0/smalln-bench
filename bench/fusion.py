@@ -1,4 +1,4 @@
-"""Frozen fusion arm (config 5), trained by a batched lockstep trainer (F26, F27, F29).
+"""Frozen fusion arm (config 5), trained by a batched lockstep trainer (supplement S1).
 
 Each fit is the case-study MultiModalProteomicsModel (vendor/fusion/model.py,
 binary head): RMSprop lr 1e-4, weight decay 1e-4, 1,000 epochs, batch size 1
@@ -8,7 +8,7 @@ its own loss term, and RMSprop is elementwise, so every model's update is the
 update it would get alone (prereg/measurements: logits agree to 7e-7).
 
 Input: the reference pipeline's in-fold p = 500 proteins, restricted to proteins
-with a sequence (F9), z-scored. No LPO and no leaky pass (F29).
+with a sequence, z-scored. No LPO and no leaky pass, for cost (LPO was added post hoc in bench/fusion_lpo.py).
 Protein ranking: mean attention weight over the training samples.
 
     python -m bench.fusion --out main

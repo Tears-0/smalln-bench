@@ -1,4 +1,4 @@
-# Measurements behind the §5.3 run budget
+# Measurements behind the run budget
 
 Machine: Windows 11, NVIDIA GeForce RTX 5070 Ti (16 GB), 24 logical CPU cores,
 torch 2.11.0+cu128, Python 3.13.12. Measured 2026-10-01/02, before any
@@ -61,7 +61,7 @@ Timing, dropout on:
 | 10,000 | 100 | AMP | 77.08 | 0.771 | 4.3× |
 | 10,000 | 200 | AMP | — | — | out of memory |
 
-## 4. Budget arithmetic used in §5.3
+## 4. Budget arithmetic
 
 Model-steps per (task, repeat, label arm) for FUS, 1,000 epochs × summed
 training-set sizes, grid {6, 9, 12, 20, 30, 50}:
@@ -83,7 +83,7 @@ As first drafted (case-study trainer, 7 N including N = 100 at
 25 × 80 + 100 = 2,100, R = 100, 3 tasks): 4,461 × 1,000 × 100 × 2 × 3 =
 2.68 × 10⁹ model-steps × 3.5 ms ≈ **2,600 GPU-h**.
 
-## 5. Other checks run at the freeze
+## 5. Other checks run before the design was fixed
 
 - `imblearn` SMOTE with `sampling_strategy = {c: 2·n_c}` and
   `k_neighbors = min(5, n_min − 1)` runs on class counts (3, 2), (2, 3), (5, 4)

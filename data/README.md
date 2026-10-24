@@ -20,16 +20,16 @@ Sample groups: Control = F61–F63, 8 h = F64–F66, 24 h = F67–F69.
 | Task | What to place here | Source |
 |---|---|---|
 | B1, B2 | nothing — fetched by the `cptac` package into its own cache | `cptac` 1.5.14 |
-| B3 | *dropped (spec §16 A3)* — `cohort_1_processed_matrix.xlsx` has no patient IDs | — |
+| B3 | *dropped* — `cohort_1_processed_matrix.xlsx` has no patient IDs | — |
 | B5 | `ProCan-DepMapSanger_protein_matrix_8498_averaged.txt` | figshare, doi:10.6084/m9.figshare.19345397 |
 | B5 | `model_list_20261010.csv`, `mutations_all_20260724.zip` | Cell Model Passports downloads (release dates in the file names) |
 
-## derived/ — small tables computed from raw/ (2026-10-13, spec §16 A3)
+## derived/ — small tables computed from raw/ (2026-10-13)
 
 | File | Contents |
 |---|---|
 | `kras_tp53_calls.csv` | Every KRAS and TP53 call in `mutations_all_20260724.csv` (2,480 rows) |
 | `models_with_mutation_data.csv` | The 1,569 Cell Model Passports models with any mutation call (wild-type requires being sequenced) |
 | `cptac_cohort_counts.csv` | Tumour / NAT / patient counts and missingness for the 10 CPTAC cohorts (B1 rule) |
-| `cptac_b2_candidates.csv` | B2 candidate contrasts with class counts and effect sizes (`harmonized` mutations; PDAC and COAD were re-evaluated with `washu`, see A3) |
+| `cptac_b2_candidates.csv` | B2 candidate contrasts with class counts and effect sizes (`harmonized` mutations; PDAC and COAD were re-evaluated with `washu`, as their `harmonized` tables are empty in `cptac` 1.5.14) |
 | `procan_cohort1_annotation.csv` | Sample annotation of the dropped B3 matrix (no patient IDs) |

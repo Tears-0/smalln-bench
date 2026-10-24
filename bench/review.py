@@ -1,6 +1,6 @@
-"""Analyses added after the results were known, in response to review (spec §16 A13).
+"""Analyses added after the results were known, in response to review.
 
-None of these is registered; all are descriptive. Outputs go to results/analysis/review_*.csv.
+None of these is pre-specified; all are descriptive. Outputs go to results/analysis/review_*.csv.
 
     python -m bench.review effect_null      # median |d| of the top 100 under permuted labels
     python -m bench.review smote            # leaky-SMOTE optimism split into filter and SMOTE shares
@@ -10,7 +10,7 @@ None of these is registered; all are descriptive. Outputs go to results/analysis
     python -m bench.review recovery_h       # recovery against a reference computed on H_r only
     python -m bench.review missingness      # per-sample missing fraction as the only score
     python -m bench.review fus_lpo          # leave-pair-out for the fusion arm (bench.fusion_lpo)
-    python -m bench.review gate_bootstrap   # false-alarm probability of the registered and amended test 1
+    python -m bench.review gate_bootstrap   # false-alarm probability of the pre-specified and amended test 1
     python -m bench.review provenance       # counts quoted in the paper that no other output records
     python -m bench.review all
 """
@@ -258,7 +258,7 @@ def fus_lpo():
 
 # ---------------------------------------------------------------- leakage-gate bootstrap
 def gate_bootstrap(B=20000):
-    """False-alarm probability of the registered and the amended test 1 (spec A7) for a
+    """False-alarm probability of the pre-specified and the amended test 1 (paper §2.2) for a
     clean pipeline. Data: the gate's own runs (B1, permuted labels, N = 12 with leave-pair-out
     and N = 20 with k-fold; every in-fold configuration, so not the leaky SMOTE arms, and not
     FUS at N = 12, which had no leave-pair-out pass): 25 checks of 100 repeats. Each check is
@@ -266,7 +266,7 @@ def gate_bootstrap(B=20000):
     discreteness). Each bootstrap replicate resamples whole repeats (draws) with replacement,
     the same draws for every configuration at a given N, so the correlation between
     configurations on a shared draw is kept; N = 12 and N = 20 are resampled independently.
-    Registered rule: alarm if any check's median lies outside 0.5 +/- 0.05. Amended rule:
+    Pre-specified rule: alarm if any check's median lies outside 0.5 +/- 0.05. Amended rule:
     alarm if any check's mean exceeds 0.55."""
     D = load("perm")
     D = D[(D.task == "B1") & ~D.config.str.endswith("smote-leaky")]

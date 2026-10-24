@@ -1,4 +1,4 @@
-"""Selection stability (spec §6.3, F20) and the stability-recovery test (F21).
+"""Selection stability (paper §3.6) and the pre-specified stability-recovery test.
 
 Kuncheva index of the top-50 proteins across all R(R-1)/2 pairs of repeats at
 fixed (task, configuration, N, label arm). The total feature count n is the
@@ -6,11 +6,11 @@ number of proteins in the task passing the reference presence filter (>= 50%
 observed) on the full data. Kuncheva is 0 for chance overlap and 1 for
 identical lists.
 
-Configurations: those with a protein ranking (F8: not TabPFN, not *-path).
+Configurations: those with a protein ranking (not TabPFN, not *-path).
 Configs 17-18 share their external fit with 15-16 (identical rankings) and are
 not repeated.
 
-F21 (decided before looking): Spearman rho between mean Kuncheva and mean
+Stability-recovery test (pre-specified): Spearman rho between mean Kuncheva and mean
 precision@50 across (configuration, N) cells with N <= 30, true labels, computed
 within each task. Stability is a usable proxy only if rho >= 0.5 in EVERY task;
 otherwise reported as a negative with the per-task values.
@@ -74,8 +74,8 @@ def f21(st):
 
 
 def f21_fixed_n(st):
-    """Diagnostic added 2026-10-15 (spec §16 A8), NOT part of the registered test.
-    The registered rho pools cells across N, and both stability and recovery rise with
+    """Diagnostic added 2026-10-15, after the results; NOT part of the pre-specified test.
+    The pre-specified rho pools cells across N, and both stability and recovery rise with
     N; a lab sits at one N. Rank stability and recovery within each N, then correlate."""
     t = st[(st.arm == "true") & (st.N <= F21_MAX_N)].copy()
     out = {}
@@ -98,9 +98,9 @@ if __name__ == "__main__":
     res, usable = f21(st)
     print("\nF21 stability-recovery test (true labels, N <= 30, per task):",
           {k: {"rho": round(v["rho"], 3), "cells": v["cells"]} for k, v in res.items()})
-    print("Registered F21 outcome -- stability is a usable proxy for recovery:", usable)
+    print("Pre-specified outcome -- stability is a usable proxy for recovery:", usable)
     fx = f21_fixed_n(st)
-    print("Diagnostic (A8), rho at fixed N:", {k: round(v["rho_fixed_N"], 2) for k, v in fx.items()})
+    print("Diagnostic (post hoc), rho at fixed N:", {k: round(v["rho_fixed_N"], 2) for k, v in fx.items()})
     import json
     (RESULTS / "stability_f21.json").write_text(json.dumps(dict(registered=res, registered_usable=usable,
                                                                 fixed_n_diagnostic=fx), indent=2))

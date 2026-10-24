@@ -1,4 +1,4 @@
-"""Grid execution (spec §5.2-5.3): one parquet row per (config, task, N, r, arm).
+"""Grid execution (paper §3.3-3.5): one parquet row per (config, task, N, r, arm).
 
 A unit is one (task, N, r, arm). Within a unit, preprocessing for each
 (variant, fold) is computed once and shared by every configuration that uses
@@ -53,7 +53,7 @@ def context(name):
 
 
 def _sign_S(X, S, yS):
-    """Sign of the S_r mean difference per protein (directional agreement, §6.2)."""
+    """Sign of the S_r mean difference per protein (directional agreement, paper §3.6)."""
     import warnings
     a, b = X[S][yS == 1], X[S][yS == 0]
     with warnings.catch_warnings(), np.errstate(all="ignore"):
@@ -106,7 +106,7 @@ def run_unit(task_name, N, r, arm, config_ids):
 
     def leaky_smote_scores(cfg, folds, kind):
         """SMOTE on all of S_r before the split: preprocessing fitted on S_r, synthetic
-        points from every original sample stay in every training fold (spec §5.1)."""
+        points from every original sample stay in every training fold (paper §3.4)."""
         if cfg.variant not in smote_S:
             p = prepare(ctx, S, S, yS, cfg.variant, seed("impute", *coords, "S"), tag="leaky-smote-on-S")
             Zaug, yaug = smote(p.Ztr, yS, seed("smote", *coords))

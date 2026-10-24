@@ -1,4 +1,4 @@
-"""Seeded, balanced, unit-disjoint draws (spec §5.0, §5.2, F2, F3, F13).
+"""Seeded, balanced, unit-disjoint draws (paper §3.2-3.3).
 
 S_r holds at most one sample per unit (patient / donor); H_r is every sample
 whose unit is not in S_r. Seeds are derived from the run coordinates, so every
@@ -59,7 +59,7 @@ def permuted_labels(y_S: np.ndarray, task_name: str, N: int, r: int):
 
 
 def eligible(task, N: int, R: int) -> bool:
-    """F3: every class keeps >= H_FLOOR samples in H_r, for every one of the R draws."""
+    """Every class keeps >= H_FLOOR samples in H_r, for every one of the R draws."""
     for r in range(R):
         try:
             S, H = draw(task, N, r)

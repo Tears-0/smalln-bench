@@ -1,4 +1,4 @@
-"""Figures (spec §7, F31). Static print figures for a 10-page Letter paper.
+"""Figures for the paper. Static print figures for a 10-page Letter paper.
 
     python -m bench.figures            -> figures/fig{1..5}_*.{pdf,png}
 
@@ -113,7 +113,7 @@ def fig1_ranking():
 # ------------------------------------------------------------------ Fig. 2
 def fig2_optimism():
     T = pd.read_csv(A / "optimism.csv")
-    # leave-pair-out for the fusion network, added post hoc (spec A13; bench/fusion_lpo.py)
+    # leave-pair-out for the fusion network, added post hoc (bench/fusion_lpo.py)
     fl = A / "review_fus_lpo.csv"
     if fl.exists():
         F = pd.read_csv(fl).query("arm == 'true'")[["task", "N", "O_lpo_median"]].assign(config="FUS")
@@ -245,7 +245,7 @@ def fig5_stability_recovery():
 
 # ------------------------------------------------------------------ Fig. 6 (case study)
 def fig6_case_study():
-    """Descriptive illustration on the motivating study (spec §16 A11). Each 3-vs-3 partition
+    """Descriptive illustration on the motivating study (paper §5.1). Each 3-vs-3 partition
     once (sample 1 in the positive class): the true partition and 9 rearrangements."""
     from .case_study import labellings
     R = pd.read_csv(RESULTS / "case_study" / "case_study_auc.csv")

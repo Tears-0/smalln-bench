@@ -1,4 +1,4 @@
-"""Validate bench.limma against R limma (spec §11: one-off check before D3).
+"""Validate bench.limma against R limma (a one-off check before the benchmark runs).
 
 Requires the conda env 'smalln-r' (R 4.4.3, limma 3.62.2); skipped otherwise.
 """
@@ -21,7 +21,7 @@ design <- cbind(1, y)
 # legacy = TRUE: moment estimation of the prior even when residual df differ
 # between proteins (missing values). limma's default then switches to an ML
 # estimator; bench.limma implements the moment method, and the full-data
-# reference ranking (spec §6.2) is computed by R limma itself (bench.references).
+# reference ranking (paper §3.6) is computed by R limma itself (bench.references).
 fit <- eBayes(lmFit(t(X), design), legacy = TRUE)
 write(toJSON(list(t = unname(fit$t[, 2]), df0 = fit$df.prior, s20 = fit$s2.prior), digits = NA, na = "null"), args[3])
 """

@@ -1,4 +1,4 @@
-"""Scored metrics (spec §6.1-6.3). Must never import bench.enrichment (spec §8)."""
+"""Scored metrics (paper §3.5-3.6). Must never import bench.enrichment."""
 from __future__ import annotations
 
 import numpy as np
@@ -53,7 +53,7 @@ def recovery(rank, ref, sign_S):
 
 
 def kuncheva(lists, n_total, k=50):
-    """Mean pairwise Kuncheva index of top-k lists (spec §6.3)."""
+    """Mean pairwise Kuncheva index of top-k lists (paper §3.6)."""
     sets = [set(l[:k]) for l in lists]
     m = len(sets)
     if m < 2 or k >= n_total:

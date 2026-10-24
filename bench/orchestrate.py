@@ -1,4 +1,4 @@
-"""Gate the full run on the leakage suite (spec §8: tests must pass before any full run).
+"""Gate the full run on the leakage suite (paper §3.7: tests must pass before any full run).
 
 1. wait until the B1 permuted-label cells used by tests 1 and 1b exist
    (cpu and tabpfn at N = 12, 20; fusion at N = 20);

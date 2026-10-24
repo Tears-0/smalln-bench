@@ -1,4 +1,4 @@
-"""Fold plans and AUC estimators (spec §5.2, F14).
+"""Fold plans and AUC estimators (paper §2, §3.5).
 
 Positions are indices into S_r (0..N-1).
   N <= 12  primary   LOOCV, AUC over the N pooled held-out scores

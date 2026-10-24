@@ -1,8 +1,8 @@
-"""In-fold preprocessing (spec §5.1 reference pipeline and axis variants).
+"""In-fold preprocessing (paper §3.4: reference pipeline and its variants).
 
 Every statistic is estimated on the training indices only and then applied to
 the test indices. Each call is recorded in AUDIT when auditing is switched on,
-so tests/test_no_leakage.py can assert by index tracking (spec §8 test 2) that
+so tests/test_no_leakage.py can assert by index tracking (leakage test 2, paper §3.7) that
 no fitted object has seen a test index.
 
 variant  presence filter        missing values                    filter (top 500)
@@ -109,6 +109,6 @@ def prepare(ctx: TaskCtx, tr, te, ytr, variant, sd, fixed=None, restrict_seq=Fal
 
 
 def leaky_features(ctx, S, yS, variant, sd, restrict_seq=False):
-    """The supervised filter fitted once on all of S_r (leaky-internal variant, spec §5.2)."""
+    """The supervised filter fitted once on all of S_r (leaky-internal variant, paper §3.5)."""
     p = prepare(ctx, S, S[:1], yS, variant, sd, restrict_seq=restrict_seq, tag="leaky-filter-on-S")
     return p.feat
